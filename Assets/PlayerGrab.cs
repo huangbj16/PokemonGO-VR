@@ -34,6 +34,7 @@ public class PlayerGrab : MonoBehaviour
             {
                 if (focusOnBall)
                 {
+                    Debug.Log("Grab Ball!");
                     ball.transform.SetParent(hand.transform);
                     ball.transform.localPosition = new Vector3(0, -0.4f, 0);
                     inHands = true;
@@ -41,6 +42,8 @@ public class PlayerGrab : MonoBehaviour
                     ballCol.isTrigger = true;
                     ballRb.useGravity = false;
                     ballRb.velocity = Vector3.zero;
+                    ballRb.angularVelocity = Vector3.zero;
+                    ball.transform.rotation = Quaternion.identity;
                 }
             }
             else
@@ -51,6 +54,7 @@ public class PlayerGrab : MonoBehaviour
                 ballCol.isTrigger = false;
                 ballRb.useGravity = true;
                 ballRb.velocity = cam.transform.rotation * Vector3.forward * handPower;
+                ballRb.angularVelocity = cam.transform.rotation * Vector3.forward * handPower;
             }
         }
     }
