@@ -50,7 +50,7 @@ Shader "GoogleVR/UI/Overlay" {
     Lighting Off
     ZWrite Off
     ZTest [unity_GUIZTestMode]
-    Blend SrcAlpha OneMinusSrcAlpha, OneMinusDstAlpha One
+    Blend SrcAlpha OneMinusSrcAlpha
     ColorMask [_ColorMask]
 
     Pass {

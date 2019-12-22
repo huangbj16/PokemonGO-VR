@@ -19,7 +19,6 @@
 /// <summary>Interface declaring the use of the arm model.</summary>
 public interface IGvrArmModelReceiver
 {
-    /// <summary>Gets or sets the arm model reference.</summary>
-    /// <value>The arm model reference.</value>
+    /// <summary>The arm model reference.</summary>
     GvrBaseArmModel ArmModel { get; set; }
 }

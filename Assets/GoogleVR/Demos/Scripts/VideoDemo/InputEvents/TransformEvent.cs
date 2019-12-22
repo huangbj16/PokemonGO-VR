@@ -22,7 +22,6 @@ namespace GoogleVR.VideoDemo
     using UnityEngine;
     using UnityEngine.Events;
 
-    /// <summary>A `UnityEvent` wrapper for Transform events.</summary>
     [Serializable]
     public class TransformEvent : UnityEvent<Transform>
     {

@@ -16,16 +16,15 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using UnityEngine;
 using System;
 using System.Runtime.InteropServices;
-using UnityEngine;
 
-/// <summary>Main entry point Daydream specific APIs.</summary>
-/// <remarks>
+/// Main entry point Daydream specific APIs.
+///
 /// This class automatically instantiates an instance when this API is used for the first time.
 /// For explicit control over when the instance is created and the Java references are setup
-/// call the provided `CreateAsync` method, for example when no UI is being displayed to the user.
-/// </remarks>
+/// call the provided CreateAsync method, for example when no UI is being displayed to the user.
 public class GvrDaydreamApi : IDisposable
 {
     private const string METHOD_CREATE = "create";
@@ -33,66 +32,80 @@ public class GvrDaydreamApi : IDisposable
     private const string METHOD_RUN_ON_UI_THREAD = "runOnUiThread";
     private const string PACKAGE_DAYDREAM_API = "com.google.vr.ndk.base.DaydreamApi";
 
-    private static GvrDaydreamApi instance;
+    private static GvrDaydreamApi m_instance;
 
     #if UNITY_ANDROID && !UNITY_EDITOR
-    private AndroidJavaObject daydreamApiObject;
-    private AndroidJavaClass daydreamApiClass = new AndroidJavaClass(PACKAGE_DAYDREAM_API);
+    private AndroidJavaObject m_daydreamApiObject;
+    private AndroidJavaClass m_daydreamApiClass = new AndroidJavaClass(PACKAGE_DAYDREAM_API);
 
-    /// <summary>Gets an `AndroidJavaObject` associated with the Daydream app.</summary>
-    /// <value>An `AndroidJavaObject` associated with the Daydream app.</value>
     public static AndroidJavaObject JavaInstance
     {
         get
         {
             EnsureCreated(null);
-            return instance.daydreamApiObject;
+            return m_instance.m_daydreamApiObject;
         }
     }
     #endif  // UNITY_ANDROID && !UNITY_EDITOR
 
-    /// <summary>Gets a value indicating whether the `GvrDaydreamApi` has been created.</summary>
-    /// <value>Value `true` if the GvrDaydreamApi has been created, `false` otherwise.</value>
+    /// <summary>Returns true if the instance of the Daydream API is created.</summary>
     public static bool IsCreated
     {
         get
         {
 #if !UNITY_ANDROID || UNITY_EDITOR
-            return instance != null;
+            return (m_instance != null);
 #else
-            return instance != null && instance.daydreamApiObject != null;
+            return (m_instance != null) && (m_instance.m_daydreamApiObject != null);
 #endif  // !UNITY_ANDROID || UNITY_EDITOR
         }
     }
 
+    private static void EnsureCreated(Action<bool> callback)
+    {
+        if (!IsCreated)
+        {
+            CreateAsync(callback);
+        }
+        else
+        {
+            callback(true);
+        }
+    }
+
+    /// @cond
+    /// Call Dispose to free up memory used by this API.
+    public void Dispose()
+    {
+        m_instance = null;
+    }
+
+    /// @endcond
+
     /// @deprecated Create() without arguments is deprecated. Use CreateAsync(callback) instead.
-    /// <summary>Creates a generic asynchronous callback.</summary>
-    [System.Obsolete(
-        "Create() without arguments is deprecated. Use CreateAsync(callback) instead.")]
+    [System.Obsolete("Create() without arguments is deprecated. Use CreateAsync(callback) instead.")]
     public static void Create()
     {
         CreateAsync(null);
     }
 
-    /// <summary>Asynchronously instantiates a `GvrDayreamApi`.</summary>
-    /// <remarks>
-    /// The provided callback will be called with a bool argument indicating whether instance
-    /// creation was successful.
-    /// </remarks>
-    /// <param name="callback">A callback to make after creating a `GvrDaydreamApi`.</param>
+    /// Asynchronously instantiates a GvrDayreamApi.
+    ///
+    /// The provided callback will be called with a bool argument indicating
+    /// whether instance creation was successful.
     public static void CreateAsync(Action<bool> callback)
     {
-        if (instance == null)
+        if (m_instance == null)
         {
-            instance = new GvrDaydreamApi();
+            m_instance = new GvrDaydreamApi();
         }
 #if UNITY_ANDROID && !UNITY_EDITOR
-        if (instance.daydreamApiObject != null)
+        if (m_instance.m_daydreamApiObject != null)
         {
             return;
         }
 
-        if (instance.daydreamApiClass == null)
+        if (m_instance.m_daydreamApiClass == null)
         {
             Debug.LogErrorFormat("Failed to get DaydreamApi class, {0}", PACKAGE_DAYDREAM_API);
             return;
@@ -114,9 +127,9 @@ public class GvrDaydreamApi : IDisposable
 
         activity.Call(METHOD_RUN_ON_UI_THREAD, new AndroidJavaRunnable(() =>
         {
-            instance.daydreamApiObject =
-                instance.daydreamApiClass.CallStatic<AndroidJavaObject>(METHOD_CREATE, context);
-            bool success = instance.daydreamApiObject != null;
+            m_instance.m_daydreamApiObject =
+                m_instance.m_daydreamApiClass.CallStatic<AndroidJavaObject>(METHOD_CREATE, context);
+            bool success = m_instance.m_daydreamApiObject != null;
             if (!success)
             {
                 Debug.LogErrorFormat("DaydreamApi.Create call to {0} failed to instantiate object",
@@ -131,22 +144,18 @@ public class GvrDaydreamApi : IDisposable
 #endif  // UNITY_ANDROID && !UNITY_EDITOR
     }
 
-    /// @deprecated Use `LaunchVrHomeAsync(callback)` instead.
-    /// <summary>Launches a generic asynchronous VR Home call.</summary>
+    /// @deprecated LaunchVrHome() deprecated. Use LaunchVrHomeAsync(callback) instead.
     [System.Obsolete("LaunchVrHome() deprecated. Use LaunchVrHomeAsync(callback) instead.")]
     public static void LaunchVrHome()
     {
         LaunchVrHomeAsync(null);
     }
 
-    /// <summary>Asynchronously launches VR Home.</summary>
-    /// <remarks><para>
-    /// Instantiates an instance of GvrDaydreamApi if necessary. If successful, launches VR Home.
-    /// </para><para>
-    /// The provided callback will be called with a bool argument indicating whether instance
-    /// creation and launch of VR Home was successful.
-    /// </para></remarks>
-    /// <param name="callback">A callback to make after launching the VrHome screen.</param>
+    /// Asynchronously launches VR Home.
+    /// Instantiates an instance of GvrDaydreamApi if necessary. If successful,
+    /// launches VR Home.
+    /// The provided callback will be called with a bool argument indicating
+    /// whether instance creation and launch of VR Home was successful.
     public static void LaunchVrHomeAsync(Action<bool> callback)
     {
         EnsureCreated((success) =>
@@ -154,7 +163,7 @@ public class GvrDaydreamApi : IDisposable
             if (success)
             {
 #if UNITY_ANDROID && !UNITY_EDITOR
-                instance.daydreamApiObject.Call(METHOD_LAUNCH_VR_HOMESCREEN);
+                m_instance.m_daydreamApiObject.Call(METHOD_LAUNCH_VR_HOMESCREEN);
 #else
                 Debug.LogWarning("Launching VR Home is only possible on Android devices.");
 #endif  // UNITY_ANDROID && !UNITY_EDITOR
@@ -165,27 +174,5 @@ public class GvrDaydreamApi : IDisposable
                 callback(success);
             }
         });
-    }
-
-    /// @cond
-    /// <summary>Call Dispose to free up memory used by this API.</summary>
-    public void Dispose()
-    {
-        instance = null;
-    }
-
-    /// @endcond
-    /// <summary>Ensures that the Daydream Api has been created.</summary>
-    /// <param name="callback">The callback to make upon completion.</param>
-    private static void EnsureCreated(Action<bool> callback)
-    {
-        if (!IsCreated)
-        {
-            CreateAsync(callback);
-        }
-        else
-        {
-            callback(true);
-        }
     }
 }

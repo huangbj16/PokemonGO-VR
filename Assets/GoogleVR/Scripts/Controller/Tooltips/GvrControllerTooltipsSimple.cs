@@ -19,46 +19,38 @@
 // The controller is not available for versions of Unity without the
 // GVR native integration.
 
-using System.Collections;
 using UnityEngine;
+using System.Collections;
 
-/// <summary>A lightweight tooltip designed to minimize draw calls.</summary>
+/// A lightweight tooltip designed to minimize draw calls.
 [ExecuteInEditMode]
-[HelpURL("https://developers.google.com/vr/reference/unity/class/GvrControllerTooltipsSimple")]
+[HelpURL("https://developers.google.com/vr/unity/reference/class/GvrControllerTooltipsSimple")]
 public class GvrControllerTooltipsSimple : MonoBehaviour, IGvrArmModelReceiver
 {
     private MeshRenderer tooltipRenderer;
+
+    /// <summary>Arm model used to position the controller.</summary>
+    public GvrBaseArmModel ArmModel { get; set; }
+
     private MaterialPropertyBlock materialPropertyBlock;
     private int colorId;
 
-    /// <summary>Gets or sets the arm model used to position the controller.</summary>
-    /// <value>The arm model used to position the controller.</value>
-    public GvrBaseArmModel ArmModel { get; set; }
-
-    /// <summary>Updates the tooltip visualation based on the arm model.</summary>
-    protected void OnVisualUpdate()
-    {
-        float alpha = ArmModel != null ? ArmModel.TooltipAlphaValue : 1.0f;
-        materialPropertyBlock.SetColor(colorId, new Color(1, 1, 1, alpha));
-        tooltipRenderer.SetPropertyBlock(materialPropertyBlock);
-    }
-
-    private void Awake()
+    void Awake()
     {
         Initialize();
     }
 
-    private void OnEnable()
+    void OnEnable()
     {
         GvrControllerInput.OnPostControllerInputUpdated += OnPostControllerInputUpdated;
     }
 
-    private void OnDisable()
+    void OnDisable()
     {
         GvrControllerInput.OnPostControllerInputUpdated -= OnPostControllerInputUpdated;
     }
 
-    private void OnValidate()
+    void OnValidate()
     {
         if (!Application.isPlaying)
         {
@@ -85,5 +77,13 @@ public class GvrControllerTooltipsSimple : MonoBehaviour, IGvrArmModelReceiver
     private void OnPostControllerInputUpdated()
     {
         OnVisualUpdate();
+    }
+
+    /// <summary>Updates the tooltip visualation based on the arm model.</summary>
+    protected void OnVisualUpdate()
+    {
+        float alpha = ArmModel != null ? ArmModel.TooltipAlphaValue : 1.0f;
+        materialPropertyBlock.SetColor(colorId, new Color(1, 1, 1, alpha));
+        tooltipRenderer.SetPropertyBlock(materialPropertyBlock);
     }
 }

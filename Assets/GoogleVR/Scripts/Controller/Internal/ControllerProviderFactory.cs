@@ -44,8 +44,7 @@ namespace Gvr.Internal
             }
             else
             {
-                Debug.LogWarning(
-                    "GVR Unity Shim not found. Creating dummy controller provider.");
+                Debug.LogWarning("Creating dummy controller provider.");
                 return new DummyControllerProvider();
             }
 #else

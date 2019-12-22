@@ -22,9 +22,6 @@ namespace GoogleVR.VideoDemo
     using UnityEngine.EventSystems;
     using UnityEngine.UI;
 
-    /// <summary>
-    /// An object for handling pointer interactions with the Video Scrubber (time selection slider).
-    /// </summary>
     public class ScrubberEvents : MonoBehaviour
     {
         private GameObject newPositionHandle;
@@ -34,8 +31,6 @@ namespace GoogleVR.VideoDemo
 
         private VideoControlsManager mgr;
 
-        /// <summary>Sets the control manager.</summary>
-        /// <value>The control manager.</value>
         public VideoControlsManager ControlManager
         {
             set
@@ -44,49 +39,7 @@ namespace GoogleVR.VideoDemo
             }
         }
 
-        /// <summary>Called when a pointer enter event occurs.</summary>
-        /// <param name="data">The EventData for the triggering pointer enter event.</param>
-        public void OnPointerEnter(BaseEventData data)
-        {
-            if (GvrPointerInputModule.Pointer != null)
-            {
-                RaycastResult r = GvrPointerInputModule.Pointer.CurrentRaycastResult;
-                if (r.gameObject != null)
-                {
-                    newPositionHandle.transform.position = new Vector3(
-                        r.worldPosition.x,
-                        newPositionHandle.transform.position.y,
-                        newPositionHandle.transform.position.z);
-                }
-            }
-
-            newPositionHandle.SetActive(true);
-        }
-
-        /// <summary>Called when a pointer exit event occurs.</summary>
-        /// <param name="data">The EventData for the triggering pointer exit event.  Unused.</param>
-        public void OnPointerExit(BaseEventData data)
-        {
-            newPositionHandle.SetActive(false);
-        }
-
-        /// <summary>Called when a pointer click event occurs.</summary>
-        /// <param name="data">The EventData for the triggering pointer click event. Unused.</param>
-        public void OnPointerClick(BaseEventData data)
-        {
-            float minX = corners[0].x;
-            float maxX = corners[3].x;
-
-            float pct = (newPositionHandle.transform.position.x - minX) / (maxX - minX);
-
-            if (mgr != null)
-            {
-                long p = (long)(slider.maxValue * pct);
-                mgr.Player.CurrentPosition = p;
-            }
-        }
-
-        private void Start()
+        void Start()
         {
             foreach (Image im in GetComponentsInChildren<Image>(true))
             {
@@ -102,7 +55,7 @@ namespace GoogleVR.VideoDemo
             slider = GetComponentInParent<Slider>();
         }
 
-        private void Update()
+        void Update()
         {
             bool setPos = false;
             if (GvrPointerInputModule.Pointer != null)
@@ -121,6 +74,42 @@ namespace GoogleVR.VideoDemo
             if (!setPos)
             {
                 newPositionHandle.transform.position = slider.handleRect.transform.position;
+            }
+        }
+
+        public void OnPointerEnter(BaseEventData data)
+        {
+            if (GvrPointerInputModule.Pointer != null)
+            {
+                RaycastResult r = GvrPointerInputModule.Pointer.CurrentRaycastResult;
+                if (r.gameObject != null)
+                {
+                    newPositionHandle.transform.position = new Vector3(
+                        r.worldPosition.x,
+                        newPositionHandle.transform.position.y,
+                        newPositionHandle.transform.position.z);
+                }
+            }
+
+            newPositionHandle.SetActive(true);
+        }
+
+        public void OnPointerExit(BaseEventData data)
+        {
+            newPositionHandle.SetActive(false);
+        }
+
+        public void OnPointerClick(BaseEventData data)
+        {
+            float minX = corners[0].x;
+            float maxX = corners[3].x;
+
+            float pct = (newPositionHandle.transform.position.x - minX) / (maxX - minX);
+
+            if (mgr != null)
+            {
+                long p = (long)(slider.maxValue * pct);
+                mgr.Player.CurrentPosition = p;
             }
         }
     }

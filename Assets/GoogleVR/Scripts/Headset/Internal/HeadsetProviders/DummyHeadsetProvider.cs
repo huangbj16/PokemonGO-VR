@@ -19,7 +19,7 @@
 using Gvr;
 using UnityEngine;
 
-/// Used for platforms that do not support the GoogleVR 6DoF headset.
+/// Used for platforms that do not support the GoogleVR standalone headset (6DoF).
 /// @cond
 namespace Gvr.Internal
 {
@@ -29,7 +29,10 @@ namespace Gvr.Internal
 
         public bool SupportsPositionalTracking
         {
-            get { return false; }
+            get
+            {
+                return false;
+            }
         }
 
         public void PollEventState(ref HeadsetState state)

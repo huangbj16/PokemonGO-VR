@@ -18,54 +18,23 @@
 
 namespace GoogleVR.HelloVR
 {
-    using GoogleVR.Demos;
     using UnityEngine;
+    using GoogleVR.Demos;
 
-    /// @deprecated
-    /// <summary>
-    /// Keeps tabs on the scene's associated DemoInputManager, and deactivates it if necessary.
-    /// </summary>
-    /// <remarks>
-    /// Capable of piping calls to a deprecated launchVrHomeButton to the GvrDaydreamApi.
-    /// </remarks>
     public class HelloVRManager : MonoBehaviour
     {
-        /// @deprecated
-        /// <summary>
-        /// A VR Home button to activate or deactivate as devices connect to or disconnect from the
-        /// app.
-        /// </summary>
-        public GameObject launchVrHomeButton;
+        public GameObject m_launchVrHomeButton;
+        public DemoInputManager m_demoInputManager;
 
-        /// @deprecated
-        /// <summary>A DemoInputManager instance which is managing the scene, if any.</summary>
-        public DemoInputManager demoInputManager;
-
-        /// @deprecated
-        /// <summary>A method which launches the VR Home screen.</summary>
-        public void LaunchVrHome()
-        {
-#if UNITY_ANDROID && !UNITY_EDITOR
-            GvrDaydreamApi.LaunchVrHomeAsync((success) =>
-            {
-                if (!success)
-                {
-                    // Unexpected. See GvrDaydreamApi log messages for details.
-                    Debug.LogError("GvrDaydreamApi.LaunchVrHomeAsync() failed");
-                }
-            });
-#endif  // UNITY_ANDROID && !UNITY_EDITOR
-        }
-
-        private void Start()
+        void Start()
         {
 #if !UNITY_ANDROID || UNITY_EDITOR
-            if (launchVrHomeButton == null)
+            if (m_launchVrHomeButton == null)
             {
                 return;
             }
 
-            launchVrHomeButton.SetActive(false);
+            m_launchVrHomeButton.SetActive(false);
 #else
             GvrDaydreamApi.CreateAsync((success) =>
             {
@@ -79,15 +48,29 @@ namespace GoogleVR.HelloVR
         }
 
 #if UNITY_ANDROID && !UNITY_EDITOR
-        private void Update()
+        void Update()
         {
-            if (launchVrHomeButton == null || demoInputManager == null)
+            if (m_launchVrHomeButton == null || m_demoInputManager == null)
             {
                 return;
             }
 
-            launchVrHomeButton.SetActive(demoInputManager.IsCurrentlyDaydream());
+            m_launchVrHomeButton.SetActive(m_demoInputManager.IsCurrentlyDaydream());
         }
 #endif  // UNITY_ANDROID && !UNITY_EDITOR
+
+        public void LaunchVrHome()
+        {
+#if UNITY_ANDROID && !UNITY_EDITOR
+            GvrDaydreamApi.LaunchVrHomeAsync((success) =>
+            {
+                if (!success)
+                {
+                    // Unexpected. See GvrDaydreamApi log messages for details.
+                    Debug.LogError("GvrDaydreamApi.LaunchVrHomeAsync() failed");
+                }
+            });
+#endif  // UNITY_ANDROID && !UNITY_EDITOR
+        }
     }
 }

@@ -16,21 +16,15 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor;
 
-/// @cond
-/// <summary>A custom drawer for `GvrPointerScrollInput`s.</summary>
 [CustomPropertyDrawer(typeof(GvrPointerScrollInput), true)]
 public class GvrPointerScrollInputEditor : PropertyDrawer
 {
     private bool isExpanded = true;
 
-    /// <summary>Draws the property inside the given rect.  `MonoBehavior` builtin.</summary>
-    /// <param name="position">The rect inside which the property should be drawn.</param>
-    /// <param name="property">The property to draw.</param>
-    /// <param name="label">A label to apply to the property.</param>
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
         EditorGUI.BeginProperty(position, label, property);
@@ -59,8 +53,7 @@ public class GvrPointerScrollInputEditor : PropertyDrawer
 
                 // Deceleration rate property.
                 SerializedProperty decelerationRate =
-                    property.FindPropertyRelative(
-                        GvrPointerScrollInput.PROPERTY_NAME_DECELERATION_RATE);
+                    property.FindPropertyRelative(GvrPointerScrollInput.PROPERTY_NAME_DECELERATION_RATE);
 
                 position.y += rowHeight;
                 EditorGUI.PropertyField(position, decelerationRate);
@@ -74,18 +67,11 @@ public class GvrPointerScrollInputEditor : PropertyDrawer
         EditorGUI.EndProperty();
     }
 
-    /// <summary>An override to specify how tall the GUI for this field is in pixels.</summary>
-    /// <param name="property">The `SerializedProperty` to get the height of.</param>
-    /// <param name="label">The label of the property.</param>
-    /// <returns>The height in pixels.</returns>
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
         return base.GetPropertyHeight(property, label) * GetNumRows(property);
     }
 
-    /// <summary>Gets the number of rows contained in this `SerializedProperty`.</summary>
-    /// <param name="property">The `SerializedProperty` to get the number of rows for.</param>
-    /// <returns>The number of rows.</returns>
     private int GetNumRows(SerializedProperty property)
     {
         SerializedProperty inertia =
@@ -105,5 +91,3 @@ public class GvrPointerScrollInputEditor : PropertyDrawer
         }
     }
 }
-
-/// @endcond

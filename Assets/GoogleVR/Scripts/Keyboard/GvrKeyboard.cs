@@ -16,43 +16,41 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using UnityEngine;
+using UnityEngine.EventSystems;
+using Gvr.Internal;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Gvr.Internal;
-using UnityEngine;
-using UnityEngine.EventSystems;
 
 /// <summary>Events to update the keyboard.</summary>
 /// <remarks>These values depend on C API keyboard values.</remarks>
 public enum GvrKeyboardEvent
 {
-    /// <summary>Unknown error.</summary>
+    /// Unknown error.
     GVR_KEYBOARD_ERROR_UNKNOWN = 0,
 
-    /// <summary>The keyboard service could not be connected.</summary>
-    /// <remarks>This is usually due to the keyboard service not being installed.</remarks>
+    /// The keyboard service could not be connected. This is usually due to the
+    /// keyboard service not being installed.
     GVR_KEYBOARD_ERROR_SERVICE_NOT_CONNECTED = 1,
 
-    /// <summary>No locale was found in the keyboard service.</summary>
+    /// No locale was found in the keyboard service.
     GVR_KEYBOARD_ERROR_NO_LOCALES_FOUND = 2,
 
-    /// <summary>The keyboard service tried to load dynamically but failed.</summary>
-    /// <remarks>
-    /// This is usually due to the keyboard service not being installed or being out of date.
-    /// </remarks>
+    /// The keyboard SDK tried to load dynamically but failed. This is usually due
+    /// to the keyboard service not being installed or being out of date.
     GVR_KEYBOARD_ERROR_SDK_LOAD_FAILED = 3,
 
-    /// <summary>Keyboard becomes visible.</summary>
+    /// Keyboard becomes visible.
     GVR_KEYBOARD_SHOWN = 4,
 
-    /// <summary>Keyboard becomes hidden.</summary>
+    /// Keyboard becomes hidden.
     GVR_KEYBOARD_HIDDEN = 5,
 
-    /// <summary>Text has been updated.</summary>
+    /// Text has been updated.
     GVR_KEYBOARD_TEXT_UPDATED = 6,
 
-    /// <summary>Text has been committed.</summary>
+    /// Text has been committed.
     GVR_KEYBOARD_TEXT_COMMITTED = 7
 }
 
@@ -60,20 +58,9 @@ public enum GvrKeyboardEvent
 /// <remarks>These values depend on C API keyboard values.</remarks>
 public enum GvrKeyboardError
 {
-    /// <summary>Unknown error.</summary>
     UNKNOWN = 0,
-
-    /// <summary>The keyboard service could not be connected.</summary>
-    /// <remarks>This is usually due to the keyboard service not being installed.</remarks>
     SERVICE_NOT_CONNECTED = 1,
-
-    /// <summary>No locale was found in the keyboard service.</summary>
     NO_LOCALES_FOUND = 2,
-
-    /// <summary>The keyboard service tried to load dynamically but failed.</summary>
-    /// <remarks>
-    /// This is usually due to the keyboard service not being installed or being out of date.
-    /// </remarks>
     SDK_LOAD_FAILED = 3
 }
 
@@ -81,47 +68,32 @@ public enum GvrKeyboardError
 /// <remarks>These values depend on C API keyboard values.</remarks>
 public enum GvrKeyboardInputMode
 {
-    /// <summary>A default input mode.</summary>
-    /// <remarks>For typing letters.</remarks>
     DEFAULT = 0,
-
-    /// <summary>Indicates a numeric input mode.</summary>
-    /// <remarks>For typing numbers and symbols.</remarks>
     NUMERIC = 1
 }
 
-/// <summary>
-/// Handles keyboard state management such as hiding and displaying the keyboard, directly modifying
-/// text and stereoscopic rendering.
-/// </summary>
+/// <summary>Handles keyboard state management such as hiding and displaying
+/// the keyboard, directly modifying text and stereoscopic rendering.</summary>
 [HelpURL("https://developers.google.com/vr/unity/reference/class/GvrKeyboard")]
 public class GvrKeyboard : MonoBehaviour
 {
-    /// <summary>Delegate to handle keyboard events and input.</summary>
-    public GvrKeyboardDelegateBase keyboardDelegate = null;
-
-    /// <summary>The input mode of the keyboard.</summary>
-    public GvrKeyboardInputMode inputMode = GvrKeyboardInputMode.DEFAULT;
-
-    /// <summary>Flag to use the recommended world matrix for the keyboard.</summary>
-    public bool useRecommended = true;
-
-    /// <summary>The distance to the keyboard.</summary>
-    public float distance = 0;
-
-    private const float EXECUTOR_WAIT = 0.01f;
-
     private static GvrKeyboard instance;
 
     private static IKeyboardProvider keyboardProvider;
-
-    private static List<GvrKeyboardEvent> threadSafeCallbacks =
-        new List<GvrKeyboardEvent>();
-
-    private static System.Object callbacksLock = new System.Object();
-
     private KeyboardState keyboardState = new KeyboardState();
     private IEnumerator keyboardUpdate;
+
+    /// <summary>Standard keyboard delegate type.</summary>
+    public delegate void StandardCallback();
+
+    /// <summary>Edit text keyboard delegate type.</summary>
+    public delegate void EditTextCallback(string edit_text);
+
+    /// <summary>Keyboard error delegate type.</summary>
+    public delegate void ErrorCallback(GvrKeyboardError err);
+
+    /// <summary>Keyboard delegate type.</summary>
+    public delegate void KeyboardCallback(IntPtr closure, GvrKeyboardEvent evt);
 
     // Private data and callbacks.
     private ErrorCallback errorCallback = null;
@@ -138,29 +110,31 @@ public class GvrKeyboard : MonoBehaviour
 
     private bool isKeyboardHidden = false;
 
-    /// <summary>Standard keyboard delegate type.</summary>
-    public delegate void StandardCallback();
+    private const float kExecuterWait = 0.01f;
 
-    /// <summary>Edit text keyboard delegate type.</summary>
-    /// <param name="edit_text">The edited text which has been typed into the keyboard.</param>
-    public delegate void EditTextCallback(string edit_text);
+    private static List<GvrKeyboardEvent> threadSafeCallbacks =
+        new List<GvrKeyboardEvent>();
 
-    /// <summary>Keyboard error delegate type.</summary>
-    /// <param name="err">The error which raised this callback.</param>
-    public delegate void ErrorCallback(GvrKeyboardError err);
+    private static System.Object callbacksLock = new System.Object();
 
-    /// <summary>Keyboard delegate type.</summary>
-    /// <param name="closure">A closure around the method to call.</param>
-    /// <param name="evt">The event which prompted this callback.</param>
-    public delegate void KeyboardCallback(IntPtr closure, GvrKeyboardEvent evt);
+    /// <summary>Delegate to handle keyboard events and input.</summary>
+    public GvrKeyboardDelegateBase keyboardDelegate = null;
 
-    /// <summary>Gets or sets the text being affected by this keyboard.</summary>
-    /// <value>The text being affected by this keyboard.</value>
+    /// <summary>The input mode of the keyboard.</summary>
+    public GvrKeyboardInputMode inputMode = GvrKeyboardInputMode.DEFAULT;
+
+    /// <summary>Flag to use the recommended world matrix for the keyboard.</summary>
+    public bool useRecommended = true;
+
+    /// <summary>The distance to the keyboard.</summary>
+    public float distance = 0;
+
+    /// <summary>The text being affected by this keyboard.</summary>
     public string EditorText
     {
         get
         {
-            return instance != null ? instance.keyboardState.editorText : "";
+            return instance != null ? instance.keyboardState.editorText : string.Empty;
         }
 
         set
@@ -169,8 +143,7 @@ public class GvrKeyboard : MonoBehaviour
         }
     }
 
-    /// <summary>Gets the current input mode of the keyboard.</summary>
-    /// <value>The current input mode of the keyboard.</value>
+    /// <summary>Returns the current input mode of the keyboard.</summary>
     public GvrKeyboardInputMode Mode
     {
         get
@@ -179,8 +152,7 @@ public class GvrKeyboard : MonoBehaviour
         }
     }
 
-    /// <summary>Gets a value indicating whether this keyboard instance is valid.</summary>
-    /// <value>Value `true` if this keyboard instance is valid, `false` otherwise.</value>
+    /// <summary>Returns true if this keyboard instance is valid.</summary>
     public bool IsValid
     {
         get
@@ -189,8 +161,7 @@ public class GvrKeyboard : MonoBehaviour
         }
     }
 
-    /// <summary>Gets a value indicating whether this keyboard is ready.</summary>
-    /// <value>Value `true` if this keyboard is ready, `false` otherwise.</value>
+    /// <summary>Returns true if the keyboard is ready.</summary>
     public bool IsReady
     {
         get
@@ -199,8 +170,7 @@ public class GvrKeyboard : MonoBehaviour
         }
     }
 
-    /// <summary> Gets the world matrix of the keyboard.</summary>
-    /// <value>The world matrix of the keyboard.</value>
+    /// <summary> The world matrix of the keyboard.</summary>
     public Matrix4x4 WorldMatrix
     {
         get
@@ -209,12 +179,121 @@ public class GvrKeyboard : MonoBehaviour
         }
     }
 
+    void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogError("More than one GvrKeyboard instance was found in your scene. "
+            + "Ensure that there is only one GvrKeyboard.");
+            enabled = false;
+            return;
+        }
+
+        instance = this;
+        if (keyboardProvider == null)
+        {
+            keyboardProvider = KeyboardProviderFactory.CreateKeyboardProvider(this);
+        }
+    }
+
+    void OnDestroy()
+    {
+        instance = null;
+        threadSafeCallbacks.Clear();
+    }
+
+    // Use this for initialization.
+    void Start()
+    {
+        if (keyboardDelegate != null)
+        {
+            errorCallback = keyboardDelegate.OnKeyboardError;
+            showCallback = keyboardDelegate.OnKeyboardShow;
+            hideCallback = keyboardDelegate.OnKeyboardHide;
+            updateCallback = keyboardDelegate.OnKeyboardUpdate;
+            enterCallback = keyboardDelegate.OnKeyboardEnterPressed;
+            keyboardDelegate.KeyboardHidden += KeyboardDelegate_KeyboardHidden;
+            keyboardDelegate.KeyboardShown += KeyboardDelegate_KeyboardShown;
+        }
+
+        keyboardProvider.ReadState(keyboardState);
+
+        if (IsValid)
+        {
+            if (keyboardProvider.Create(OnKeyboardCallback))
+            {
+                keyboardProvider.SetInputMode(inputMode);
+            }
+        }
+        else
+        {
+            Debug.LogError("Could not validate keyboard");
+        }
+    }
+
+    // Update per-frame data.
+    void Update()
+    {
+        if (keyboardProvider == null)
+        {
+            return;
+        }
+
+        keyboardProvider.ReadState(keyboardState);
+        if (IsReady)
+        {
+            // Reset position of keyboard.
+            if (transform.hasChanged)
+            {
+                Show();
+                transform.hasChanged = false;
+            }
+
+            keyboardProvider.UpdateData();
+        }
+    }
+
+    // Use this function for procedural rendering
+    // Gets called twice per frame, once for each eye.
+    // On each frame, left eye renders before right eye so
+    // we keep track of a boolean that toggles back and forth
+    // between each eye.
+    void OnRenderObject()
+    {
+        if (keyboardProvider == null || !IsReady)
+        {
+            return;
+        }
+
+#if UNITY_ANDROID
+        Camera camera = Camera.current;
+        if (camera && camera == Camera.main)
+        {
+            // Get current eye.
+            Camera.StereoscopicEye camEye = isRight ? Camera.StereoscopicEye.Right : Camera.StereoscopicEye.Left;
+
+            // Camera matrices.
+            Matrix4x4 proj = camera.GetStereoProjectionMatrix(camEye);
+            Matrix4x4 modelView = camera.GetStereoViewMatrix(camEye);
+
+            // Camera viewport.
+            Rect viewport = camera.pixelRect;
+
+            // Render keyboard.
+            keyboardProvider.Render((int)camEye, modelView, proj, viewport);
+
+            // Swap.
+            isRight = !isRight;
+        }
+#endif  // !UNITY_ANDROID
+    }
+
     /// <summary>Resets keyboard text.</summary>
     public void ClearText()
     {
         if (keyboardProvider != null)
         {
-            keyboardProvider.EditorText = "";
+            keyboardProvider.EditorText = string.Empty;
         }
     }
 
@@ -231,8 +310,7 @@ public class GvrKeyboard : MonoBehaviour
                                            transform.rotation.z, transform.rotation.w);
 
         // Need to convert from left handed to right handed for the Keyboard coordinates.
-        Vector3 fixPos =
-            new Vector3(transform.position.x, transform.position.y, transform.position.z * -1);
+        Vector3 fixPos = new Vector3(transform.position.x, transform.position.y, transform.position.z * -1);
         Matrix4x4 modelMatrix = Matrix4x4.TRS(fixPos, fixRot, Vector3.one);
         Matrix4x4 mat = Matrix4x4.identity;
         Vector3 position = gameObject.transform.position;
@@ -264,7 +342,6 @@ public class GvrKeyboard : MonoBehaviour
     }
 
     /// <summary>Handle a pointer click on the keyboard.</summary>
-    /// <param name="data">The event data associated with this callback.</param>
     public void OnPointerClick(BaseEventData data)
     {
         if (isKeyboardHidden)
@@ -273,140 +350,20 @@ public class GvrKeyboard : MonoBehaviour
         }
     }
 
-    [AOT.MonoPInvokeCallback(typeof(GvrKeyboardEvent))]
-    private static void OnKeyboardCallback(IntPtr closure, GvrKeyboardEvent keyboardEvent)
-    {
-        lock (callbacksLock)
-        {
-            threadSafeCallbacks.Add(keyboardEvent);
-        }
-    }
-
-    private void Awake()
-    {
-        if (instance != null)
-        {
-            Debug.LogError("More than one GvrKeyboard instance was found in your scene. "
-            + "Ensure that there is only one GvrKeyboard.");
-            enabled = false;
-            return;
-        }
-
-        instance = this;
-        if (keyboardProvider == null)
-        {
-            keyboardProvider = KeyboardProviderFactory.CreateKeyboardProvider(this);
-        }
-    }
-
-    private void OnDestroy()
-    {
-        instance = null;
-        threadSafeCallbacks.Clear();
-    }
-
-    // Use this for initialization.
-    private void Start()
-    {
-        if (keyboardDelegate != null)
-        {
-            errorCallback = keyboardDelegate.OnKeyboardError;
-            showCallback = keyboardDelegate.OnKeyboardShow;
-            hideCallback = keyboardDelegate.OnKeyboardHide;
-            updateCallback = keyboardDelegate.OnKeyboardUpdate;
-            enterCallback = keyboardDelegate.OnKeyboardEnterPressed;
-            keyboardDelegate.KeyboardHidden += KeyboardDelegate_KeyboardHidden;
-            keyboardDelegate.KeyboardShown += KeyboardDelegate_KeyboardShown;
-        }
-
-        keyboardProvider.ReadState(keyboardState);
-
-        if (IsValid)
-        {
-            if (keyboardProvider.Create(OnKeyboardCallback))
-            {
-                keyboardProvider.SetInputMode(inputMode);
-            }
-        }
-        else
-        {
-            Debug.LogError("Could not validate keyboard");
-        }
-    }
-
-    // Update per-frame data.
-    private void Update()
-    {
-        if (keyboardProvider == null)
-        {
-            return;
-        }
-
-        keyboardProvider.ReadState(keyboardState);
-        if (IsReady)
-        {
-            // Reset position of keyboard.
-            if (transform.hasChanged)
-            {
-                Show();
-                transform.hasChanged = false;
-            }
-
-            keyboardProvider.UpdateData();
-        }
-    }
-
-    // Use this function for procedural rendering
-    // Gets called twice per frame, once for each eye.
-    // On each frame, left eye renders before right eye so
-    // we keep track of a boolean that toggles back and forth
-    // between each eye.
-    private void OnRenderObject()
-    {
-        if (keyboardProvider == null || !IsReady)
-        {
-            return;
-        }
-
-#if UNITY_ANDROID
-        Camera camera = Camera.current;
-        if (camera && camera == Camera.main)
-        {
-            // Get current eye.
-            Camera.StereoscopicEye camEye = isRight ?
-                                            Camera.StereoscopicEye.Right :
-                                            Camera.StereoscopicEye.Left;
-
-            // Camera matrices.
-            Matrix4x4 proj = camera.GetStereoProjectionMatrix(camEye);
-            Matrix4x4 modelView = camera.GetStereoViewMatrix(camEye);
-
-            // Camera viewport.
-            Rect viewport = camera.pixelRect;
-
-            // Render keyboard.
-            keyboardProvider.Render((int)camEye, modelView, proj, viewport);
-
-            // Swap.
-            isRight = !isRight;
-        }
-#endif  // !UNITY_ANDROID
-    }
-
-    private void OnEnable()
+    void OnEnable()
     {
         keyboardUpdate = Executer();
         StartCoroutine(keyboardUpdate);
     }
 
-    private void OnDisable()
+    void OnDisable()
     {
         StopCoroutine(keyboardUpdate);
     }
 
-    private void OnApplicationPause(bool paused)
+    void OnApplicationPause(bool paused)
     {
-        if (keyboardProvider == null)
+        if (null == keyboardProvider)
         {
             return;
         }
@@ -421,11 +378,11 @@ public class GvrKeyboard : MonoBehaviour
         }
     }
 
-    private IEnumerator Executer()
+    IEnumerator Executer()
     {
         while (true)
         {
-            yield return new WaitForSeconds(EXECUTOR_WAIT);
+            yield return new WaitForSeconds(kExecuterWait);
 
             while (threadSafeCallbacks.Count > 0)
             {
@@ -467,6 +424,15 @@ public class GvrKeyboard : MonoBehaviour
             case GvrKeyboardEvent.GVR_KEYBOARD_TEXT_COMMITTED:
                 enterCallback(keyboardProvider.EditorText);
                 break;
+        }
+    }
+
+    [AOT.MonoPInvokeCallback(typeof(GvrKeyboardEvent))]
+    private static void OnKeyboardCallback(IntPtr closure, GvrKeyboardEvent keyboardEvent)
+    {
+        lock (callbacksLock)
+        {
+            threadSafeCallbacks.Add(keyboardEvent);
         }
     }
 

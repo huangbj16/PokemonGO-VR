@@ -18,72 +18,62 @@
 
 using System;
 using System.Collections.Generic;
-using Gvr.Internal;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Gvr.Internal;
 
-/// <summary>This script provides a raycaster for use with the `GvrPointerInputModule`.</summary>
-/// <remarks><para>
+/// This script provides a raycaster for use with the GvrPointerInputModule.
 /// It behaves similarly to the standards Physics raycaster, except that it utilize raycast
 /// modes specifically for Gvr.
-/// </para><para>
-/// View `GvrBasePointerRaycaster.cs` and `GvrPointerInputModule.cs` for more details.
-/// </para></remarks>
+///
+/// View GvrBasePointerRaycaster.cs and GvrPointerInputModule.cs for more details.
 [AddComponentMenu("GoogleVR/GvrPointerPhysicsRaycaster")]
 [HelpURL("https://developers.google.com/vr/unity/reference/class/GvrPointerPhysicsRaycaster")]
 public class GvrPointerPhysicsRaycaster : GvrBasePointerRaycaster
 {
-    /// <summary>Const to use for clarity when no event mask is set.</summary>
+    /// Used to sort the raycast hits by distance.
+    private class HitComparer : IComparer<RaycastHit>
+    {
+        public int Compare(RaycastHit lhs, RaycastHit rhs)
+        {
+            return lhs.distance.CompareTo(rhs.distance);
+        }
+    }
+
+    /// Const to use for clarity when no event mask is set
     protected const int NO_EVENT_MASK_SET = -1;
 
-    /// <summary>
-    /// Layer mask used to filter events. Always combined with the camera's culling mask if a camera
-    /// is used.
-    /// </summary>
+    /// The maximum allowed value for the field maxRaycastHits.
+    private const int MAX_RAYCAST_HITS_MAX = 512;
+
+    /// Layer mask used to filter events. Always combined with the camera's culling mask if a camera is used.
     [SerializeField]
     protected LayerMask raycasterEventMask = NO_EVENT_MASK_SET;
 
-    /// <summary>The maximum allowed value for the field maxRaycastHits.</summary>
-    private const int MAX_RAYCAST_HITS_MAX = 512;
-
-    /// <summary>The max number of hits that the raycaster can detect at once.</summary>
-    /// <remarks><para>
-    /// They are NOT guaranteed to be ordered by distance. This value should be set to a higher
-    /// number than the number of objects the pointer is expected to intersect with in a single
-    /// frame.
-    /// </para><para>
+    /// The max number of hits that the raycaster can detect at once.
+    /// They are NOT guaranteed to be ordered by distance. This value should be set to a higher number
+    /// than the number of objects the pointer is expected to intersect with in a single frame.
+    ///
     /// This functionality is used to prevent unnecessary memory allocation to improve performance.
     /// https://docs.unity3d.com/ScriptReference/Physics.SphereCastNonAlloc.html
-    /// </para></remarks>
     [SerializeField]
     [Range(1, MAX_RAYCAST_HITS_MAX)]
     private int maxRaycastHits = 64;
 
-    /// <summary>Buffer of raycast hits re-used each time `PerformRaycast` is called.</summary>
+    /// Buffer of raycast hits re-used each time PerformRaycast is called.
     private RaycastHit[] hits;
 
-    /// <summary>Used to sort the hits by distance.</summary>
+    /// Used to sort the hits by distance.
     private HitComparer hitComparer = new HitComparer();
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="GvrPointerPhysicsRaycaster" /> class.
-    /// </summary>
-    protected GvrPointerPhysicsRaycaster()
-    {
-    }
-
-    /// <summary>
-    /// Gets or sets the maximum number of hits that the raycaster can detect at once.
-    /// </summary>
-    /// <remarks><para>
-    /// They are NOT guaranteed to be ordered by distance. This value should be set to a higher
-    /// number than the number of objects the pointer is expected to intersect with in a single
-    /// frame.
-    /// </para><para>
+    /// <summary>The maximum number of hits that the raycaster can detect at once.</summary>
+    /// <remarks>
+    /// They are NOT guaranteed to be ordered by distance. This value should be set to a higher number
+    /// than the number of objects the pointer is expected to intersect with in a single frame.
+    ///
     /// This functionality is used to prevent unnecessary memory allocation to improve performance.
-    /// https://docs.unity3d.com/ScriptReference/Physics.SphereCastNonAlloc.html.
-    /// </para></remarks>
-    /// <value>The maximum number of hits that the raycaster can detect at once.</value>
+    /// https://docs.unity3d.com/ScriptReference/Physics.SphereCastNonAlloc.html
+    /// </remarks>
     public int MaxRaycastHits
     {
         get
@@ -102,15 +92,10 @@ public class GvrPointerPhysicsRaycaster : GvrBasePointerRaycaster
         }
     }
 
-    /// <inheritdoc/>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage(
-        "UnityRules.LegacyGvrStyleRules",
-        "VR1001:AccessibleNonConstantPropertiesMustBeUpperCamelCase",
-        Justification = "Legacy Public API.")]
+    /// Camera used for masking layers and determining the screen position of the raycast result.
     public override Camera eventCamera
     {
-        [SuppressMemoryAllocationError(IsWarning = true,
-                                       Reason = "A getter for a Camera should not allocate.")]
+        [SuppressMemoryAllocationError(IsWarning = true, Reason = "A getter for a Camera should not allocate.")]
         get
         {
             GvrBasePointer pointer = GvrPointerInputModule.Pointer;
@@ -123,12 +108,7 @@ public class GvrPointerPhysicsRaycaster : GvrBasePointerRaycaster
         }
     }
 
-    /// <summary>Gets the event mask used to determine which objects will receive events.</summary>
-    /// <value>The event mask used to determine which objects will receive events.</value>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage(
-        "UnityRules.LegacyGvrStyleRules",
-        "VR1001:AccessibleNonConstantPropertiesMustBeUpperCamelCase",
-        Justification = "Legacy Public API.")]
+    /// Event mask used to determine which objects will receive events.
     public int finalEventMask
     {
         get
@@ -137,13 +117,7 @@ public class GvrPointerPhysicsRaycaster : GvrBasePointerRaycaster
         }
     }
 
-    /// <summary>Gets or sets the layer mask used to filter events.</summary>
-    /// <remarks>Always combined with the camera's culling mask if a camera is used.</remarks>
-    /// <value>The layer mask used to filter events.</value>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage(
-        "UnityRules.LegacyGvrStyleRules",
-        "VR1001:AccessibleNonConstantPropertiesMustBeUpperCamelCase",
-        Justification = "Legacy Public API.")]
+    /// Layer mask used to filter events. Always combined with the camera's culling mask if a camera is used.
     public LayerMask eventMask
     {
         get
@@ -157,8 +131,11 @@ public class GvrPointerPhysicsRaycaster : GvrBasePointerRaycaster
         }
     }
 
+    protected GvrPointerPhysicsRaycaster()
+    {
+    }
+
     /// @cond
-    /// <inheritdoc/>
     protected override void Awake()
     {
         base.Awake();
@@ -166,11 +143,14 @@ public class GvrPointerPhysicsRaycaster : GvrBasePointerRaycaster
     }
 
     /// @endcond
-    /// <inheritdoc/>
-    protected override bool PerformRaycast(GvrBasePointer.PointerRay pointerRay,
-                                           float radius,
-                                           PointerEventData eventData,
-                                           List<RaycastResult> resultAppendList)
+
+    /// <summary>Perform raycast on the scene.</summary>
+    /// <param name="pointerRay">The ray to use for the operation.</param>
+    /// <param name="radius">The radius of the ray to use when testing for hits.</param>
+    /// <param name="eventData">The pointer event data.</param>
+    /// <param name="resultAppendList">The results are appended to this list</param>
+    protected override bool PerformRaycast(GvrBasePointer.PointerRay pointerRay, float radius,
+                                            PointerEventData eventData, List<RaycastResult> resultAppendList)
     {
         if (eventCamera == null)
         {
@@ -180,13 +160,11 @@ public class GvrPointerPhysicsRaycaster : GvrBasePointerRaycaster
         int numHits;
         if (radius > 0.0f)
         {
-            numHits = Physics.SphereCastNonAlloc(
-                pointerRay.ray, radius, hits, pointerRay.distance, finalEventMask);
+            numHits = Physics.SphereCastNonAlloc(pointerRay.ray, radius, hits, pointerRay.distance, finalEventMask);
         }
         else
         {
-            numHits = Physics.RaycastNonAlloc(
-                pointerRay.ray, hits, pointerRay.distance, finalEventMask);
+            numHits = Physics.RaycastNonAlloc(pointerRay.ray, hits, pointerRay.distance, finalEventMask);
         }
 
         if (numHits == 0)
@@ -197,10 +175,9 @@ public class GvrPointerPhysicsRaycaster : GvrBasePointerRaycaster
         if (numHits == MaxRaycastHits)
         {
             MaxRaycastHits *= 2;
-            Debug.LogWarningFormat(
-                "Physics Raycast/Spherecast returned {0} hits, which is the current maximum and "
-                + "means that some hits may have been lost. Setting maxRaycastHits to {1}. Please "
-                + "set maxRaycastHits to a sufficiently high value for your scene.",
+            Debug.LogWarningFormat("Physics Raycast/Spherecast returned {0} hits, which is the current " +
+            "maximum and means that some hits may have been lost. Setting maxRaycastHits to {1}. " +
+            "Please set maxRaycastHits to a sufficiently high value for your scene.",
                 numHits, MaxRaycastHits);
         }
 
@@ -208,8 +185,7 @@ public class GvrPointerPhysicsRaycaster : GvrBasePointerRaycaster
 
         for (int i = 0; i < numHits; ++i)
         {
-            Vector3 projection =
-                Vector3.Project(hits[i].point - pointerRay.ray.origin, pointerRay.ray.direction);
+            Vector3 projection = Vector3.Project(hits[i].point - pointerRay.ray.origin, pointerRay.ray.direction);
             Vector3 hitPosition = projection + pointerRay.ray.origin;
             float resultDistance = hits[i].distance + pointerRay.distanceFromStart;
 
@@ -240,8 +216,6 @@ public class GvrPointerPhysicsRaycaster : GvrBasePointerRaycaster
         return true;
     }
 #if UNITY_EDITOR
-    /// @cond
-    /// <inheritdoc/>
     protected override void OnValidate()
     {
         base.OnValidate();
@@ -253,15 +227,5 @@ public class GvrPointerPhysicsRaycaster : GvrBasePointerRaycaster
             MaxRaycastHits = maxRaycastHits;
         }
     }
-
-    /// @endcond
 #endif  // UNITY_EDITOR
-    /// <summary>Used to sort the raycast hits by distance.</summary>
-    private class HitComparer : IComparer<RaycastHit>
-    {
-        public int Compare(RaycastHit lhs, RaycastHit rhs)
-        {
-            return lhs.distance.CompareTo(rhs.distance);
-        }
-    }
 }
