@@ -1,0 +1,46 @@
+Hi there, 
+
+Thank you for supporting us ! 
+
+I just started creating high quality assets for the Asset Store professionaly. I always try to apply my long-time experience in creating games and apps in Unity3D, which I hope you can see in this asset.
+My dream is to be independent and create assets that you are happy to use.
+
+If you would like to support our products and help me to make more stuff like that please comment and rate it. Thank you ! 
+
+If you have some problems contact me:
+tom@beffio.com
+--
+Tom Lassota
+beffio 
+
+
+.......................................................................
+UPDATE 1.1
+>>CHARACTER ANIMATIONS<<
+In folder Build Elements you have all prefabs for using animated characters. Also you can find there animations mecanim controlers to make states. I have also puted there a skeleton so if you would like to optimise your game you can use one RIG to all characters.
+.......................................................................
+DOCUMENTATION:
+>>BULDING ELEMENTS<<
+In folder Build Elements you have all prefabs for creating maps.
+.......................................................................
+>>SAMPLE MAPS<<
+In Sample Maps Folder you have all Sample Maps Scenes.
+.......................................................................
+>> ACHIEVE YOUR LEVEL QUALITY SIMILAR TO OUR SAMPLE LEVELS<<
+OK you build you map but its not as good as our ? Yes you will beed to set up all lights,
+and bake it into lightmaps. How to make that? Open LightMap Window and set settings like that.
+Mode: Single LightMaps | Quality:High | Bounces: 1 | Skylight: 0 | Ambient Occulusion: 0.7 | Resolution: 20 | 
+All other settings: Default dont change 
+--
+Our tip best looking effects you will get using point lights and soft shadows but that shadows works only on deffered lighting so change it on players settings. After you will bake your maps change it again to forward. 
+.......................................................................
+>>EFFECTS
+If you want to use that particles there is folder Geometry FX Particles DEMO that is little part of our asset
+Geometry FX Particles (https://www.assetstore.unity3d.com/en/#!/content/21308).
+--
+Second effects is Color Correction Ramp we prepared a tonemaping image effects you can see it in 
+AllElements Prefab puted in Camera.
+.......................................................................
+>>SCRIPTS
+Camera Rotate you same seetings like in Sample Maps Dempos to orbit your camera smoothly.
+Asset Viewer is my tool for show you all elements.
