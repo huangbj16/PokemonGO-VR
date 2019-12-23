@@ -16,28 +16,23 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections;
 
-/// <summary>
-/// This script extends the standard Unity `EventSystem` events with GVR-specific events.
-/// </summary>
+/// This script extends the standard Unity EventSystem events with Gvr specific events.
 public static class GvrExecuteEventsExtension
 {
-    /// <summary>Gets a handler for hover events.</summary>
-    /// <value>A handler for hover events.</value>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage(
-        "UnityRules.LegacyGvrStyleRules",
-        "VR1001:AccessibleNonConstantPropertiesMustBeUpperCamelCase",
-        Justification = "Legacy Public API.")]
-    public static ExecuteEvents.EventFunction<IGvrPointerHoverHandler> pointerHoverHandler
-    {
-        get { return Execute; }
-    }
+    private static readonly ExecuteEvents.EventFunction<IGvrPointerHoverHandler> s_HoverHandler = Execute;
 
     private static void Execute(IGvrPointerHoverHandler handler, BaseEventData eventData)
     {
         handler.OnGvrPointerHover(ExecuteEvents.ValidateEventData<PointerEventData>(eventData));
+    }
+
+    /// <summary>Handler for hover events.</summary>
+    public static ExecuteEvents.EventFunction<IGvrPointerHoverHandler> pointerHoverHandler
+    {
+        get { return s_HoverHandler; }
     }
 }

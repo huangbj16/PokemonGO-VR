@@ -18,27 +18,24 @@ namespace GoogleVR.VideoDemo
 {
     using UnityEngine;
 
-    /// <summary>Auto play video.</summary>
-    /// <remarks>
-    /// This script exposes a delay value in seconds to start playing the TexturePlayer component on
-    /// the same object.
+    /// <summary>
+    /// Auto play video.
+    /// </summary>
+    /// <remarks>This script exposes a delay value in seconds to start playing the TexturePlayer
+    /// component on the same object.
     /// </remarks>
+
     [RequireComponent(typeof(GvrVideoPlayerTexture))]
     public class AutoPlayVideo : MonoBehaviour
     {
-        /// <summary>
-        /// The time in seconds to wait before starting to play the `GvrVideoPlayerTexture`.
-        /// </summary>
-        public float delay = 2f;
-
-        /// <summary>Whether to loop playing the `GvrVideoPlayerTexture`.</summary>
-        public bool loop = false;
-
         private bool done;
         private float t;
         private GvrVideoPlayerTexture player;
 
-        private void Start()
+        public float delay = 2f;
+        public bool loop = false;
+
+        void Start()
         {
             t = 0;
             done = false;
@@ -49,15 +46,13 @@ namespace GoogleVR.VideoDemo
             }
         }
 
-        private void Update()
+        void Update()
         {
             if (player == null)
             {
                 return;
             }
-            else if (player.PlayerState == GvrVideoPlayerTexture.VideoPlayerState.Ended &&
-                     done &&
-                     loop)
+            else if (player.PlayerState == GvrVideoPlayerTexture.VideoPlayerState.Ended && done && loop)
             {
                 player.Pause();
                 player.CurrentPosition = 0;

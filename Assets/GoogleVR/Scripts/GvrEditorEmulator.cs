@@ -16,12 +16,13 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using UnityEngine;
 using System;
 using System.Collections.Generic;
-using Gvr.Internal;
-using UnityEngine;
 
-/// <summary>Provides mouse-controlled head tracking emulation in the Unity editor.</summary>
+using Gvr.Internal;
+
+/// Provides mouse-controlled head tracking emulation in the Unity editor.
 [HelpURL("https://developers.google.com/vr/unity/reference/class/GvrEditorEmulator")]
 public class GvrEditorEmulator : MonoBehaviour
 {
@@ -35,17 +36,30 @@ public class GvrEditorEmulator : MonoBehaviour
     // queries the camera pose during Update or LateUpdate after GvrEditorEmulator has been
     // updated will get the wrong value applied by GvrEditorEmulator intsead.
 #if UNITY_EDITOR
+    private static GvrEditorEmulator instance;
+    private static bool instance_searched_for = false;
+
+    public static GvrEditorEmulator Instance
+    {
+        get
+        {
+            if (instance == null && !instance_searched_for)
+            {
+                instance = FindObjectOfType<GvrEditorEmulator>();
+                instance_searched_for = true;
+            }
+
+            return instance;
+        }
+    }
+
+    // Allocate an initial capacity; this will be resized if needed.
+    private static Camera[] AllCameras = new Camera[32];
     private const string AXIS_MOUSE_X = "Mouse X";
     private const string AXIS_MOUSE_Y = "Mouse Y";
 
     // Simulated neck model.  Vector from the neck pivot point to the point between the eyes.
     private static readonly Vector3 NECK_OFFSET = new Vector3(0, 0.075f, 0.08f);
-
-    private static GvrEditorEmulator instance;
-    private static bool instanceSearchedFor = false;
-
-    // Allocate an initial capacity; this will be resized if needed.
-    private static Camera[] allCameras = new Camera[32];
 
     // Use mouse to emulate head in the editor.
     // These variables must be static so that head pose is maintained between scene changes,
@@ -54,31 +68,10 @@ public class GvrEditorEmulator : MonoBehaviour
     private float mouseY = 0;
     private float mouseZ = 0;
 
-    /// <summary>Gets the instance for this singleton class.</summary>
-    /// <value>The instance for this singleton class.</value>
-    public static GvrEditorEmulator Instance
-    {
-        get
-        {
-            if (instance == null && !instanceSearchedFor)
-            {
-                instance = FindObjectOfType<GvrEditorEmulator>();
-                instanceSearchedFor = true;
-            }
-
-            return instance;
-        }
-    }
-
-    /// <summary>Gets the emulated head position.</summary>
-    /// <value>The emulated head position.</value>
     public Vector3 HeadPosition { get; private set; }
 
-    /// <summary>Gets the emulated head rotation.</summary>
-    /// <value>The emulated head rotation.</value>
     public Quaternion HeadRotation { get; private set; }
 
-    /// <summary>Recenters the emulated headset.</summary>
     public void Recenter()
     {
         mouseX = mouseZ = 0;  // Do not reset pitch, which is how it works on the phone.
@@ -86,15 +79,8 @@ public class GvrEditorEmulator : MonoBehaviour
         ApplyHeadOrientationToVRCameras();
     }
 
-    /// <summary>Single-frame updates for this module.</summary>
-    /// <remarks>Should be called in one MonoBehavior's `Update` method.</remarks>
     public void UpdateEditorEmulation()
     {
-        if (InstantPreview.IsActive)
-        {
-            return;
-        }
-
         if (GvrControllerInput.Recentered)
         {
             Recenter();
@@ -139,7 +125,7 @@ public class GvrEditorEmulator : MonoBehaviour
         ApplyHeadOrientationToVRCameras();
     }
 
-    private void Awake()
+    void Awake()
     {
         if (Instance == null)
         {
@@ -147,19 +133,19 @@ public class GvrEditorEmulator : MonoBehaviour
         }
         else if (Instance != this)
         {
-            Debug.LogError("More than one active GvrEditorEmulator instance was found in your " +
-                           "scene.  Ensure that there is only one active GvrEditorEmulator.");
+            Debug.LogError("More than one active GvrEditorEmulator instance was found in your scene. "
+            + "Ensure that there is only one active GvrEditorEmulator.");
             this.enabled = false;
             return;
         }
     }
 
-    private void Start()
+    void Start()
     {
         UpdateAllCameras();
         for (int i = 0; i < Camera.allCamerasCount; ++i)
         {
-            Camera cam = allCameras[i];
+            Camera cam = AllCameras[i];
 
             // Only check camera if it is an enabled VR Camera.
             if (cam && cam.enabled && cam.stereoTargetEye != StereoTargetEyeMask.None)
@@ -177,7 +163,7 @@ public class GvrEditorEmulator : MonoBehaviour
         }
     }
 
-    private void Update()
+    void Update()
     {
         // GvrControllerInput automatically updates GvrEditorEmulator.
         // This guarantees that GvrEditorEmulator is updated before anything else responds to
@@ -216,7 +202,7 @@ public class GvrEditorEmulator : MonoBehaviour
     private void UpdateHeadPositionAndRotation()
     {
         HeadRotation = Quaternion.Euler(mouseY, mouseX, mouseZ);
-        HeadPosition = (HeadRotation * NECK_OFFSET) - (NECK_OFFSET.y * Vector3.up);
+        HeadPosition = HeadRotation * NECK_OFFSET - NECK_OFFSET.y * Vector3.up;
     }
 
     private void ApplyHeadOrientationToVRCameras()
@@ -226,7 +212,7 @@ public class GvrEditorEmulator : MonoBehaviour
         // Update all VR cameras using Head position and rotation information.
         for (int i = 0; i < Camera.allCamerasCount; ++i)
         {
-            Camera cam = allCameras[i];
+            Camera cam = AllCameras[i];
 
             // Check if the Camera is a valid VR Camera, and if so update it to track head motion.
             if (cam && cam.enabled && cam.stereoTargetEye != StereoTargetEyeMask.None)
@@ -237,11 +223,11 @@ public class GvrEditorEmulator : MonoBehaviour
         }
     }
 
-    // Avoids per-frame allocations. Allocates only when allCameras array is resized.
+    // Avoids per-frame allocations. Allocates only when AllCameras array is resized.
     private void UpdateAllCameras()
     {
         // Get all Cameras in the scene using persistent data structures.
-        if (Camera.allCamerasCount > allCameras.Length)
+        if (Camera.allCamerasCount > AllCameras.Length)
         {
             int newAllCamerasSize = Camera.allCamerasCount;
             while (Camera.allCamerasCount > newAllCamerasSize)
@@ -249,11 +235,11 @@ public class GvrEditorEmulator : MonoBehaviour
                 newAllCamerasSize *= 2;
             }
 
-            allCameras = new Camera[newAllCamerasSize];
+            AllCameras = new Camera[newAllCamerasSize];
         }
 
         // The GetAllCameras method doesn't allocate memory (Camera.allCameras does).
-        Camera.GetAllCameras(allCameras);
+        Camera.GetAllCameras(AllCameras);
     }
 
 #endif  // UNITY_EDITOR

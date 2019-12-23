@@ -16,10 +16,9 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-using UnityEditor;
 using UnityEngine;
+using UnityEditor;
 
-/// <summary>Defines Menu fields for opening settings or web pages from the Editor.</summary>
 public class GvrEditorMenu
 {
     [MenuItem("GoogleVR/Documentation/Developers Site", false, 100)]

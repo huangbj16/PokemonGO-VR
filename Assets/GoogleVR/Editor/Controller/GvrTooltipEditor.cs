@@ -16,31 +16,21 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-using UnityEditor;
 using UnityEngine;
+using UnityEditor;
 
-/// <summary>A custom editor for the `GvrTooltip` script.</summary>
-/// <remarks>
-/// This exists to surface to the user that the tooltip changes based on handedness, and to make it
-/// easy to preview the handedness settings.
-/// </remarks>
+/// A custom editor for the GvrTooltip script. It exists to surface to the user that the tooltip
+/// changes based on handedness, and to make it easy to preview the handedness settings.
 [CustomEditor(typeof(GvrTooltip)), CanEditMultipleObjects]
 public class GvrTooltipEditor : Editor
 {
-    /// @cond
-    /// <summary>A builtin method of the `Editor` class.</summary>
-    /// <remarks>Implement this function to make a custom inspector.</remarks>
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
-        EditorGUILayout.LabelField("Current Handedness",
-                                   GvrSettings.Handedness.ToString(),
-                                   EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("Current Handedness", GvrSettings.Handedness.ToString(), EditorStyles.boldLabel);
         if (GUILayout.Button("Change Handedness"))
         {
             EditorWindow.GetWindow(typeof(GvrEditorSettings));
         }
     }
-
-    /// @endcond
 }

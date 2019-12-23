@@ -16,19 +16,15 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 /// <summary>Helper class for dealing with canvas UI.</summary>
 public static class GvrUIHelpers
 {
-    /// <summary>
-    /// Finds the meters scale for the local coordinate system of the root canvas that contains the
-    /// canvasObject passed in.
-    /// </summary>
-    /// <param name="canvasObject">The UI canvas object for which to find the scale.</param>
-    /// <returns>The meters scale for the local coordinate system of the root UI canvas.</returns>
+    /// Finds the meters scale for the local coordinate system
+    /// of the root canvas that contains the canvasObject passed in.
     public static float GetMetersToCanvasScale(Transform canvasObject)
     {
         Canvas canvas = canvasObject.GetComponentInParent<Canvas>();

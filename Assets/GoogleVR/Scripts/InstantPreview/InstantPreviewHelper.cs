@@ -30,29 +30,27 @@ using UnityEngine;
 public class InstantPreviewHelper : MonoBehaviour
 {
     /// <summary>Path to `adb` executable.</summary>
-    public static string adbPath;
+    public static string AdbPath;
 
     /// <summary>Path to `aapt` executable.</summary>
-    public static string aaptPath;
+    public static string AaptPath;
 
 #if UNITY_ANDROID && UNITY_EDITOR
-
+    [DllImport(InstantPreview.dllName)]
+    private static extern bool SetAdbPathAndStart(string adbPath);
 #if UNITY_WINDOWS
-    private const string CHECK_ANDROID_SDK_PATH =
+    private static string CHECK_ANDROID_SDK_PATH =
         "Verify that your Android SDK path is configured correctly" +
         " (Edit > Preferences > External Tools > Android SDK).\n" +
         "See https://docs.unity3d.com/Manual/android-sdksetup.html for more information.";
 #else
-    private const string CHECK_ANDROID_SDK_PATH =
+    private static string CHECK_ANDROID_SDK_PATH =
         "Verify that your Android SDK path is configured correctly" +
         " (Unity > Preferences > External Tools > Android SDK).\n" +
         "See https://docs.unity3d.com/Manual/android-sdksetup.html for more information.";
 #endif // UNITY_WINDOWS
 
-    [DllImport(InstantPreview.dllName)]
-    private static extern bool SetAdbPathAndStart(string adbPath);
-
-    private void Awake()
+    void Awake()
     {
         // Gets android SDK root from preferences.
         var sdkRoot = EditorPrefs.GetString("AndroidSdkRoot");
@@ -63,46 +61,42 @@ public class InstantPreviewHelper : MonoBehaviour
         }
 
         // Gets adb path from known directory.
-        adbPath = Path.Combine(Path.GetFullPath(sdkRoot),
-                               "platform-tools" + Path.DirectorySeparatorChar + "adb");
+        AdbPath = Path.Combine(Path.GetFullPath(sdkRoot), "platform-tools" + Path.DirectorySeparatorChar + "adb");
 
         // Gets latest build-tools subdirectory.
         string LatestBuildToolsDir = GetLatestBuildToolsDir(sdkRoot);
         if (LatestBuildToolsDir != null)
         {
             // Gets aapt path from known directory.
-            aaptPath = Path.Combine(Path.GetFullPath(LatestBuildToolsDir), "aapt");
+            AaptPath = Path.Combine(Path.GetFullPath(LatestBuildToolsDir), "aapt");
         }
         else
         {
-            Debug.LogError(string.Format("build-tools not found in \"{0}\". Please add " +
-                                         "build-tools to your SDK path and restart the Unity " +
-                                         "editor.", Path.GetFullPath(sdkRoot)));
+            Debug.LogError(string.Format("build-tools not found in \"{0}\". Please add build-tools to your SDK path and restart the Unity editor.", Path.GetFullPath(sdkRoot)));
             return;
         }
 #if UNITY_EDITOR_WIN
-        adbPath = Path.ChangeExtension(adbPath, "exe");
-        aaptPath = Path.ChangeExtension(aaptPath, "exe");
+        AdbPath = Path.ChangeExtension(AdbPath, "exe");
+        AaptPath = Path.ChangeExtension(AaptPath, "exe");
 #endif // UNITY_EDITOR_WIN
 
-        if (!File.Exists(adbPath))
+        if (!File.Exists(AdbPath))
         {
-            Debug.LogErrorFormat("\"{0}\" not found. {1}", adbPath, CHECK_ANDROID_SDK_PATH);
+            Debug.LogErrorFormat("\"{0}\" not found. {1}", AdbPath, CHECK_ANDROID_SDK_PATH);
             return;
         }
 
-        if (!File.Exists(aaptPath))
+        if (!File.Exists(AaptPath))
         {
-            Debug.LogError(string.Format("aapt not found at \"{0}\". Please add aapt to your SDK " +
-                                         "path and restart the Unity editor.", aaptPath));
+            Debug.LogError(string.Format("aapt not found at \"{0}\". Please add aapt to your SDK path and restart the Unity editor.", AaptPath));
             return;
         }
 
         // Try to start server.
-        var started = SetAdbPathAndStart(adbPath);
+        var started = SetAdbPathAndStart(AdbPath);
         if (!started)
         {
-            Debug.LogErrorFormat("Couldn't start Instant Preview server using \"{0}\".", adbPath);
+            Debug.LogErrorFormat("Couldn't start Instant Preview server using \"{0}\".", AdbPath);
         }
     }
 
@@ -114,9 +108,8 @@ public class InstantPreviewHelper : MonoBehaviour
 
 #endif
 
-    // Split vesion directory paths (eg "Path/To/Build-Tools/23.0.2") into an array of ints
-    // (eg [23, 0, 2]).
-    private int[] GetIntValuesFromString(string DirPath)
+    // Split vesion directory paths (eg "Path/To/Build-Tools/23.0.2") into an array of ints (eg [23, 0, 2]).
+    int[] GetIntValuesFromString(string DirPath)
     {
         string DirName = Path.GetFileName(DirPath);
         string[] VersionValues = DirName.Split('.');
@@ -132,13 +125,11 @@ public class InstantPreviewHelper : MonoBehaviour
         return VersionInts;
     }
 
-    // Get the numerically latest subdirectory within build-tools subdirectories, (eg select 101.0.1
-    // rather than 99.5.3).
+    // Get the numerically latest subdirectory within build-tools subdirectories, (eg select 101.0.1 rather than 99.5.3).
     // Returns the full path (eg /path/to/build-tools/101.0.1).
-    private string GetLatestBuildToolsDir(string sdkRoot)
+    string GetLatestBuildToolsDir(string sdkRoot)
     {
-        string[] BuildToolsDirs = Directory.GetDirectories(Path.Combine(
-            Path.GetFullPath(sdkRoot), string.Format("build-tools")));
+        string[] BuildToolsDirs = Directory.GetDirectories(Path.Combine(Path.GetFullPath(sdkRoot), string.Format("build-tools")));
         if (BuildToolsDirs.Length == 0)
         {
             return null;
@@ -157,11 +148,9 @@ public class InstantPreviewHelper : MonoBehaviour
                 {
                     break;
                 }
-                else if (CurrentVersionInts[j] > LatestVersionInts[j] ||
-                         j == LatestVersionInts.Length - 1)
+                else if (CurrentVersionInts[j] > LatestVersionInts[j] || j == LatestVersionInts.Length - 1)
                 {
-                    // If one string version string has more elements than the other and leading
-                    // digits are the same, it's probably newer.
+                    // If one string version string has more elements than the other and leading digits are the same, it's probably newer.
                     LatestVersionInts = CurrentVersionInts;
                     LatestBuildToolsDir = BuildToolsDirs[i];
                 }
@@ -178,8 +167,7 @@ public class InstantPreviewHelperEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        EditorGUILayout.LabelField(
-            "Instant Preview is disabled; set target platform to Android to use it.");
+        EditorGUILayout.LabelField("Instant Preview is disabled; set target platform to Android to use it.");
     }
 }
 #endif

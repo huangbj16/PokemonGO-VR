@@ -18,27 +18,21 @@
 
 namespace GoogleVR.PermissionsDemo
 {
-    using System.Collections.Generic;
     using UnityEngine;
+    using System.Collections.Generic;
     using UnityEngine.UI;
 
 #if UNITY_ANDROID || UNITY_EDITOR
-    /// <summary>Manages the permission flow in PermissionsDemo.</summary>
+    // Manages the permission flow in PermissionsDemo.
     public class PermissionsFlowManager : MonoBehaviour
     {
-        /// <summary>A text field which informs the user of permissions flow status.</summary>
-        /// <remarks>Modified by methods in this class.</remarks>
-        public Text statusText;
-
         private static string[] permissionNames = { "android.permission.READ_EXTERNAL_STORAGE" };
+
+        public Text statusText;
 
         private static List<GvrPermissionsRequester.PermissionStatus> permissionList =
             new List<GvrPermissionsRequester.PermissionStatus>();
 
-        /// <summary>
-        /// Checks whether all necessary external permissions have been granted and informs user of
-        /// the current state.
-        /// </summary>
         public void CheckPermission()
         {
             statusText.text = "Checking permission....";
@@ -54,13 +48,6 @@ namespace GoogleVR.PermissionsDemo
             }
         }
 
-        /// <summary>
-        /// Checks external permissions requirements and current permissions granted.
-        /// </summary>
-        /// <remarks>
-        /// Prompts user with requests for outstanding needed permissions, and informs them of the
-        /// current state.
-        /// </remarks>
         public void RequestPermissions()
         {
             if (statusText != null)
@@ -78,12 +65,10 @@ namespace GoogleVR.PermissionsDemo
             Debug.Log("Permissions.RequestPermisions: Check if permission has been granted");
             if (!permissionRequester.IsPermissionGranted(permissionNames[0]))
             {
-                Debug.Log("Permissions.RequestPermisions: Permission has not been previously " +
-                          "granted");
+                Debug.Log("Permissions.RequestPermisions: Permission has not been previously granted");
                 if (permissionRequester.ShouldShowRational(permissionNames[0]))
                 {
-                    statusText.text = "This game needs to access external storage.  Please grant " +
-                                      "permission when prompted.";
+                    statusText.text = "This game needs to access external storage.  Please grant permission when prompted.";
                     statusText.color = Color.red;
                 }
 

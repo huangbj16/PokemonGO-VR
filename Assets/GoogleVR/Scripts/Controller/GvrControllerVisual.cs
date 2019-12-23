@@ -19,91 +19,151 @@
 // The controller is not available for versions of Unity without the
 // GVR native integration.
 
+using UnityEngine;
 using System.Collections;
 using Gvr.Internal;
-using UnityEngine;
 
-/// <summary>Provides visual feedback for the daydream controller.</summary>
+/// Provides visual feedback for the daydream controller.
 [RequireComponent(typeof(Renderer))]
-[HelpURL("https://developers.google.com/vr/reference/unity/class/GvrControllerVisual")]
-public class GvrControllerVisual
-    : MonoBehaviour, IGvrArmModelReceiver, IGvrControllerInputDeviceReceiver
+[HelpURL("https://developers.google.com/vr/unity/reference/class/GvrControllerVisual")]
+public class GvrControllerVisual : MonoBehaviour, IGvrArmModelReceiver, IGvrControllerInputDeviceReceiver
 {
-    /// <summary>App button animation duration when pressed.</summary>
-    public const float APP_BUTTON_ACTIVE_DURATION_SECONDS = 0.111f;
+    /// <summary>The controller display state data structure.</summary>
+    [System.Serializable]
+    public struct ControllerDisplayState
+    {
+        /// <summary>The current battery level.</summary>
+        public GvrControllerBatteryLevel batteryLevel;
 
-    /// <summary>App button animation duration when released.</summary>
-    public const float APP_BUTTON_RELEASE_DURATION_SECONDS = 0.0909f;
+        /// <summary>True if the battery is charging.</summary>
+        public bool batteryCharging;
 
-    /// <summary>System button animation duration when pressed.</summary>
-    public const float SYSTEM_BUTTON_ACTIVE_DURATION_SECONDS = 0.111f;
+        /// <summary>True if the touch pad button is down.</summary>
+        public bool clickButton;
 
-    /// <summary>System button animation duration when released.</summary>
-    public const float SYSTEM_BUTTON_RELEASE_DURATION_SECONDS = 0.0909f;
+        /// <summary>True if the app button is down.</summary>
+        public bool appButton;
 
-    /// <summary>Touchpad animation duration when pressed.</summary>
-    public const float TOUCHPAD_CLICK_DURATION_SECONDS = 0.111f;
+        /// <summary>True if the system button is down.</summary>
+        public bool homeButton;
 
-    /// <summary>Touchpad animation duration when released.</summary>
-    public const float TOUCHPAD_RELEASE_DURATION_SECONDS = 0.0909f;
+        /// <summary>True if the controller is registering a touch.</summary>
+        public bool touching;
 
-    /// @deprecated
-    /// <summary>This value controls scaling animation times for the touchpad button.</summary>
-    public const float TOUCHPAD_CLICK_SCALE_DURATION_SECONDS = 0.075f;
+        /// <summary>The touch position.</summary>
+        public Vector2 touchPos;
+    }
 
-    /// <summary>
-    /// Duration of the visual bubble on the controller to grow to its full size when clicked.
-    /// </summary>
-    public const float TOUCHPAD_POINT_SCALE_DURATION_SECONDS = 0.15f;
+    /// Struct that describes a mesh, material pair used for rendering a controller visual.
+    [System.Serializable]
+    public struct VisualAssets
+    {
+        /// @cond
+        public Mesh mesh;
+        public Material material;
 
-    /// <summary>Determines if the displayState is set from `GvrControllerInputDevice`.</summary>
+        /// @endcond
+    }
+
+    /// An array of prefabs that will be instantiated and added as children
+    /// of the controller visual when the controller is created. Used to
+    /// attach tooltips or other additional visual elements to the control dynamically.
+    [SerializeField]
+    private GameObject[] attachmentPrefabs;
+
+    [SerializeField] private Color touchPadColor =
+        new Color(200f / 255f, 200f / 255f, 200f / 255f, 1);
+
+    [SerializeField] private Color appButtonColor =
+        new Color(200f / 255f, 200f / 255f, 200f / 255f, 1);
+
+    [SerializeField] private Color systemButtonColor =
+        new Color(20f / 255f, 20f / 255f, 20f / 255f, 1);
+
+    /// Determines if the displayState is set from GvrControllerInputDevice.
     [Tooltip("Determines if the displayState is set from GvrControllerInputDevice.")]
     public bool readControllerState = true;
 
-    /// <summary>Used to set the display state of the controller visual.</summary>
-    /// <remarks>
+    /// Used to set the display state of the controller visual.
     /// This can be used for tutorials that visualize the controller or other use-cases that require
     /// displaying the controller visual without the state being determined by controller input.
     /// Additionally, it can be used to preview the controller visual in the editor.
-    /// <para>
-    /// NOTE: `readControllerState` must be disabled to set the display state.
-    /// </para></remarks>
+    /// NOTE: readControllerState must be disabled to set the display state.
     public ControllerDisplayState displayState;
 
-    /// <summary>
-    /// This is the preferred, maximum alpha value the object should have when it is a comfortable
-    /// distance from the head.
-    /// </summary>
+    /// This is the preferred, maximum alpha value the object should have
+    /// when it is a comfortable distance from the head.
     [Range(0.0f, 1.0f)]
     public float maximumAlpha = 1.0f;
 
-    // These values are used by the shader to control battery display
-    // Only modify these values if you are also modifying the shader.
-    private const float BATTERY_FULL = 0;
-    private const float BATTERY_ALMOST_FULL = .125f;
-    private const float BATTERY_MEDIUM = .225f;
-    private const float BATTERY_LOW = .325f;
-    private const float BATTERY_CRITICAL = .425f;
-    private const float BATTERY_HIDDEN = .525f;
+    /// <summary>The arm model used to position the controller.</summary>
+    public GvrBaseArmModel ArmModel { get; set; }
 
-    // How much time to use as an 'immediate update'.
-    // Any value large enough to instantly update all visual animations.
-    private const float IMMEDIATE_UPDATE_TIME = 10f;
+    /// <summary>The controller device reference.</summary>
+    public GvrControllerInputDevice ControllerInputDevice { get; set; }
 
-    private readonly Color GVR_BATTERY_CRITICAL_COLOR = new Color(1, 0, 0, 1);
-    private readonly Color GVR_BATTERY_LOW_COLOR = new Color(1, 0.6823f, 0, 1);
-    private readonly Color GVR_BATTERY_MED_COLOR = new Color(0, 1, 0.588f, 1);
-    private readonly Color GVR_BATTERY_FULL_COLOR = new Color(0, 1, 0.588f, 1);
+    /// <summary>The preferred alpha value for the controller.</summary>
+    public virtual float PreferredAlpha
+    {
+        get
+        {
+            return ArmModel != null ? maximumAlpha * ArmModel.PreferredAlpha : maximumAlpha;
+        }
+    }
 
-    /// <summary>
-    /// An array of prefabs that will be instantiated and added as children of the controller visual
-    /// when the controller is created.
-    /// </summary>
-    /// <remarks>
-    /// Used to attach tooltips or other additional visual elements to the control dynamically.
-    /// </remarks>
-    [SerializeField]
-    private GameObject[] attachmentPrefabs;
+    /// <summary>The touchpad color.</summary>
+    public Color TouchPadColor
+    {
+        get
+        {
+            return touchPadColor;
+        }
+
+        set
+        {
+            touchPadColor = value;
+            if (materialPropertyBlock != null)
+            {
+                materialPropertyBlock.SetColor(touchPadId, touchPadColor);
+            }
+        }
+    }
+
+    /// <summary>The app button color.</summary>
+    public Color AppButtonColor
+    {
+        get
+        {
+            return appButtonColor;
+        }
+
+        set
+        {
+            appButtonColor = value;
+            if (materialPropertyBlock != null)
+            {
+                materialPropertyBlock.SetColor(appButtonId, appButtonColor);
+            }
+        }
+    }
+
+    /// <summary>The system button color.</summary>
+    public Color SystemButtonColor
+    {
+        get
+        {
+            return systemButtonColor;
+        }
+
+        set
+        {
+            systemButtonColor = value;
+            if (materialPropertyBlock != null)
+            {
+                materialPropertyBlock.SetColor(systemButtonId, systemButtonColor);
+            }
+        }
+    }
 
     private Renderer controllerRenderer;
     private MeshFilter meshFilter;
@@ -123,134 +183,70 @@ public class GvrControllerVisual
     private Vector4 controllerShaderData;
 
     // Data passed to shader, (x) overall alpha, (y) touchpad click duration,
-    // (z) app button click duration, (w) system button click duration.
+    //  (z) app button click duration, (w) system button click duration.
     private Vector4 controllerShaderData2;
     private Color currentBatteryColor;
 
-    [SerializeField] private Color touchPadColor =
-        new Color(200f / 255f, 200f / 255f, 200f / 255f, 1);
+    /// <summary>App button animation duration when pressed.</summary>
+    public const float APP_BUTTON_ACTIVE_DURATION_SECONDS = 0.111f;
 
-    [SerializeField] private Color appButtonColor =
-        new Color(200f / 255f, 200f / 255f, 200f / 255f, 1);
+    /// <summary>App button animation duration when released.</summary>
+    public const float APP_BUTTON_RELEASE_DURATION_SECONDS = 0.0909f;
 
-    [SerializeField] private Color systemButtonColor =
-        new Color(20f / 255f, 20f / 255f, 20f / 255f, 1);
+    /// <summary>System button animation duration when pressed.</summary>
+    public const float SYSTEM_BUTTON_ACTIVE_DURATION_SECONDS = 0.111f;
 
-    /// <summary>Gets or sets the arm model used to position the controller.</summary>
-    /// <value>The arm model used to position the controller.</value>
-    public GvrBaseArmModel ArmModel { get; set; }
+    /// <summary>System button animation duration when released.</summary>
+    public const float SYSTEM_BUTTON_RELEASE_DURATION_SECONDS = 0.0909f;
 
-    /// <summary>Gets or sets the controller device reference.</summary>
-    /// <value>The controller device reference.</value>
-    public GvrControllerInputDevice ControllerInputDevice { get; set; }
+    /// <summary>Touchpad animation duration when pressed.</summary>
+    public const float TOUCHPAD_CLICK_DURATION_SECONDS = 0.111f;
 
-    /// <summary>Gets the preferred alpha value for the controller.</summary>
-    /// <value>The preferred alpha value for the controller.</value>
-    public virtual float PreferredAlpha
-    {
-        get
-        {
-            return ArmModel != null ? maximumAlpha * ArmModel.PreferredAlpha : maximumAlpha;
-        }
-    }
+    /// <summary>Touchpad animation duration when released.</summary>
+    public const float TOUCHPAD_RELEASE_DURATION_SECONDS = 0.0909f;
 
-    /// <summary>Gets or sets the color of the touch pad.</summary>
-    /// <value>The color of the touch pad.</value>
-    public Color TouchPadColor
-    {
-        get
-        {
-            return touchPadColor;
-        }
+    /// @deprecated
+    public const float TOUCHPAD_CLICK_SCALE_DURATION_SECONDS = 0.075f;
 
-        set
-        {
-            touchPadColor = value;
-            if (materialPropertyBlock != null)
-            {
-                materialPropertyBlock.SetColor(touchPadId, touchPadColor);
-            }
-        }
-    }
+    /// <summary>Duration of the visual bubble on the controller
+    /// to grow to its full size when clicked.</summary>
+    public const float TOUCHPAD_POINT_SCALE_DURATION_SECONDS = 0.15f;
 
-    /// <summary>Gets or sets the color of the app button.</summary>
-    /// <value>The color of the app button.</value>
-    public Color AppButtonColor
-    {
-        get
-        {
-            return appButtonColor;
-        }
+    // These values are used by the shader to control battery display
+    // Only modify these values if you are also modifying the shader.
+    private const float BATTERY_FULL = 0;
+    private const float BATTERY_ALMOST_FULL = .125f;
+    private const float BATTERY_MEDIUM = .225f;
+    private const float BATTERY_LOW = .325f;
+    private const float BATTERY_CRITICAL = .425f;
+    private const float BATTERY_HIDDEN = .525f;
 
-        set
-        {
-            appButtonColor = value;
-            if (materialPropertyBlock != null)
-            {
-                materialPropertyBlock.SetColor(appButtonId, appButtonColor);
-            }
-        }
-    }
+    private readonly Color GVR_BATTERY_CRITICAL_COLOR = new Color(1, 0, 0, 1);
+    private readonly Color GVR_BATTERY_LOW_COLOR = new Color(1, 0.6823f, 0, 1);
+    private readonly Color GVR_BATTERY_MED_COLOR = new Color(0, 1, 0.588f, 1);
+    private readonly Color GVR_BATTERY_FULL_COLOR = new Color(0, 1, 0.588f, 1);
 
-    /// <summary>Gets or sets the color of the system button.</summary>
-    /// <value>The color of the system button.</value>
-    public Color SystemButtonColor
-    {
-        get
-        {
-            return systemButtonColor;
-        }
+    // How much time to use as an 'immediate update'.
+    // Any value large enough to instantly update all visual animations.
+    private const float IMMEDIATE_UPDATE_TIME = 10f;
 
-        set
-        {
-            systemButtonColor = value;
-            if (materialPropertyBlock != null)
-            {
-                materialPropertyBlock.SetColor(systemButtonId, systemButtonColor);
-            }
-        }
-    }
-
-    /// <summary>Sets the controller texture.</summary>
-    /// <param name="newTexture">The new texture to set.</param>
-    [SuppressMemoryAllocationError(IsWarning = true, Reason = "Pending documentation.")]
-    public void SetControllerTexture(Texture newTexture)
-    {
-        controllerRenderer.material.mainTexture = newTexture;
-    }
-
-    /// <summary>Override this method to customize the visual's assets.</summary>
-    /// <remarks>
-    /// This method is called once per frame in the visual update process.  Call the base method to
-    /// get the current assets.
-    /// </remarks>
-    /// <returns>A new struct containing the visual assets.</returns>
-    protected virtual VisualAssets GetVisualAssets()
-    {
-        return new VisualAssets()
-        {
-            mesh = meshFilter.sharedMesh,
-            material = controllerRenderer.sharedMaterial
-        };
-    }
-
-    private void Awake()
+    void Awake()
     {
         Initialize();
         CreateAttachments();
     }
 
-    private void OnEnable()
+    void OnEnable()
     {
         GvrControllerInput.OnPostControllerInputUpdated += OnPostControllerInputUpdated;
     }
 
-    private void OnDisable()
+    void OnDisable()
     {
         GvrControllerInput.OnPostControllerInputUpdated -= OnPostControllerInputUpdated;
     }
 
-    private void OnValidate()
+    void OnValidate()
     {
         if (!Application.isPlaying)
         {
@@ -311,13 +307,13 @@ public class GvrControllerVisual
 
     private void UpdateControllerState()
     {
-        // Return early when the application isn't playing to ensure that the serialized
-        // displayState is used to preview the controller visual instead of the default
-        // GvrControllerInputDevice values.
+        // Return early when the application isn't playing to ensure that the serialized displayState
+        // is used to preview the controller visual instead of the default GvrControllerInputDevice
+        // values.
 #if UNITY_EDITOR
     if (!Application.isPlaying)
     {
-        return;
+      return;
     }
 #endif
 
@@ -326,17 +322,24 @@ public class GvrControllerVisual
             displayState.batteryLevel = ControllerInputDevice.BatteryLevel;
             displayState.batteryCharging = ControllerInputDevice.IsCharging;
 
-            displayState.clickButton =
-                ControllerInputDevice.GetButton(GvrControllerButton.TouchPadButton);
-
+            displayState.clickButton = ControllerInputDevice.GetButton(GvrControllerButton.TouchPadButton);
             displayState.appButton = ControllerInputDevice.GetButton(GvrControllerButton.App);
             displayState.homeButton = ControllerInputDevice.GetButton(GvrControllerButton.System);
-
-            displayState.touching =
-                ControllerInputDevice.GetButton(GvrControllerButton.TouchPadTouch);
-
+            displayState.touching = ControllerInputDevice.GetButton(GvrControllerButton.TouchPadTouch);
             displayState.touchPos = ControllerInputDevice.TouchPos;
         }
+    }
+
+    /// Override this method to customize the visual's assets. This method is called
+    /// once per frame in the visual update process. Return a VisualAssets struct with
+    /// the assets to change.  Call this base method to get the current assets.
+    protected virtual VisualAssets GetVisualAssets()
+    {
+        return new VisualAssets()
+        {
+            mesh = meshFilter.sharedMesh,
+            material = controllerRenderer.sharedMaterial
+        };
     }
 
     private void OnVisualUpdate(bool updateImmediately = false)
@@ -369,35 +372,29 @@ public class GvrControllerVisual
 
         if (displayState.clickButton)
         {
-            controllerShaderData2.y = Mathf.Min(
-                1, controllerShaderData2.y + (deltaTime / TOUCHPAD_CLICK_DURATION_SECONDS));
+            controllerShaderData2.y = Mathf.Min(1, controllerShaderData2.y + deltaTime / TOUCHPAD_CLICK_DURATION_SECONDS);
         }
         else
         {
-            controllerShaderData2.y = Mathf.Max(
-                0, controllerShaderData2.y - (deltaTime / TOUCHPAD_RELEASE_DURATION_SECONDS));
+            controllerShaderData2.y = Mathf.Max(0, controllerShaderData2.y - deltaTime / TOUCHPAD_RELEASE_DURATION_SECONDS);
         }
 
         if (displayState.appButton)
         {
-            controllerShaderData2.z = Mathf.Min(
-                1, controllerShaderData2.z + (deltaTime / APP_BUTTON_ACTIVE_DURATION_SECONDS));
+            controllerShaderData2.z = Mathf.Min(1, controllerShaderData2.z + deltaTime / APP_BUTTON_ACTIVE_DURATION_SECONDS);
         }
         else
         {
-            controllerShaderData2.z = Mathf.Max(
-                0, controllerShaderData2.z - (deltaTime / APP_BUTTON_RELEASE_DURATION_SECONDS));
+            controllerShaderData2.z = Mathf.Max(0, controllerShaderData2.z - deltaTime / APP_BUTTON_RELEASE_DURATION_SECONDS);
         }
 
         if (displayState.homeButton)
         {
-            controllerShaderData2.w = Mathf.Min(
-                1, controllerShaderData2.w + (deltaTime / SYSTEM_BUTTON_ACTIVE_DURATION_SECONDS));
+            controllerShaderData2.w = Mathf.Min(1, controllerShaderData2.w + deltaTime / SYSTEM_BUTTON_ACTIVE_DURATION_SECONDS);
         }
         else
         {
-            controllerShaderData2.w = Mathf.Max(
-                0, controllerShaderData2.w - (deltaTime / SYSTEM_BUTTON_RELEASE_DURATION_SECONDS));
+            controllerShaderData2.w = Mathf.Max(0, controllerShaderData2.w - deltaTime / SYSTEM_BUTTON_RELEASE_DURATION_SECONDS);
         }
 
         // Set the material's alpha to the multiplied preferred alpha.
@@ -416,8 +413,7 @@ public class GvrControllerVisual
 
             if (touchTime < 1)
             {
-                touchTime = Mathf.Min(
-                    touchTime + (deltaTime / TOUCHPAD_POINT_SCALE_DURATION_SECONDS), 1);
+                touchTime = Mathf.Min(touchTime + deltaTime / TOUCHPAD_POINT_SCALE_DURATION_SECONDS, 1);
             }
         }
         else
@@ -425,8 +421,7 @@ public class GvrControllerVisual
             wasTouching = false;
             if (touchTime > 0)
             {
-                touchTime = Mathf.Max(
-                    touchTime - (deltaTime / TOUCHPAD_POINT_SCALE_DURATION_SECONDS), 0);
+                touchTime = Mathf.Max(touchTime - deltaTime / TOUCHPAD_POINT_SCALE_DURATION_SECONDS, 0);
             }
         }
 
@@ -481,45 +476,10 @@ public class GvrControllerVisual
         }
     }
 
-    /// <summary>The controller display state data structure.</summary>
-    [System.Serializable]
-    public struct ControllerDisplayState
+    /// <summary>Sets the controller texture.</summary>
+    [SuppressMemoryAllocationError(IsWarning = true, Reason = "Pending documentation.")]
+    public void SetControllerTexture(Texture newTexture)
     {
-        /// <summary>The battery charge level.</summary>
-        public GvrControllerBatteryLevel batteryLevel;
-
-        /// <summary>True if the battery is charging.</summary>
-        public bool batteryCharging;
-
-        /// <summary>True if the touch pad button is down.</summary>
-        public bool clickButton;
-
-        /// <summary>True if the app button is down.</summary>
-        public bool appButton;
-
-        /// <summary>True if the system button is down.</summary>
-        public bool homeButton;
-
-        /// <summary>True if the controller touch pad is registering a touch.</summary>
-        public bool touching;
-
-        /// <summary>The touch position on the touch pad (if `touching` is `true`).</summary>
-        public Vector2 touchPos;
-    }
-
-    /// <summary>
-    /// Struct that describes a mesh, material pair used for rendering a controller visual.
-    /// </summary>
-    [System.Serializable]
-    public struct VisualAssets
-    {
-        /// @cond
-        /// <summary>The mesh.</summary>
-        public Mesh mesh;
-
-        /// <summary>The material.</summary>
-        public Material material;
-
-        /// @endcond
+        controllerRenderer.material.mainTexture = newTexture;
     }
 }

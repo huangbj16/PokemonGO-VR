@@ -22,68 +22,47 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-/// <summary>
-/// Exposes events from `GvrEventExecutor` that are fired by `GvrPointerInputModule_`to the editor.
-/// </summary>
-/// <remarks>Makes it possible to handle `EventSystem` events globally.</remarks>
+/// Exposes events from _GvrEventExecutor_ that are fired by _GvrPointerInputModule_ to the editor.
+/// Makes it possible to handle EventSystem events globally.
 [HelpURL("https://developers.google.com/vr/unity/reference/class/GvrAllEventsTrigger")]
 public class GvrAllEventsTrigger : MonoBehaviour
 {
-    /// <summary>Event for `OnPointerClick`.</summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage(
-        "UnityRules.LegacyGvrStyleRules",
-        "VR1003:FieldsMustBeLowerCamelCase",
-        Justification = "Legacy Public API.")]
+    [Serializable]
+    public class TriggerEvent : UnityEvent<GameObject, PointerEventData>
+    {
+    }
+
+    /// <summary>Event for OnPointerClick</summary>
     public TriggerEvent OnPointerClick;
 
-    /// <summary>Event for `OnPointerDown`.</summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage(
-        "UnityRules.LegacyGvrStyleRules",
-        "VR1003:FieldsMustBeLowerCamelCase",
-        Justification = "Legacy Public API.")]
+    /// <summary>Event for OnPointerDown</summary>
     public TriggerEvent OnPointerDown;
 
-    /// <summary>Event for `OnPointerUp`.</summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage(
-        "UnityRules.LegacyGvrStyleRules",
-        "VR1003:FieldsMustBeLowerCamelCase",
-        Justification = "Legacy Public API.")]
+    /// <summary>Event for OnPointerUp</summary>
     public TriggerEvent OnPointerUp;
 
-    /// <summary>Event for `OnPointerEnter`.</summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage(
-        "UnityRules.LegacyGvrStyleRules",
-        "VR1003:FieldsMustBeLowerCamelCase",
-        Justification = "Legacy Public API.")]
+    /// <summary>Event for OnPointerEnter</summary>
     public TriggerEvent OnPointerEnter;
 
-    /// <summary>Event for `OnPointerExit`.</summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage(
-        "UnityRules.LegacyGvrStyleRules",
-        "VR1003:FieldsMustBeLowerCamelCase",
-        Justification = "Legacy Public API.")]
+    /// <summary>Event for OnPointerExit</summary>
     public TriggerEvent OnPointerExit;
 
-    /// <summary>Event for `OnScroll`.</summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage(
-        "UnityRules.LegacyGvrStyleRules",
-        "VR1003:FieldsMustBeLowerCamelCase",
-        Justification = "Legacy Public API.")]
+    /// <summary>Event for OnScroll</summary>
     public TriggerEvent OnScroll;
 
     private bool listenersAdded;
 
-    private void OnEnable()
+    void OnEnable()
     {
         AddListeners();
     }
 
-    private void OnDisable()
+    void OnDisable()
     {
         RemoveListeners();
     }
 
-    private void Start()
+    void Start()
     {
         // The eventExecutor may not be available during OnEnable when the script is first created.
         AddListeners();
@@ -163,11 +142,5 @@ public class GvrAllEventsTrigger : MonoBehaviour
     private void OnScrollHandler(GameObject target, PointerEventData eventData)
     {
         OnScroll.Invoke(target, eventData);
-    }
-
-    /// <summary>Exposes fired `PointerEventData` events.</summary>
-    [Serializable]
-    public class TriggerEvent : UnityEvent<GameObject, PointerEventData>
-    {
     }
 }

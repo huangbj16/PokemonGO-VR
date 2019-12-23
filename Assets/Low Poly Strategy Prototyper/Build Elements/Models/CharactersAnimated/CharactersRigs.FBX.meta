@@ -1,0 +1,3863 @@
+fileFormatVersion: 2
+guid: c2b934f0f6736c94a8f08d91734f7525
+ModelImporter:
+  serializedVersion: 26
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Bip001
+  - first:
+      1: 100002
+    second: Bip001 Head
+  - first:
+      1: 100004
+    second: Bip001 L Calf
+  - first:
+      1: 100006
+    second: Bip001 L Clavicle
+  - first:
+      1: 100008
+    second: Bip001 L Foot
+  - first:
+      1: 100010
+    second: Bip001 L Forearm
+  - first:
+      1: 100012
+    second: Bip001 L Hand
+  - first:
+      1: 100014
+    second: Bip001 L Thigh
+  - first:
+      1: 100016
+    second: Bip001 L Toe0
+  - first:
+      1: 100018
+    second: Bip001 L UpperArm
+  - first:
+      1: 100020
+    second: Bip001 Neck
+  - first:
+      1: 100022
+    second: Bip001 Pelvis
+  - first:
+      1: 100024
+    second: Bip001 R Calf
+  - first:
+      1: 100026
+    second: Bip001 R Clavicle
+  - first:
+      1: 100028
+    second: Bip001 R Foot
+  - first:
+      1: 100030
+    second: Bip001 R Forearm
+  - first:
+      1: 100032
+    second: Bip001 R Hand
+  - first:
+      1: 100034
+    second: Bip001 R Hand Prop
+  - first:
+      1: 100036
+    second: Bip001 R Thigh
+  - first:
+      1: 100038
+    second: Bip001 R Toe0
+  - first:
+      1: 100040
+    second: Bip001 R UpperArm
+  - first:
+      1: 100042
+    second: Bip001 Spine
+  - first:
+      1: 100044
+    second: CharactersAnimated 1
+  - first:
+      1: 100046
+    second: //RootNode
+  - first:
+      1: 100048
+    second: H_Head
+  - first:
+      1: 100050
+    second: H_Hips
+  - first:
+      1: 100052
+    second: H_LFLeg
+  - first:
+      1: 100054
+    second: H_LRLeg
+  - first:
+      1: 100056
+    second: H_RFLeg
+  - first:
+      1: 100058
+    second: H_RRLeg
+  - first:
+      1: 100060
+    second: H_Tail1
+  - first:
+      1: 100062
+    second: H_Tail2
+  - first:
+      1: 100064
+    second: Horse_BLUE
+  - first:
+      1: 100066
+    second: Horse_GREEN
+  - first:
+      1: 100068
+    second: Horse_RED
+  - first:
+      1: 100070
+    second: Horse_YELLOW
+  - first:
+      1: 100072
+    second: HorseMan_BLUE
+  - first:
+      1: 100074
+    second: HorseMan_GREEN
+  - first:
+      1: 100076
+    second: HorseMan_RED
+  - first:
+      1: 100078
+    second: HorseMan_YELLOW
+  - first:
+      1: 100080
+    second: Hunter_BLUE
+  - first:
+      1: 100082
+    second: Hunter_GREEN
+  - first:
+      1: 100084
+    second: Hunter_RED
+  - first:
+      1: 100086
+    second: Hunter_YELLOW
+  - first:
+      1: 100088
+    second: Knight_BLUE
+  - first:
+      1: 100090
+    second: Knight_GREEN
+  - first:
+      1: 100092
+    second: Knight_RED
+  - first:
+      1: 100094
+    second: Knight_YELLOW
+  - first:
+      1: 100096
+    second: LanceKnight_BLUE
+  - first:
+      1: 100098
+    second: LanceKnight_GREEN
+  - first:
+      1: 100100
+    second: LanceKnight_RED
+  - first:
+      1: 100102
+    second: LanceKnight_YELLOW
+  - first:
+      1: 100104
+    second: Leader_BLUE
+  - first:
+      1: 100106
+    second: Leader_GREEN
+  - first:
+      1: 100108
+    second: Leader_RED
+  - first:
+      1: 100110
+    second: Leader_YELLOW
+  - first:
+      1: 100112
+    second: SwordsMan_BLUE
+  - first:
+      1: 100114
+    second: SwordsMan_GREEN
+  - first:
+      1: 100116
+    second: SwordsMan_RED
+  - first:
+      1: 100118
+    second: SwordsMan_YELLOW
+  - first:
+      1: 100120
+    second: Action Recovery
+  - first:
+      1: 100122
+    second: Action Recovery 1
+  - first:
+      1: 100124
+    second: Action Recovery 2
+  - first:
+      1: 100126
+    second: Action Recovery 3
+  - first:
+      1: 100128
+    second: Action Recovery 4
+  - first:
+      1: 100130
+    second: Action Recovery 5
+  - first:
+      1: 100132
+    second: Birth 001
+  - first:
+      1: 100134
+    second: Birth 002
+  - first:
+      1: 100136
+    second: Birth 003
+  - first:
+      1: 100138
+    second: Birth 004
+  - first:
+      1: 100140
+    second: Birth 005
+  - first:
+      1: 100142
+    second: Birth 006
+  - first:
+      1: 100144
+    second: Birth 007
+  - first:
+      1: 100146
+    second: Birth 008
+  - first:
+      1: 100148
+    second: Birth 009
+  - first:
+      1: 100150
+    second: Birth 010
+  - first:
+      1: 100152
+    second: Birth 011
+  - first:
+      1: 100154
+    second: Birth 012
+  - first:
+      1: 100156
+    second: Birth 013
+  - first:
+      1: 100158
+    second: Birth 014
+  - first:
+      1: 100160
+    second: Birth 015
+  - first:
+      1: 100162
+    second: Birth 016
+  - first:
+      1: 100164
+    second: Birth 017
+  - first:
+      1: 100166
+    second: Birth 018
+  - first:
+      1: 100168
+    second: Birth 019
+  - first:
+      1: 100170
+    second: Birth 020
+  - first:
+      1: 100172
+    second: Birth 021
+  - first:
+      1: 100174
+    second: Birth 022
+  - first:
+      1: 100176
+    second: Birth 023
+  - first:
+      1: 100178
+    second: Birth 024
+  - first:
+      1: 100180
+    second: Birth 025
+  - first:
+      1: 100182
+    second: Birth 026
+  - first:
+      1: 100184
+    second: Birth 027
+  - first:
+      1: 100186
+    second: Birth 028
+  - first:
+      1: 100188
+    second: Birth 029
+  - first:
+      1: 100190
+    second: Birth 030
+  - first:
+      1: 100192
+    second: Birth 031
+  - first:
+      1: 100194
+    second: Birth 032
+  - first:
+      1: 100196
+    second: Birth 033
+  - first:
+      1: 100198
+    second: Birth 034
+  - first:
+      1: 100200
+    second: Birth 035
+  - first:
+      1: 100202
+    second: Birth 036
+  - first:
+      1: 100204
+    second: Birth 037
+  - first:
+      1: 100206
+    second: Birth 038
+  - first:
+      1: 100208
+    second: Birth 039
+  - first:
+      1: 100210
+    second: Birth 040
+  - first:
+      1: 100212
+    second: Birth 041
+  - first:
+      1: 100214
+    second: Birth 042
+  - first:
+      1: 100216
+    second: Birth 043
+  - first:
+      1: 100218
+    second: Birth 044
+  - first:
+      1: 100220
+    second: Birth 045
+  - first:
+      1: 100222
+    second: Birth 046
+  - first:
+      1: 100224
+    second: Birth 047
+  - first:
+      1: 100226
+    second: Birth 048
+  - first:
+      1: 100228
+    second: Birth 049
+  - first:
+      1: 100230
+    second: Birth 050
+  - first:
+      1: 100232
+    second: Birth 051
+  - first:
+      1: 100234
+    second: Display 001
+  - first:
+      1: 100236
+    second: Display 002
+  - first:
+      1: 100238
+    second: Display 003
+  - first:
+      1: 100240
+    second: Display 004
+  - first:
+      1: 100242
+    second: Display 005
+  - first:
+      1: 100244
+    second: Display 006
+  - first:
+      1: 100246
+    second: Display 007
+  - first:
+      1: 100248
+    second: Display 008
+  - first:
+      1: 100250
+    second: Display 009
+  - first:
+      1: 100252
+    second: Display 010
+  - first:
+      1: 100254
+    second: Display 011
+  - first:
+      1: 100256
+    second: Display 012
+  - first:
+      1: 100258
+    second: Display 013
+  - first:
+      1: 100260
+    second: Display 014
+  - first:
+      1: 100262
+    second: Display 015
+  - first:
+      1: 100264
+    second: Display 016
+  - first:
+      1: 100266
+    second: Display 017
+  - first:
+      1: 100268
+    second: Display 018
+  - first:
+      1: 100270
+    second: Display 019
+  - first:
+      1: 100272
+    second: Display 020
+  - first:
+      1: 100274
+    second: Display 021
+  - first:
+      1: 100276
+    second: Display 022
+  - first:
+      1: 100278
+    second: Display 023
+  - first:
+      1: 100280
+    second: Display 024
+  - first:
+      1: 100282
+    second: Display 025
+  - first:
+      1: 100284
+    second: Display 026
+  - first:
+      1: 100286
+    second: Display 027
+  - first:
+      1: 100288
+    second: Display 028
+  - first:
+      1: 100290
+    second: Display 029
+  - first:
+      1: 100292
+    second: Display 030
+  - first:
+      1: 100294
+    second: Display 031
+  - first:
+      1: 100296
+    second: Display 032
+  - first:
+      1: 100298
+    second: Display 033
+  - first:
+      1: 100300
+    second: Display 034
+  - first:
+      1: 100302
+    second: Display 035
+  - first:
+      1: 100304
+    second: Display 036
+  - first:
+      1: 100306
+    second: Display 037
+  - first:
+      1: 100308
+    second: Display 038
+  - first:
+      1: 100310
+    second: Display 039
+  - first:
+      1: 100312
+    second: Display 040
+  - first:
+      1: 100314
+    second: Display 041
+  - first:
+      1: 100316
+    second: Display 042
+  - first:
+      1: 100318
+    second: Display 043
+  - first:
+      1: 100320
+    second: Display 044
+  - first:
+      1: 100322
+    second: Display 045
+  - first:
+      1: 100324
+    second: Display 046
+  - first:
+      1: 100326
+    second: Display 047
+  - first:
+      1: 100328
+    second: Display 048
+  - first:
+      1: 100330
+    second: Display 049
+  - first:
+      1: 100332
+    second: Display 050
+  - first:
+      1: 100334
+    second: Display 051
+  - first:
+      1: 100336
+    second: Display 052
+  - first:
+      1: 100338
+    second: Display 053
+  - first:
+      1: 100340
+    second: Display 054
+  - first:
+      1: 100342
+    second: Display 055
+  - first:
+      1: 100344
+    second: Display 056
+  - first:
+      1: 100346
+    second: Display 057
+  - first:
+      1: 100348
+    second: Display 058
+  - first:
+      1: 100350
+    second: Display 059
+  - first:
+      1: 100352
+    second: Display 060
+  - first:
+      1: 100354
+    second: Display 061
+  - first:
+      1: 100356
+    second: Display 062
+  - first:
+      1: 100358
+    second: Display 063
+  - first:
+      1: 100360
+    second: Display 064
+  - first:
+      1: 100362
+    second: Display 065
+  - first:
+      1: 100364
+    second: Display 066
+  - first:
+      1: 100366
+    second: Display 067
+  - first:
+      1: 100368
+    second: Display 068
+  - first:
+      1: 100370
+    second: Display 069
+  - first:
+      1: 100372
+    second: Display 070
+  - first:
+      1: 100374
+    second: Display 071
+  - first:
+      1: 100376
+    second: Display 072
+  - first:
+      1: 100378
+    second: Display 073
+  - first:
+      1: 100380
+    second: Display 074
+  - first:
+      1: 100382
+    second: Display 075
+  - first:
+      1: 100384
+    second: Display 076
+  - first:
+      1: 100386
+    second: Display 077
+  - first:
+      1: 100388
+    second: Display 078
+  - first:
+      1: 100390
+    second: Display 079
+  - first:
+      1: 100392
+    second: Display 080
+  - first:
+      1: 100394
+    second: Display 081
+  - first:
+      1: 100396
+    second: Display 082
+  - first:
+      1: 100398
+    second: Display 083
+  - first:
+      1: 100400
+    second: Event 001
+  - first:
+      1: 100402
+    second: Event 002
+  - first:
+      1: 100404
+    second: Event 003
+  - first:
+      1: 100406
+    second: Event 004
+  - first:
+      1: 100408
+    second: Event 005
+  - first:
+      1: 100410
+    second: Event 006
+  - first:
+      1: 100412
+    second: Event 007
+  - first:
+      1: 100414
+    second: Event 008
+  - first:
+      1: 100416
+    second: Event 009
+  - first:
+      1: 100418
+    second: Event 010
+  - first:
+      1: 100420
+    second: Event 011
+  - first:
+      1: 100422
+    second: Event 012
+  - first:
+      1: 100424
+    second: Event 013
+  - first:
+      1: 100426
+    second: Event 014
+  - first:
+      1: 100428
+    second: Event 015
+  - first:
+      1: 100430
+    second: Event 016
+  - first:
+      1: 100432
+    second: Event 017
+  - first:
+      1: 100434
+    second: Event 018
+  - first:
+      1: 100436
+    second: Event 019
+  - first:
+      1: 100438
+    second: Event 020
+  - first:
+      1: 100440
+    second: Event 021
+  - first:
+      1: 100442
+    second: Event 022
+  - first:
+      1: 100444
+    second: Event 023
+  - first:
+      1: 100446
+    second: Event 024
+  - first:
+      1: 100448
+    second: Event 025
+  - first:
+      1: 100450
+    second: Event 026
+  - first:
+      1: 100452
+    second: Event 027
+  - first:
+      1: 100454
+    second: Event 028
+  - first:
+      1: 100456
+    second: Event 029
+  - first:
+      1: 100458
+    second: Event 030
+  - first:
+      1: 100460
+    second: Event 031
+  - first:
+      1: 100462
+    second: Event 032
+  - first:
+      1: 100464
+    second: Event 033
+  - first:
+      1: 100466
+    second: Event 034
+  - first:
+      1: 100468
+    second: Event 035
+  - first:
+      1: 100470
+    second: Event 036
+  - first:
+      1: 100472
+    second: Event 037
+  - first:
+      1: 100474
+    second: Event 038
+  - first:
+      1: 100476
+    second: Event 039
+  - first:
+      1: 100478
+    second: Event 040
+  - first:
+      1: 100480
+    second: Event 041
+  - first:
+      1: 100482
+    second: Event 042
+  - first:
+      1: 100484
+    second: Event 043
+  - first:
+      1: 100486
+    second: Event 044
+  - first:
+      1: 100488
+    second: Event 045
+  - first:
+      1: 100490
+    second: Event 046
+  - first:
+      1: 100492
+    second: Event 047
+  - first:
+      1: 100494
+    second: Event 048
+  - first:
+      1: 100496
+    second: Event 049
+  - first:
+      1: 100498
+    second: Event 050
+  - first:
+      1: 100500
+    second: Event 051
+  - first:
+      1: 100502
+    second: Event 052
+  - first:
+      1: 100504
+    second: Event 053
+  - first:
+      1: 100506
+    second: Event 054
+  - first:
+      1: 100508
+    second: Event 055
+  - first:
+      1: 100510
+    second: Event 056
+  - first:
+      1: 100512
+    second: Event 057
+  - first:
+      1: 100514
+    second: Event 058
+  - first:
+      1: 100516
+    second: Event 059
+  - first:
+      1: 100518
+    second: Event 060
+  - first:
+      1: 100520
+    second: Event 061
+  - first:
+      1: 100522
+    second: Event 062
+  - first:
+      1: 100524
+    second: Event 063
+  - first:
+      1: 100526
+    second: Event 064
+  - first:
+      1: 100528
+    second: Event 065
+  - first:
+      1: 100530
+    second: Event 066
+  - first:
+      1: 100532
+    second: Event 067
+  - first:
+      1: 100534
+    second: Event 068
+  - first:
+      1: 100536
+    second: Event 069
+  - first:
+      1: 100538
+    second: Event 070
+  - first:
+      1: 100540
+    second: Event 071
+  - first:
+      1: 100542
+    second: Event 072
+  - first:
+      1: 100544
+    second: Event 073
+  - first:
+      1: 100546
+    second: Event 074
+  - first:
+      1: 100548
+    second: Event 075
+  - first:
+      1: 100550
+    second: Event 076
+  - first:
+      1: 100552
+    second: Event 077
+  - first:
+      1: 100554
+    second: Force 001
+  - first:
+      1: 100556
+    second: Force 002
+  - first:
+      1: 100558
+    second: Force 003
+  - first:
+      1: 100560
+    second: Force 004
+  - first:
+      1: 100562
+    second: Force 005
+  - first:
+      1: 100564
+    second: Force 006
+  - first:
+      1: 100566
+    second: Force 007
+  - first:
+      1: 100568
+    second: Force 008
+  - first:
+      1: 100570
+    second: Force 009
+  - first:
+      1: 100572
+    second: Force 010
+  - first:
+      1: 100574
+    second: Force 011
+  - first:
+      1: 100576
+    second: Force 012
+  - first:
+      1: 100578
+    second: Force 013
+  - first:
+      1: 100580
+    second: Force 014
+  - first:
+      1: 100582
+    second: Force 015
+  - first:
+      1: 100584
+    second: Force 016
+  - first:
+      1: 100586
+    second: Force 017
+  - first:
+      1: 100588
+    second: Force 018
+  - first:
+      1: 100590
+    second: Force 019
+  - first:
+      1: 100592
+    second: Force 020
+  - first:
+      1: 100594
+    second: Force 021
+  - first:
+      1: 100596
+    second: Force 022
+  - first:
+      1: 100598
+    second: Force 023
+  - first:
+      1: 100600
+    second: Force 024
+  - first:
+      1: 100602
+    second: Force 025
+  - first:
+      1: 100604
+    second: Force 026
+  - first:
+      1: 100606
+    second: Force 027
+  - first:
+      1: 100608
+    second: Force 028
+  - first:
+      1: 100610
+    second: Force 029
+  - first:
+      1: 100612
+    second: Force 030
+  - first:
+      1: 100614
+    second: Force 031
+  - first:
+      1: 100616
+    second: Force 032
+  - first:
+      1: 100618
+    second: Force 033
+  - first:
+      1: 100620
+    second: Force 034
+  - first:
+      1: 100622
+    second: Force 035
+  - first:
+      1: 100624
+    second: Force 036
+  - first:
+      1: 100626
+    second: Force 037
+  - first:
+      1: 100628
+    second: Force 038
+  - first:
+      1: 100630
+    second: Force 039
+  - first:
+      1: 100632
+    second: Force 040
+  - first:
+      1: 100634
+    second: Force 041
+  - first:
+      1: 100636
+    second: Force 042
+  - first:
+      1: 100638
+    second: Force 043
+  - first:
+      1: 100640
+    second: Force 044
+  - first:
+      1: 100642
+    second: Force 045
+  - first:
+      1: 100644
+    second: Force 046
+  - first:
+      1: 100646
+    second: Force 047
+  - first:
+      1: 100648
+    second: Force 048
+  - first:
+      1: 100650
+    second: Force 049
+  - first:
+      1: 100652
+    second: Position Icon 001
+  - first:
+      1: 100654
+    second: Position Icon 002
+  - first:
+      1: 100656
+    second: Position Icon 003
+  - first:
+      1: 100658
+    second: Position Icon 004
+  - first:
+      1: 100660
+    second: Position Icon 005
+  - first:
+      1: 100662
+    second: Position Icon 006
+  - first:
+      1: 100664
+    second: Position Icon 007
+  - first:
+      1: 100666
+    second: Position Icon 008
+  - first:
+      1: 100668
+    second: Position Icon 009
+  - first:
+      1: 100670
+    second: Position Icon 010
+  - first:
+      1: 100672
+    second: Position Icon 011
+  - first:
+      1: 100674
+    second: Position Icon 012
+  - first:
+      1: 100676
+    second: Position Icon 013
+  - first:
+      1: 100678
+    second: Position Icon 014
+  - first:
+      1: 100680
+    second: Position Icon 015
+  - first:
+      1: 100682
+    second: Position Icon 016
+  - first:
+      1: 100684
+    second: Position Icon 017
+  - first:
+      1: 100686
+    second: Position Icon 018
+  - first:
+      1: 100688
+    second: Position Icon 019
+  - first:
+      1: 100690
+    second: Position Icon 020
+  - first:
+      1: 100692
+    second: Position Icon 021
+  - first:
+      1: 100694
+    second: Position Icon 022
+  - first:
+      1: 100696
+    second: Position Icon 023
+  - first:
+      1: 100698
+    second: Position Icon 024
+  - first:
+      1: 100700
+    second: Position Icon 025
+  - first:
+      1: 100702
+    second: Position Icon 026
+  - first:
+      1: 100704
+    second: Position Icon 027
+  - first:
+      1: 100706
+    second: Position Object 001
+  - first:
+      1: 100708
+    second: Position Object 002
+  - first:
+      1: 100710
+    second: Position Object 003
+  - first:
+      1: 100712
+    second: Position Object 004
+  - first:
+      1: 100714
+    second: Position Object 005
+  - first:
+      1: 100716
+    second: Position Object 006
+  - first:
+      1: 100718
+    second: Position Object 007
+  - first:
+      1: 100720
+    second: Position Object 008
+  - first:
+      1: 100722
+    second: Position Object 009
+  - first:
+      1: 100724
+    second: Position Object 010
+  - first:
+      1: 100726
+    second: Position Object 011
+  - first:
+      1: 100728
+    second: Position Object 012
+  - first:
+      1: 100730
+    second: Position Object 013
+  - first:
+      1: 100732
+    second: Position Object 014
+  - first:
+      1: 100734
+    second: Position Object 015
+  - first:
+      1: 100736
+    second: Position Object 016
+  - first:
+      1: 100738
+    second: Position Object 017
+  - first:
+      1: 100740
+    second: Position Object 018
+  - first:
+      1: 100742
+    second: Position Object 019
+  - first:
+      1: 100744
+    second: Position Object 020
+  - first:
+      1: 100746
+    second: Position Object 021
+  - first:
+      1: 100748
+    second: Position Object 022
+  - first:
+      1: 100750
+    second: Position Object 023
+  - first:
+      1: 100752
+    second: Position Object 024
+  - first:
+      1: 100754
+    second: Render 001
+  - first:
+      1: 100756
+    second: Render 002
+  - first:
+      1: 100758
+    second: Render 003
+  - first:
+      1: 100760
+    second: Render 004
+  - first:
+      1: 100762
+    second: Render 005
+  - first:
+      1: 100764
+    second: Render 006
+  - first:
+      1: 100766
+    second: Render 007
+  - first:
+      1: 100768
+    second: Render 008
+  - first:
+      1: 100770
+    second: Render 009
+  - first:
+      1: 100772
+    second: Render 010
+  - first:
+      1: 100774
+    second: Render 011
+  - first:
+      1: 100776
+    second: Render 012
+  - first:
+      1: 100778
+    second: Render 013
+  - first:
+      1: 100780
+    second: Render 014
+  - first:
+      1: 100782
+    second: Render 015
+  - first:
+      1: 100784
+    second: Render 016
+  - first:
+      1: 100786
+    second: Render 017
+  - first:
+      1: 100788
+    second: Render 018
+  - first:
+      1: 100790
+    second: Render 019
+  - first:
+      1: 100792
+    second: Render 020
+  - first:
+      1: 100794
+    second: Render 021
+  - first:
+      1: 100796
+    second: Render 022
+  - first:
+      1: 100798
+    second: Render 023
+  - first:
+      1: 100800
+    second: Render 024
+  - first:
+      1: 100802
+    second: Render 025
+  - first:
+      1: 100804
+    second: Render 026
+  - first:
+      1: 100806
+    second: Render 027
+  - first:
+      1: 100808
+    second: Render 028
+  - first:
+      1: 100810
+    second: Render 029
+  - first:
+      1: 100812
+    second: Render 030
+  - first:
+      1: 100814
+    second: Render 031
+  - first:
+      1: 100816
+    second: Render 032
+  - first:
+      1: 100818
+    second: Render 033
+  - first:
+      1: 100820
+    second: Render 034
+  - first:
+      1: 100822
+    second: Render 035
+  - first:
+      1: 100824
+    second: Render 036
+  - first:
+      1: 100826
+    second: Render 037
+  - first:
+      1: 100828
+    second: Render 038
+  - first:
+      1: 100830
+    second: Render 039
+  - first:
+      1: 100832
+    second: Render 040
+  - first:
+      1: 100834
+    second: Render 041
+  - first:
+      1: 100836
+    second: Render 042
+  - first:
+      1: 100838
+    second: Render 043
+  - first:
+      1: 100840
+    second: Render 044
+  - first:
+      1: 100842
+    second: Render 045
+  - first:
+      1: 100844
+    second: Render 046
+  - first:
+      1: 100846
+    second: Render 047
+  - first:
+      1: 100848
+    second: Render 048
+  - first:
+      1: 100850
+    second: Render 049
+  - first:
+      1: 100852
+    second: Rotation 001
+  - first:
+      1: 100854
+    second: Rotation 002
+  - first:
+      1: 100856
+    second: Rotation 003
+  - first:
+      1: 100858
+    second: Rotation 004
+  - first:
+      1: 100860
+    second: Rotation 005
+  - first:
+      1: 100862
+    second: Rotation 006
+  - first:
+      1: 100864
+    second: Rotation 007
+  - first:
+      1: 100866
+    second: Rotation 008
+  - first:
+      1: 100868
+    second: Rotation 009
+  - first:
+      1: 100870
+    second: Rotation 010
+  - first:
+      1: 100872
+    second: Rotation 011
+  - first:
+      1: 100874
+    second: Rotation 012
+  - first:
+      1: 100876
+    second: Rotation 013
+  - first:
+      1: 100878
+    second: Rotation 014
+  - first:
+      1: 100880
+    second: Rotation 015
+  - first:
+      1: 100882
+    second: Rotation 016
+  - first:
+      1: 100884
+    second: Rotation 017
+  - first:
+      1: 100886
+    second: Rotation 018
+  - first:
+      1: 100888
+    second: Rotation 019
+  - first:
+      1: 100890
+    second: Rotation 020
+  - first:
+      1: 100892
+    second: Rotation 021
+  - first:
+      1: 100894
+    second: Rotation 022
+  - first:
+      1: 100896
+    second: Rotation 023
+  - first:
+      1: 100898
+    second: Rotation 024
+  - first:
+      1: 100900
+    second: Rotation 025
+  - first:
+      1: 100902
+    second: Rotation 026
+  - first:
+      1: 100904
+    second: Rotation 027
+  - first:
+      1: 100906
+    second: Rotation 028
+  - first:
+      1: 100908
+    second: Rotation 029
+  - first:
+      1: 100910
+    second: Rotation 030
+  - first:
+      1: 100912
+    second: Rotation 031
+  - first:
+      1: 100914
+    second: Rotation 032
+  - first:
+      1: 100916
+    second: Rotation 033
+  - first:
+      1: 100918
+    second: Rotation 034
+  - first:
+      1: 100920
+    second: Rotation 035
+  - first:
+      1: 100922
+    second: Rotation 036
+  - first:
+      1: 100924
+    second: Rotation 037
+  - first:
+      1: 100926
+    second: Rotation 038
+  - first:
+      1: 100928
+    second: Rotation 039
+  - first:
+      1: 100930
+    second: Rotation 040
+  - first:
+      1: 100932
+    second: Rotation 041
+  - first:
+      1: 100934
+    second: Rotation 042
+  - first:
+      1: 100936
+    second: Rotation 043
+  - first:
+      1: 100938
+    second: Rotation 044
+  - first:
+      1: 100940
+    second: Rotation 045
+  - first:
+      1: 100942
+    second: Rotation 046
+  - first:
+      1: 100944
+    second: Rotation 047
+  - first:
+      1: 100946
+    second: Rotation 048
+  - first:
+      1: 100948
+    second: Rotation 049
+  - first:
+      1: 100950
+    second: Rotation 050
+  - first:
+      1: 100952
+    second: Rotation 051
+  - first:
+      1: 100954
+    second: Shape Instance 001
+  - first:
+      1: 100956
+    second: Shape Instance 002
+  - first:
+      1: 100958
+    second: Shape Instance 003
+  - first:
+      1: 100960
+    second: Shape Instance 004
+  - first:
+      1: 100962
+    second: Shape Instance 005
+  - first:
+      1: 100964
+    second: Shape Instance 006
+  - first:
+      1: 100966
+    second: Shape Instance 007
+  - first:
+      1: 100968
+    second: Shape Instance 008
+  - first:
+      1: 100970
+    second: Shape Instance 009
+  - first:
+      1: 100972
+    second: Shape Instance 010
+  - first:
+      1: 100974
+    second: Shape Instance 011
+  - first:
+      1: 100976
+    second: Shape Instance 012
+  - first:
+      1: 100978
+    second: Shape Instance 013
+  - first:
+      1: 100980
+    second: Shape Instance 014
+  - first:
+      1: 100982
+    second: Shape Instance 015
+  - first:
+      1: 100984
+    second: Shape Instance 016
+  - first:
+      1: 100986
+    second: Shape Instance 017
+  - first:
+      1: 100988
+    second: Shape Instance 018
+  - first:
+      1: 100990
+    second: Shape Instance 019
+  - first:
+      1: 100992
+    second: Shape Instance 020
+  - first:
+      1: 100994
+    second: Shape Instance 021
+  - first:
+      1: 100996
+    second: Shape Instance 022
+  - first:
+      1: 100998
+    second: Shape Instance 023
+  - first:
+      1: 101000
+    second: Shape Instance 024
+  - first:
+      1: 101002
+    second: Shape Instance 025
+  - first:
+      1: 101004
+    second: Shape Instance 026
+  - first:
+      1: 101006
+    second: Shape Instance 027
+  - first:
+      1: 101008
+    second: Shape Instance 028
+  - first:
+      1: 101010
+    second: Shape Instance 029
+  - first:
+      1: 101012
+    second: Shape Instance 030
+  - first:
+      1: 101014
+    second: Shape Instance 031
+  - first:
+      1: 101016
+    second: Shape Instance 032
+  - first:
+      1: 101018
+    second: Shape Instance 033
+  - first:
+      1: 101020
+    second: Shape Instance 034
+  - first:
+      1: 101022
+    second: Shape Instance 035
+  - first:
+      1: 101024
+    second: Shape Instance 036
+  - first:
+      1: 101026
+    second: Shape Instance 037
+  - first:
+      1: 101028
+    second: Shape Instance 038
+  - first:
+      1: 101030
+    second: Shape Instance 039
+  - first:
+      1: 101032
+    second: Shape Instance 040
+  - first:
+      1: 101034
+    second: Shape Instance 041
+  - first:
+      1: 101036
+    second: Shape Instance 042
+  - first:
+      1: 101038
+    second: Shape Instance 043
+  - first:
+      1: 101040
+    second: Shape Instance 044
+  - first:
+      1: 101042
+    second: Shape Instance 045
+  - first:
+      1: 101044
+    second: Shape Instance 046
+  - first:
+      1: 101046
+    second: Shape Instance 047
+  - first:
+      1: 101048
+    second: Shape Instance 048
+  - first:
+      1: 101050
+    second: Shape Instance 049
+  - first:
+      1: 101052
+    second: Speed 001
+  - first:
+      4: 400000
+    second: Bip001
+  - first:
+      4: 400002
+    second: Bip001 Head
+  - first:
+      4: 400004
+    second: Bip001 L Calf
+  - first:
+      4: 400006
+    second: Bip001 L Clavicle
+  - first:
+      4: 400008
+    second: Bip001 L Foot
+  - first:
+      4: 400010
+    second: Bip001 L Forearm
+  - first:
+      4: 400012
+    second: Bip001 L Hand
+  - first:
+      4: 400014
+    second: Bip001 L Thigh
+  - first:
+      4: 400016
+    second: Bip001 L Toe0
+  - first:
+      4: 400018
+    second: Bip001 L UpperArm
+  - first:
+      4: 400020
+    second: Bip001 Neck
+  - first:
+      4: 400022
+    second: Bip001 Pelvis
+  - first:
+      4: 400024
+    second: Bip001 R Calf
+  - first:
+      4: 400026
+    second: Bip001 R Clavicle
+  - first:
+      4: 400028
+    second: Bip001 R Foot
+  - first:
+      4: 400030
+    second: Bip001 R Forearm
+  - first:
+      4: 400032
+    second: Bip001 R Hand
+  - first:
+      4: 400034
+    second: Bip001 R Hand Prop
+  - first:
+      4: 400036
+    second: Bip001 R Thigh
+  - first:
+      4: 400038
+    second: Bip001 R Toe0
+  - first:
+      4: 400040
+    second: Bip001 R UpperArm
+  - first:
+      4: 400042
+    second: Bip001 Spine
+  - first:
+      4: 400044
+    second: CharactersAnimated 1
+  - first:
+      4: 400046
+    second: //RootNode
+  - first:
+      4: 400048
+    second: H_Head
+  - first:
+      4: 400050
+    second: H_Hips
+  - first:
+      4: 400052
+    second: H_LFLeg
+  - first:
+      4: 400054
+    second: H_LRLeg
+  - first:
+      4: 400056
+    second: H_RFLeg
+  - first:
+      4: 400058
+    second: H_RRLeg
+  - first:
+      4: 400060
+    second: H_Tail1
+  - first:
+      4: 400062
+    second: H_Tail2
+  - first:
+      4: 400064
+    second: Horse_BLUE
+  - first:
+      4: 400066
+    second: Horse_GREEN
+  - first:
+      4: 400068
+    second: Horse_RED
+  - first:
+      4: 400070
+    second: Horse_YELLOW
+  - first:
+      4: 400072
+    second: HorseMan_BLUE
+  - first:
+      4: 400074
+    second: HorseMan_GREEN
+  - first:
+      4: 400076
+    second: HorseMan_RED
+  - first:
+      4: 400078
+    second: HorseMan_YELLOW
+  - first:
+      4: 400080
+    second: Hunter_BLUE
+  - first:
+      4: 400082
+    second: Hunter_GREEN
+  - first:
+      4: 400084
+    second: Hunter_RED
+  - first:
+      4: 400086
+    second: Hunter_YELLOW
+  - first:
+      4: 400088
+    second: Knight_BLUE
+  - first:
+      4: 400090
+    second: Knight_GREEN
+  - first:
+      4: 400092
+    second: Knight_RED
+  - first:
+      4: 400094
+    second: Knight_YELLOW
+  - first:
+      4: 400096
+    second: LanceKnight_BLUE
+  - first:
+      4: 400098
+    second: LanceKnight_GREEN
+  - first:
+      4: 400100
+    second: LanceKnight_RED
+  - first:
+      4: 400102
+    second: LanceKnight_YELLOW
+  - first:
+      4: 400104
+    second: Leader_BLUE
+  - first:
+      4: 400106
+    second: Leader_GREEN
+  - first:
+      4: 400108
+    second: Leader_RED
+  - first:
+      4: 400110
+    second: Leader_YELLOW
+  - first:
+      4: 400112
+    second: SwordsMan_BLUE
+  - first:
+      4: 400114
+    second: SwordsMan_GREEN
+  - first:
+      4: 400116
+    second: SwordsMan_RED
+  - first:
+      4: 400118
+    second: SwordsMan_YELLOW
+  - first:
+      4: 400120
+    second: Action Recovery
+  - first:
+      4: 400122
+    second: Action Recovery 1
+  - first:
+      4: 400124
+    second: Action Recovery 2
+  - first:
+      4: 400126
+    second: Action Recovery 3
+  - first:
+      4: 400128
+    second: Action Recovery 4
+  - first:
+      4: 400130
+    second: Action Recovery 5
+  - first:
+      4: 400132
+    second: Birth 001
+  - first:
+      4: 400134
+    second: Birth 002
+  - first:
+      4: 400136
+    second: Birth 003
+  - first:
+      4: 400138
+    second: Birth 004
+  - first:
+      4: 400140
+    second: Birth 005
+  - first:
+      4: 400142
+    second: Birth 006
+  - first:
+      4: 400144
+    second: Birth 007
+  - first:
+      4: 400146
+    second: Birth 008
+  - first:
+      4: 400148
+    second: Birth 009
+  - first:
+      4: 400150
+    second: Birth 010
+  - first:
+      4: 400152
+    second: Birth 011
+  - first:
+      4: 400154
+    second: Birth 012
+  - first:
+      4: 400156
+    second: Birth 013
+  - first:
+      4: 400158
+    second: Birth 014
+  - first:
+      4: 400160
+    second: Birth 015
+  - first:
+      4: 400162
+    second: Birth 016
+  - first:
+      4: 400164
+    second: Birth 017
+  - first:
+      4: 400166
+    second: Birth 018
+  - first:
+      4: 400168
+    second: Birth 019
+  - first:
+      4: 400170
+    second: Birth 020
+  - first:
+      4: 400172
+    second: Birth 021
+  - first:
+      4: 400174
+    second: Birth 022
+  - first:
+      4: 400176
+    second: Birth 023
+  - first:
+      4: 400178
+    second: Birth 024
+  - first:
+      4: 400180
+    second: Birth 025
+  - first:
+      4: 400182
+    second: Birth 026
+  - first:
+      4: 400184
+    second: Birth 027
+  - first:
+      4: 400186
+    second: Birth 028
+  - first:
+      4: 400188
+    second: Birth 029
+  - first:
+      4: 400190
+    second: Birth 030
+  - first:
+      4: 400192
+    second: Birth 031
+  - first:
+      4: 400194
+    second: Birth 032
+  - first:
+      4: 400196
+    second: Birth 033
+  - first:
+      4: 400198
+    second: Birth 034
+  - first:
+      4: 400200
+    second: Birth 035
+  - first:
+      4: 400202
+    second: Birth 036
+  - first:
+      4: 400204
+    second: Birth 037
+  - first:
+      4: 400206
+    second: Birth 038
+  - first:
+      4: 400208
+    second: Birth 039
+  - first:
+      4: 400210
+    second: Birth 040
+  - first:
+      4: 400212
+    second: Birth 041
+  - first:
+      4: 400214
+    second: Birth 042
+  - first:
+      4: 400216
+    second: Birth 043
+  - first:
+      4: 400218
+    second: Birth 044
+  - first:
+      4: 400220
+    second: Birth 045
+  - first:
+      4: 400222
+    second: Birth 046
+  - first:
+      4: 400224
+    second: Birth 047
+  - first:
+      4: 400226
+    second: Birth 048
+  - first:
+      4: 400228
+    second: Birth 049
+  - first:
+      4: 400230
+    second: Birth 050
+  - first:
+      4: 400232
+    second: Birth 051
+  - first:
+      4: 400234
+    second: Display 001
+  - first:
+      4: 400236
+    second: Display 002
+  - first:
+      4: 400238
+    second: Display 003
+  - first:
+      4: 400240
+    second: Display 004
+  - first:
+      4: 400242
+    second: Display 005
+  - first:
+      4: 400244
+    second: Display 006
+  - first:
+      4: 400246
+    second: Display 007
+  - first:
+      4: 400248
+    second: Display 008
+  - first:
+      4: 400250
+    second: Display 009
+  - first:
+      4: 400252
+    second: Display 010
+  - first:
+      4: 400254
+    second: Display 011
+  - first:
+      4: 400256
+    second: Display 012
+  - first:
+      4: 400258
+    second: Display 013
+  - first:
+      4: 400260
+    second: Display 014
+  - first:
+      4: 400262
+    second: Display 015
+  - first:
+      4: 400264
+    second: Display 016
+  - first:
+      4: 400266
+    second: Display 017
+  - first:
+      4: 400268
+    second: Display 018
+  - first:
+      4: 400270
+    second: Display 019
+  - first:
+      4: 400272
+    second: Display 020
+  - first:
+      4: 400274
+    second: Display 021
+  - first:
+      4: 400276
+    second: Display 022
+  - first:
+      4: 400278
+    second: Display 023
+  - first:
+      4: 400280
+    second: Display 024
+  - first:
+      4: 400282
+    second: Display 025
+  - first:
+      4: 400284
+    second: Display 026
+  - first:
+      4: 400286
+    second: Display 027
+  - first:
+      4: 400288
+    second: Display 028
+  - first:
+      4: 400290
+    second: Display 029
+  - first:
+      4: 400292
+    second: Display 030
+  - first:
+      4: 400294
+    second: Display 031
+  - first:
+      4: 400296
+    second: Display 032
+  - first:
+      4: 400298
+    second: Display 033
+  - first:
+      4: 400300
+    second: Display 034
+  - first:
+      4: 400302
+    second: Display 035
+  - first:
+      4: 400304
+    second: Display 036
+  - first:
+      4: 400306
+    second: Display 037
+  - first:
+      4: 400308
+    second: Display 038
+  - first:
+      4: 400310
+    second: Display 039
+  - first:
+      4: 400312
+    second: Display 040
+  - first:
+      4: 400314
+    second: Display 041
+  - first:
+      4: 400316
+    second: Display 042
+  - first:
+      4: 400318
+    second: Display 043
+  - first:
+      4: 400320
+    second: Display 044
+  - first:
+      4: 400322
+    second: Display 045
+  - first:
+      4: 400324
+    second: Display 046
+  - first:
+      4: 400326
+    second: Display 047
+  - first:
+      4: 400328
+    second: Display 048
+  - first:
+      4: 400330
+    second: Display 049
+  - first:
+      4: 400332
+    second: Display 050
+  - first:
+      4: 400334
+    second: Display 051
+  - first:
+      4: 400336
+    second: Display 052
+  - first:
+      4: 400338
+    second: Display 053
+  - first:
+      4: 400340
+    second: Display 054
+  - first:
+      4: 400342
+    second: Display 055
+  - first:
+      4: 400344
+    second: Display 056
+  - first:
+      4: 400346
+    second: Display 057
+  - first:
+      4: 400348
+    second: Display 058
+  - first:
+      4: 400350
+    second: Display 059
+  - first:
+      4: 400352
+    second: Display 060
+  - first:
+      4: 400354
+    second: Display 061
+  - first:
+      4: 400356
+    second: Display 062
+  - first:
+      4: 400358
+    second: Display 063
+  - first:
+      4: 400360
+    second: Display 064
+  - first:
+      4: 400362
+    second: Display 065
+  - first:
+      4: 400364
+    second: Display 066
+  - first:
+      4: 400366
+    second: Display 067
+  - first:
+      4: 400368
+    second: Display 068
+  - first:
+      4: 400370
+    second: Display 069
+  - first:
+      4: 400372
+    second: Display 070
+  - first:
+      4: 400374
+    second: Display 071
+  - first:
+      4: 400376
+    second: Display 072
+  - first:
+      4: 400378
+    second: Display 073
+  - first:
+      4: 400380
+    second: Display 074
+  - first:
+      4: 400382
+    second: Display 075
+  - first:
+      4: 400384
+    second: Display 076
+  - first:
+      4: 400386
+    second: Display 077
+  - first:
+      4: 400388
+    second: Display 078
+  - first:
+      4: 400390
+    second: Display 079
+  - first:
+      4: 400392
+    second: Display 080
+  - first:
+      4: 400394
+    second: Display 081
+  - first:
+      4: 400396
+    second: Display 082
+  - first:
+      4: 400398
+    second: Display 083
+  - first:
+      4: 400400
+    second: Event 001
+  - first:
+      4: 400402
+    second: Event 002
+  - first:
+      4: 400404
+    second: Event 003
+  - first:
+      4: 400406
+    second: Event 004
+  - first:
+      4: 400408
+    second: Event 005
+  - first:
+      4: 400410
+    second: Event 006
+  - first:
+      4: 400412
+    second: Event 007
+  - first:
+      4: 400414
+    second: Event 008
+  - first:
+      4: 400416
+    second: Event 009
+  - first:
+      4: 400418
+    second: Event 010
+  - first:
+      4: 400420
+    second: Event 011
+  - first:
+      4: 400422
+    second: Event 012
+  - first:
+      4: 400424
+    second: Event 013
+  - first:
+      4: 400426
+    second: Event 014
+  - first:
+      4: 400428
+    second: Event 015
+  - first:
+      4: 400430
+    second: Event 016
+  - first:
+      4: 400432
+    second: Event 017
+  - first:
+      4: 400434
+    second: Event 018
+  - first:
+      4: 400436
+    second: Event 019
+  - first:
+      4: 400438
+    second: Event 020
+  - first:
+      4: 400440
+    second: Event 021
+  - first:
+      4: 400442
+    second: Event 022
+  - first:
+      4: 400444
+    second: Event 023
+  - first:
+      4: 400446
+    second: Event 024
+  - first:
+      4: 400448
+    second: Event 025
+  - first:
+      4: 400450
+    second: Event 026
+  - first:
+      4: 400452
+    second: Event 027
+  - first:
+      4: 400454
+    second: Event 028
+  - first:
+      4: 400456
+    second: Event 029
+  - first:
+      4: 400458
+    second: Event 030
+  - first:
+      4: 400460
+    second: Event 031
+  - first:
+      4: 400462
+    second: Event 032
+  - first:
+      4: 400464
+    second: Event 033
+  - first:
+      4: 400466
+    second: Event 034
+  - first:
+      4: 400468
+    second: Event 035
+  - first:
+      4: 400470
+    second: Event 036
+  - first:
+      4: 400472
+    second: Event 037
+  - first:
+      4: 400474
+    second: Event 038
+  - first:
+      4: 400476
+    second: Event 039
+  - first:
+      4: 400478
+    second: Event 040
+  - first:
+      4: 400480
+    second: Event 041
+  - first:
+      4: 400482
+    second: Event 042
+  - first:
+      4: 400484
+    second: Event 043
+  - first:
+      4: 400486
+    second: Event 044
+  - first:
+      4: 400488
+    second: Event 045
+  - first:
+      4: 400490
+    second: Event 046
+  - first:
+      4: 400492
+    second: Event 047
+  - first:
+      4: 400494
+    second: Event 048
+  - first:
+      4: 400496
+    second: Event 049
+  - first:
+      4: 400498
+    second: Event 050
+  - first:
+      4: 400500
+    second: Event 051
+  - first:
+      4: 400502
+    second: Event 052
+  - first:
+      4: 400504
+    second: Event 053
+  - first:
+      4: 400506
+    second: Event 054
+  - first:
+      4: 400508
+    second: Event 055
+  - first:
+      4: 400510
+    second: Event 056
+  - first:
+      4: 400512
+    second: Event 057
+  - first:
+      4: 400514
+    second: Event 058
+  - first:
+      4: 400516
+    second: Event 059
+  - first:
+      4: 400518
+    second: Event 060
+  - first:
+      4: 400520
+    second: Event 061
+  - first:
+      4: 400522
+    second: Event 062
+  - first:
+      4: 400524
+    second: Event 063
+  - first:
+      4: 400526
+    second: Event 064
+  - first:
+      4: 400528
+    second: Event 065
+  - first:
+      4: 400530
+    second: Event 066
+  - first:
+      4: 400532
+    second: Event 067
+  - first:
+      4: 400534
+    second: Event 068
+  - first:
+      4: 400536
+    second: Event 069
+  - first:
+      4: 400538
+    second: Event 070
+  - first:
+      4: 400540
+    second: Event 071
+  - first:
+      4: 400542
+    second: Event 072
+  - first:
+      4: 400544
+    second: Event 073
+  - first:
+      4: 400546
+    second: Event 074
+  - first:
+      4: 400548
+    second: Event 075
+  - first:
+      4: 400550
+    second: Event 076
+  - first:
+      4: 400552
+    second: Event 077
+  - first:
+      4: 400554
+    second: Force 001
+  - first:
+      4: 400556
+    second: Force 002
+  - first:
+      4: 400558
+    second: Force 003
+  - first:
+      4: 400560
+    second: Force 004
+  - first:
+      4: 400562
+    second: Force 005
+  - first:
+      4: 400564
+    second: Force 006
+  - first:
+      4: 400566
+    second: Force 007
+  - first:
+      4: 400568
+    second: Force 008
+  - first:
+      4: 400570
+    second: Force 009
+  - first:
+      4: 400572
+    second: Force 010
+  - first:
+      4: 400574
+    second: Force 011
+  - first:
+      4: 400576
+    second: Force 012
+  - first:
+      4: 400578
+    second: Force 013
+  - first:
+      4: 400580
+    second: Force 014
+  - first:
+      4: 400582
+    second: Force 015
+  - first:
+      4: 400584
+    second: Force 016
+  - first:
+      4: 400586
+    second: Force 017
+  - first:
+      4: 400588
+    second: Force 018
+  - first:
+      4: 400590
+    second: Force 019
+  - first:
+      4: 400592
+    second: Force 020
+  - first:
+      4: 400594
+    second: Force 021
+  - first:
+      4: 400596
+    second: Force 022
+  - first:
+      4: 400598
+    second: Force 023
+  - first:
+      4: 400600
+    second: Force 024
+  - first:
+      4: 400602
+    second: Force 025
+  - first:
+      4: 400604
+    second: Force 026
+  - first:
+      4: 400606
+    second: Force 027
+  - first:
+      4: 400608
+    second: Force 028
+  - first:
+      4: 400610
+    second: Force 029
+  - first:
+      4: 400612
+    second: Force 030
+  - first:
+      4: 400614
+    second: Force 031
+  - first:
+      4: 400616
+    second: Force 032
+  - first:
+      4: 400618
+    second: Force 033
+  - first:
+      4: 400620
+    second: Force 034
+  - first:
+      4: 400622
+    second: Force 035
+  - first:
+      4: 400624
+    second: Force 036
+  - first:
+      4: 400626
+    second: Force 037
+  - first:
+      4: 400628
+    second: Force 038
+  - first:
+      4: 400630
+    second: Force 039
+  - first:
+      4: 400632
+    second: Force 040
+  - first:
+      4: 400634
+    second: Force 041
+  - first:
+      4: 400636
+    second: Force 042
+  - first:
+      4: 400638
+    second: Force 043
+  - first:
+      4: 400640
+    second: Force 044
+  - first:
+      4: 400642
+    second: Force 045
+  - first:
+      4: 400644
+    second: Force 046
+  - first:
+      4: 400646
+    second: Force 047
+  - first:
+      4: 400648
+    second: Force 048
+  - first:
+      4: 400650
+    second: Force 049
+  - first:
+      4: 400652
+    second: Position Icon 001
+  - first:
+      4: 400654
+    second: Position Icon 002
+  - first:
+      4: 400656
+    second: Position Icon 003
+  - first:
+      4: 400658
+    second: Position Icon 004
+  - first:
+      4: 400660
+    second: Position Icon 005
+  - first:
+      4: 400662
+    second: Position Icon 006
+  - first:
+      4: 400664
+    second: Position Icon 007
+  - first:
+      4: 400666
+    second: Position Icon 008
+  - first:
+      4: 400668
+    second: Position Icon 009
+  - first:
+      4: 400670
+    second: Position Icon 010
+  - first:
+      4: 400672
+    second: Position Icon 011
+  - first:
+      4: 400674
+    second: Position Icon 012
+  - first:
+      4: 400676
+    second: Position Icon 013
+  - first:
+      4: 400678
+    second: Position Icon 014
+  - first:
+      4: 400680
+    second: Position Icon 015
+  - first:
+      4: 400682
+    second: Position Icon 016
+  - first:
+      4: 400684
+    second: Position Icon 017
+  - first:
+      4: 400686
+    second: Position Icon 018
+  - first:
+      4: 400688
+    second: Position Icon 019
+  - first:
+      4: 400690
+    second: Position Icon 020
+  - first:
+      4: 400692
+    second: Position Icon 021
+  - first:
+      4: 400694
+    second: Position Icon 022
+  - first:
+      4: 400696
+    second: Position Icon 023
+  - first:
+      4: 400698
+    second: Position Icon 024
+  - first:
+      4: 400700
+    second: Position Icon 025
+  - first:
+      4: 400702
+    second: Position Icon 026
+  - first:
+      4: 400704
+    second: Position Icon 027
+  - first:
+      4: 400706
+    second: Position Object 001
+  - first:
+      4: 400708
+    second: Position Object 002
+  - first:
+      4: 400710
+    second: Position Object 003
+  - first:
+      4: 400712
+    second: Position Object 004
+  - first:
+      4: 400714
+    second: Position Object 005
+  - first:
+      4: 400716
+    second: Position Object 006
+  - first:
+      4: 400718
+    second: Position Object 007
+  - first:
+      4: 400720
+    second: Position Object 008
+  - first:
+      4: 400722
+    second: Position Object 009
+  - first:
+      4: 400724
+    second: Position Object 010
+  - first:
+      4: 400726
+    second: Position Object 011
+  - first:
+      4: 400728
+    second: Position Object 012
+  - first:
+      4: 400730
+    second: Position Object 013
+  - first:
+      4: 400732
+    second: Position Object 014
+  - first:
+      4: 400734
+    second: Position Object 015
+  - first:
+      4: 400736
+    second: Position Object 016
+  - first:
+      4: 400738
+    second: Position Object 017
+  - first:
+      4: 400740
+    second: Position Object 018
+  - first:
+      4: 400742
+    second: Position Object 019
+  - first:
+      4: 400744
+    second: Position Object 020
+  - first:
+      4: 400746
+    second: Position Object 021
+  - first:
+      4: 400748
+    second: Position Object 022
+  - first:
+      4: 400750
+    second: Position Object 023
+  - first:
+      4: 400752
+    second: Position Object 024
+  - first:
+      4: 400754
+    second: Render 001
+  - first:
+      4: 400756
+    second: Render 002
+  - first:
+      4: 400758
+    second: Render 003
+  - first:
+      4: 400760
+    second: Render 004
+  - first:
+      4: 400762
+    second: Render 005
+  - first:
+      4: 400764
+    second: Render 006
+  - first:
+      4: 400766
+    second: Render 007
+  - first:
+      4: 400768
+    second: Render 008
+  - first:
+      4: 400770
+    second: Render 009
+  - first:
+      4: 400772
+    second: Render 010
+  - first:
+      4: 400774
+    second: Render 011
+  - first:
+      4: 400776
+    second: Render 012
+  - first:
+      4: 400778
+    second: Render 013
+  - first:
+      4: 400780
+    second: Render 014
+  - first:
+      4: 400782
+    second: Render 015
+  - first:
+      4: 400784
+    second: Render 016
+  - first:
+      4: 400786
+    second: Render 017
+  - first:
+      4: 400788
+    second: Render 018
+  - first:
+      4: 400790
+    second: Render 019
+  - first:
+      4: 400792
+    second: Render 020
+  - first:
+      4: 400794
+    second: Render 021
+  - first:
+      4: 400796
+    second: Render 022
+  - first:
+      4: 400798
+    second: Render 023
+  - first:
+      4: 400800
+    second: Render 024
+  - first:
+      4: 400802
+    second: Render 025
+  - first:
+      4: 400804
+    second: Render 026
+  - first:
+      4: 400806
+    second: Render 027
+  - first:
+      4: 400808
+    second: Render 028
+  - first:
+      4: 400810
+    second: Render 029
+  - first:
+      4: 400812
+    second: Render 030
+  - first:
+      4: 400814
+    second: Render 031
+  - first:
+      4: 400816
+    second: Render 032
+  - first:
+      4: 400818
+    second: Render 033
+  - first:
+      4: 400820
+    second: Render 034
+  - first:
+      4: 400822
+    second: Render 035
+  - first:
+      4: 400824
+    second: Render 036
+  - first:
+      4: 400826
+    second: Render 037
+  - first:
+      4: 400828
+    second: Render 038
+  - first:
+      4: 400830
+    second: Render 039
+  - first:
+      4: 400832
+    second: Render 040
+  - first:
+      4: 400834
+    second: Render 041
+  - first:
+      4: 400836
+    second: Render 042
+  - first:
+      4: 400838
+    second: Render 043
+  - first:
+      4: 400840
+    second: Render 044
+  - first:
+      4: 400842
+    second: Render 045
+  - first:
+      4: 400844
+    second: Render 046
+  - first:
+      4: 400846
+    second: Render 047
+  - first:
+      4: 400848
+    second: Render 048
+  - first:
+      4: 400850
+    second: Render 049
+  - first:
+      4: 400852
+    second: Rotation 001
+  - first:
+      4: 400854
+    second: Rotation 002
+  - first:
+      4: 400856
+    second: Rotation 003
+  - first:
+      4: 400858
+    second: Rotation 004
+  - first:
+      4: 400860
+    second: Rotation 005
+  - first:
+      4: 400862
+    second: Rotation 006
+  - first:
+      4: 400864
+    second: Rotation 007
+  - first:
+      4: 400866
+    second: Rotation 008
+  - first:
+      4: 400868
+    second: Rotation 009
+  - first:
+      4: 400870
+    second: Rotation 010
+  - first:
+      4: 400872
+    second: Rotation 011
+  - first:
+      4: 400874
+    second: Rotation 012
+  - first:
+      4: 400876
+    second: Rotation 013
+  - first:
+      4: 400878
+    second: Rotation 014
+  - first:
+      4: 400880
+    second: Rotation 015
+  - first:
+      4: 400882
+    second: Rotation 016
+  - first:
+      4: 400884
+    second: Rotation 017
+  - first:
+      4: 400886
+    second: Rotation 018
+  - first:
+      4: 400888
+    second: Rotation 019
+  - first:
+      4: 400890
+    second: Rotation 020
+  - first:
+      4: 400892
+    second: Rotation 021
+  - first:
+      4: 400894
+    second: Rotation 022
+  - first:
+      4: 400896
+    second: Rotation 023
+  - first:
+      4: 400898
+    second: Rotation 024
+  - first:
+      4: 400900
+    second: Rotation 025
+  - first:
+      4: 400902
+    second: Rotation 026
+  - first:
+      4: 400904
+    second: Rotation 027
+  - first:
+      4: 400906
+    second: Rotation 028
+  - first:
+      4: 400908
+    second: Rotation 029
+  - first:
+      4: 400910
+    second: Rotation 030
+  - first:
+      4: 400912
+    second: Rotation 031
+  - first:
+      4: 400914
+    second: Rotation 032
+  - first:
+      4: 400916
+    second: Rotation 033
+  - first:
+      4: 400918
+    second: Rotation 034
+  - first:
+      4: 400920
+    second: Rotation 035
+  - first:
+      4: 400922
+    second: Rotation 036
+  - first:
+      4: 400924
+    second: Rotation 037
+  - first:
+      4: 400926
+    second: Rotation 038
+  - first:
+      4: 400928
+    second: Rotation 039
+  - first:
+      4: 400930
+    second: Rotation 040
+  - first:
+      4: 400932
+    second: Rotation 041
+  - first:
+      4: 400934
+    second: Rotation 042
+  - first:
+      4: 400936
+    second: Rotation 043
+  - first:
+      4: 400938
+    second: Rotation 044
+  - first:
+      4: 400940
+    second: Rotation 045
+  - first:
+      4: 400942
+    second: Rotation 046
+  - first:
+      4: 400944
+    second: Rotation 047
+  - first:
+      4: 400946
+    second: Rotation 048
+  - first:
+      4: 400948
+    second: Rotation 049
+  - first:
+      4: 400950
+    second: Rotation 050
+  - first:
+      4: 400952
+    second: Rotation 051
+  - first:
+      4: 400954
+    second: Shape Instance 001
+  - first:
+      4: 400956
+    second: Shape Instance 002
+  - first:
+      4: 400958
+    second: Shape Instance 003
+  - first:
+      4: 400960
+    second: Shape Instance 004
+  - first:
+      4: 400962
+    second: Shape Instance 005
+  - first:
+      4: 400964
+    second: Shape Instance 006
+  - first:
+      4: 400966
+    second: Shape Instance 007
+  - first:
+      4: 400968
+    second: Shape Instance 008
+  - first:
+      4: 400970
+    second: Shape Instance 009
+  - first:
+      4: 400972
+    second: Shape Instance 010
+  - first:
+      4: 400974
+    second: Shape Instance 011
+  - first:
+      4: 400976
+    second: Shape Instance 012
+  - first:
+      4: 400978
+    second: Shape Instance 013
+  - first:
+      4: 400980
+    second: Shape Instance 014
+  - first:
+      4: 400982
+    second: Shape Instance 015
+  - first:
+      4: 400984
+    second: Shape Instance 016
+  - first:
+      4: 400986
+    second: Shape Instance 017
+  - first:
+      4: 400988
+    second: Shape Instance 018
+  - first:
+      4: 400990
+    second: Shape Instance 019
+  - first:
+      4: 400992
+    second: Shape Instance 020
+  - first:
+      4: 400994
+    second: Shape Instance 021
+  - first:
+      4: 400996
+    second: Shape Instance 022
+  - first:
+      4: 400998
+    second: Shape Instance 023
+  - first:
+      4: 401000
+    second: Shape Instance 024
+  - first:
+      4: 401002
+    second: Shape Instance 025
+  - first:
+      4: 401004
+    second: Shape Instance 026
+  - first:
+      4: 401006
+    second: Shape Instance 027
+  - first:
+      4: 401008
+    second: Shape Instance 028
+  - first:
+      4: 401010
+    second: Shape Instance 029
+  - first:
+      4: 401012
+    second: Shape Instance 030
+  - first:
+      4: 401014
+    second: Shape Instance 031
+  - first:
+      4: 401016
+    second: Shape Instance 032
+  - first:
+      4: 401018
+    second: Shape Instance 033
+  - first:
+      4: 401020
+    second: Shape Instance 034
+  - first:
+      4: 401022
+    second: Shape Instance 035
+  - first:
+      4: 401024
+    second: Shape Instance 036
+  - first:
+      4: 401026
+    second: Shape Instance 037
+  - first:
+      4: 401028
+    second: Shape Instance 038
+  - first:
+      4: 401030
+    second: Shape Instance 039
+  - first:
+      4: 401032
+    second: Shape Instance 040
+  - first:
+      4: 401034
+    second: Shape Instance 041
+  - first:
+      4: 401036
+    second: Shape Instance 042
+  - first:
+      4: 401038
+    second: Shape Instance 043
+  - first:
+      4: 401040
+    second: Shape Instance 044
+  - first:
+      4: 401042
+    second: Shape Instance 045
+  - first:
+      4: 401044
+    second: Shape Instance 046
+  - first:
+      4: 401046
+    second: Shape Instance 047
+  - first:
+      4: 401048
+    second: Shape Instance 048
+  - first:
+      4: 401050
+    second: Shape Instance 049
+  - first:
+      4: 401052
+    second: Speed 001
+  - first:
+      43: 4300000
+    second: HorseMan_RED
+  - first:
+      43: 4300002
+    second: Horse_BLUE
+  - first:
+      43: 4300004
+    second: Leader_RED
+  - first:
+      43: 4300006
+    second: Knight_RED
+  - first:
+      43: 4300008
+    second: Hunter_RED
+  - first:
+      43: 4300010
+    second: SwordsMan_BLUE
+  - first:
+      43: 4300012
+    second: LanceKnight_BLUE
+  - first:
+      43: 4300014
+    second: Knight_BLUE
+  - first:
+      43: 4300016
+    second: Knight_GREEN
+  - first:
+      43: 4300018
+    second: Knight_YELLOW
+  - first:
+      43: 4300020
+    second: Leader_BLUE
+  - first:
+      43: 4300022
+    second: Leader_GREEN
+  - first:
+      43: 4300024
+    second: Leader_YELLOW
+  - first:
+      43: 4300026
+    second: Hunter_BLUE
+  - first:
+      43: 4300028
+    second: Hunter_GREEN
+  - first:
+      43: 4300030
+    second: Hunter_YELLOW
+  - first:
+      43: 4300032
+    second: HorseMan_BLUE
+  - first:
+      43: 4300034
+    second: HorseMan_GREEN
+  - first:
+      43: 4300036
+    second: HorseMan_YELLOW
+  - first:
+      43: 4300038
+    second: LanceKnight_RED
+  - first:
+      43: 4300040
+    second: LanceKnight_GREEN
+  - first:
+      43: 4300042
+    second: LanceKnight_YELLOW
+  - first:
+      43: 4300044
+    second: SwordsMan_RED
+  - first:
+      43: 4300046
+    second: SwordsMan_YELLOW
+  - first:
+      43: 4300048
+    second: SwordsMan_GREEN
+  - first:
+      43: 4300050
+    second: Horse_GREEN
+  - first:
+      43: 4300052
+    second: Horse_YELLOW
+  - first:
+      43: 4300054
+    second: Horse_RED
+  - first:
+      74: 7400000
+    second: Take 001
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: Horse_BLUE
+  - first:
+      137: 13700002
+    second: Horse_GREEN
+  - first:
+      137: 13700004
+    second: Horse_RED
+  - first:
+      137: 13700006
+    second: Horse_YELLOW
+  - first:
+      137: 13700008
+    second: HorseMan_BLUE
+  - first:
+      137: 13700010
+    second: HorseMan_GREEN
+  - first:
+      137: 13700012
+    second: HorseMan_RED
+  - first:
+      137: 13700014
+    second: HorseMan_YELLOW
+  - first:
+      137: 13700016
+    second: Hunter_BLUE
+  - first:
+      137: 13700018
+    second: Hunter_GREEN
+  - first:
+      137: 13700020
+    second: Hunter_RED
+  - first:
+      137: 13700022
+    second: Hunter_YELLOW
+  - first:
+      137: 13700024
+    second: Knight_BLUE
+  - first:
+      137: 13700026
+    second: Knight_GREEN
+  - first:
+      137: 13700028
+    second: Knight_RED
+  - first:
+      137: 13700030
+    second: Knight_YELLOW
+  - first:
+      137: 13700032
+    second: LanceKnight_BLUE
+  - first:
+      137: 13700034
+    second: LanceKnight_GREEN
+  - first:
+      137: 13700036
+    second: LanceKnight_RED
+  - first:
+      137: 13700038
+    second: LanceKnight_YELLOW
+  - first:
+      137: 13700040
+    second: Leader_BLUE
+  - first:
+      137: 13700042
+    second: Leader_GREEN
+  - first:
+      137: 13700044
+    second: Leader_RED
+  - first:
+      137: 13700046
+    second: Leader_YELLOW
+  - first:
+      137: 13700048
+    second: SwordsMan_BLUE
+  - first:
+      137: 13700050
+    second: SwordsMan_GREEN
+  - first:
+      137: 13700052
+    second: SwordsMan_RED
+  - first:
+      137: 13700054
+    second: SwordsMan_YELLOW
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.017
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 3
+    human:
+    - boneName: Bip001 Pelvis
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bip001 L Thigh
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bip001 R Thigh
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bip001 L Calf
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bip001 R Calf
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bip001 L Foot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bip001 R Foot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bip001 Neck
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bip001 Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bip001 L Clavicle
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bip001 R Clavicle
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bip001 L UpperArm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bip001 R UpperArm
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bip001 L Forearm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bip001 R Forearm
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bip001 L Hand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bip001 R Hand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: CharactersRigs(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Horse_BLUE
+      parentName: 
+      position: {x: 0.6885367, y: 0, z: 0.10345057}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Horse_GREEN
+      parentName: 
+      position: {x: 0.6885367, y: 0, z: 0.10345057}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Horse_RED
+      parentName: 
+      position: {x: 0.6885367, y: 0, z: 0.10345057}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Horse_YELLOW
+      parentName: 
+      position: {x: 0.6885367, y: 0, z: 0.10345057}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 10, y: 10, z: 10}
+    - name: HorseMan_BLUE
+      parentName: 
+      position: {x: 0.6885367, y: 0, z: 0.10345057}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 10, y: 10, z: 10}
+    - name: HorseMan_GREEN
+      parentName: 
+      position: {x: 0.6885367, y: 0, z: 0.10345057}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 10, y: 10, z: 10}
+    - name: HorseMan_RED
+      parentName: 
+      position: {x: 0.6885367, y: 0, z: 0.10345057}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 10, y: 10, z: 10}
+    - name: HorseMan_YELLOW
+      parentName: 
+      position: {x: 0.6885367, y: 0, z: 0.10345057}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Hunter_BLUE
+      parentName: 
+      position: {x: 0.6885367, y: 0, z: 0.10345057}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Hunter_GREEN
+      parentName: 
+      position: {x: 0.6885367, y: 0, z: 0.10345057}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Hunter_RED
+      parentName: 
+      position: {x: 0.6885367, y: 0, z: 0.10345057}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Hunter_YELLOW
+      parentName: 
+      position: {x: 0.6885367, y: 0, z: 0.10345057}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Knight_BLUE
+      parentName: 
+      position: {x: 0.6885367, y: 0, z: 0.10345057}
+      rotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Knight_GREEN
+      parentName: 
+      position: {x: -0.72687805, y: 0, z: 0.10345057}
+      rotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Knight_RED
+      parentName: 
+      position: {x: 0.6885367, y: 0, z: 0.10345057}
+      rotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Knight_YELLOW
+      parentName: 
+      position: {x: 3.3940752, y: 0, z: 0.10345057}
+      rotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
+      scale: {x: 10, y: 10, z: 10}
+    - name: LanceKnight_BLUE
+      parentName: 
+      position: {x: 0.6885367, y: 0, z: 0.10345057}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 10, y: 10, z: 10}
+    - name: LanceKnight_GREEN
+      parentName: 
+      position: {x: 0.6885367, y: 0, z: 0.10345057}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 10, y: 10, z: 10}
+    - name: LanceKnight_RED
+      parentName: 
+      position: {x: 0.6885367, y: 0, z: 0.10345057}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 10, y: 10, z: 10}
+    - name: LanceKnight_YELLOW
+      parentName: 
+      position: {x: 0.6885367, y: 0, z: 0.10345057}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Leader_BLUE
+      parentName: 
+      position: {x: 0.6885367, y: 0, z: 0.10345057}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Leader_GREEN
+      parentName: 
+      position: {x: 0.6885367, y: 0, z: 0.10345057}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Leader_RED
+      parentName: 
+      position: {x: 0.6885367, y: 0, z: 0.10345057}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Leader_YELLOW
+      parentName: 
+      position: {x: 0.6885367, y: 0, z: 0.10345057}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 10, y: 10, z: 10}
+    - name: SwordsMan_BLUE
+      parentName: 
+      position: {x: 0.6672241, y: 0, z: 0.10345057}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 10, y: 10, z: 10}
+    - name: SwordsMan_GREEN
+      parentName: 
+      position: {x: 0.6749931, y: 0, z: 0.10345057}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 10, y: 10, z: 10}
+    - name: SwordsMan_RED
+      parentName: 
+      position: {x: 0.6749931, y: 0, z: 0.10345057}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 10, y: 10, z: 10}
+    - name: SwordsMan_YELLOW
+      parentName: 
+      position: {x: 0.6749931, y: 0, z: 0.10345057}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 10, y: 10, z: 10}
+    - name: H_Hips
+      parentName: 
+      position: {x: 0.6885367, y: 0.9926, z: -0.23011464}
+      rotation: {x: 0.004111435, y: 0.7070949, z: 0.0041105873, w: 0.7070948}
+      scale: {x: 10.000001, y: 10, z: 10}
+    - name: H_Head
+      parentName: 
+      position: {x: -0.061383728, y: 0.004401214, z: -0.0000000243187}
+      rotation: {x: 0.9373225, y: -0.34846324, z: -0.000000041254335, w: 0.00000019239009}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: H_LFLeg
+      parentName: 
+      position: {x: -0.079767615, y: -0.03404877, z: -0.024330862}
+      rotation: {x: 0.70388013, y: 0.71031886, z: -0.00000012637491, w: 0.00000031670814}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
+    - name: H_RFLeg
+      parentName: 
+      position: {x: -0.07974442, y: -0.03205603, z: 0.018928327}
+      rotation: {x: 0.7687276, y: 0.6395763, z: 0.00000008523354, w: 0.00000033744482}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: H_Tail1
+      parentName: 
+      position: {x: 0.01170575, y: 0.008434026, z: 0}
+      rotation: {x: -0.15401274, y: 0.9880689, z: -0.00000040144013, w: 0.00000001833424}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: H_Tail2
+      parentName: 
+      position: {x: -0.036867537, y: 0.000000008106233, z: 0.000000008106233}
+      rotation: {x: -0.00000007120485, y: -0.00000013839514, z: 0.021884989, w: 0.9997605}
+      scale: {x: 1.0000001, y: 1.0000001, z: 0.99999994}
+    - name: H_RRLeg
+      parentName: 
+      position: {x: 0.017394204, y: -0.03368386, z: 0.02010429}
+      rotation: {x: 0.6760306, y: 0.73687357, z: 0.000000064613275, w: 0.00000032351238}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1}
+    - name: H_LRLeg
+      parentName: 
+      position: {x: 0.024950262, y: -0.03516682, z: -0.0266756}
+      rotation: {x: 0.7268597, y: 0.686786, z: 0.0000001806881, w: 0.00000042516004}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Bip001
+      parentName: 
+      position: {x: 0.69155943, y: 0.8644926, z: 0.10509415}
+      rotation: {x: -0.4709352, y: 0.47248745, z: 0.53742754, w: 0.51589465}
+      scale: {x: 10.000006, y: 10.000001, z: 10.000004}
+    - name: Bip001 Pelvis
+      parentName: 
+      position: {x: 0.0016698051, y: 0.069123715, z: 0.0012918044}
+      rotation: {x: -0.49999967, y: 0.50000036, z: 0.49999967, w: 0.50000036}
+      scale: {x: 1, y: 0.99999994, z: 0.9999998}
+    - name: Bip001 Spine
+      parentName: 
+      position: {x: -0.016677268, y: -0.000032863678, z: 0.000000032424932}
+      rotation: {x: -0.0000014537344, y: 0.000001028759, z: -0.00039825586, w: 0.99999994}
+      scale: {x: 1, y: 0.99999976, z: 0.9999998}
+    - name: Bip001 Neck
+      parentName: 
+      position: {x: -0.0412823, y: -0.000017497303, z: 0}
+      rotation: {x: -5.8207666e-10, y: 0.0000000018626454, z: 0.0000000037252907,
+        w: 1}
+      scale: {x: 0.99999994, y: 0.9999999, z: 1}
+    - name: Bip001 Head
+      parentName: 
+      position: {x: -0.02197402, y: -0.0000000010132791, z: 0}
+      rotation: {x: -0.0000001287869, y: 0.00000007911104, z: 0.00039884815, w: 0.99999994}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000002}
+    - name: Bip001 L Clavicle
+      parentName: 
+      position: {x: -0.000000016212466, y: 0.000017490209, z: 0.0037548635}
+      rotation: {x: 0.70710677, y: 0.00028151725, z: -0.70710677, w: 0.00028151725}
+      scale: {x: 1.0000002, y: 1, z: 1.0000001}
+    - name: Bip001 L UpperArm
+      parentName: 
+      position: {x: -0.016767628, y: 0.0000000050663944, z: 0.0000000486374}
+      rotation: {x: 0.004684157, y: -0.00852102, z: -0.0013162019, w: 0.9999519}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: Bip001 L Forearm
+      parentName: 
+      position: {x: -0.036275957, y: 0.0000000010132791, z: -0.000000032424932}
+      rotation: {x: -0.000000011186721, y: 0.0000000036925847, z: 0.0029250826, w: 0.9999957}
+      scale: {x: 0.99999976, y: 0.99999994, z: 0.99999994}
+    - name: Bip001 L Hand
+      parentName: 
+      position: {x: -0.02985441, y: 0.00000005573035, z: 0.000000032424932}
+      rotation: {x: -0.7068254, y: 0.00003908687, z: -0.00003821674, w: 0.70738816}
+      scale: {x: 0.99999994, y: 1.0000002, z: 1}
+    - name: Bip001 R Clavicle
+      parentName: 
+      position: {x: -0.000000016212466, y: 0.000017510476, z: -0.0037548556}
+      rotation: {x: 0.70710677, y: 0.000281512, z: 0.70710677, w: -0.000281512}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Bip001 R UpperArm
+      parentName: 
+      position: {x: -0.016767636, y: 0.0000000010132791, z: 0}
+      rotation: {x: -0.004685357, y: 0.008520384, z: -0.0014653807, w: 0.99995166}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: Bip001 R Forearm
+      parentName: 
+      position: {x: -0.036276, y: 0.0000000020265583, z: -0.000000016212466}
+      rotation: {x: 3.7902185e-13, y: -1.1641469e-10, z: 0.0032557733, w: 0.9999947}
+      scale: {x: 1.0000001, y: 0.9999998, z: 1.0000001}
+    - name: Bip001 R Hand
+      parentName: 
+      position: {x: -0.029854469, y: 0.000000064849864, z: 0}
+      rotation: {x: 0.304106, y: -0.7099817, z: 0.5576723, w: 0.30405155}
+      scale: {x: 1.0000002, y: 1, z: 1.0000004}
+    - name: Bip001 R Hand Prop
+      parentName: 
+      position: {x: 0.015309917, y: 0.0143682165, z: 0.02064675}
+      rotation: {x: 0.0000000037252899, y: 4.2200557e-10, z: 2.3283064e-10, w: 1}
+      scale: {x: 0.99999994, y: 0.9999999, z: 1}
+    - name: Bip001 R Thigh
+      parentName: 
+      position: {x: 0.016677245, y: 0.000046206533, z: -0.01809672}
+      rotation: {x: -0.050377794, y: 0.99873024, z: 0.0000013458177, w: 0.00000024450418}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
+    - name: Bip001 R Calf
+      parentName: 
+      position: {x: -0.046667714, y: -0.0000000030398375, z: 0.000000016212466}
+      rotation: {x: -1.3868891e-10, y: -9.499145e-10, z: 0.099834934, w: 0.995004}
+      scale: {x: 0.99999976, y: 0.9999999, z: 0.9999997}
+    - name: Bip001 R Foot
+      parentName: 
+      position: {x: -0.03310365, y: -0.00000011754037, z: 0.000000008106233}
+      rotation: {x: -0.000000008249438, y: 0.00000013562354, z: -0.049979873, w: 0.99875027}
+      scale: {x: 1.0000004, y: 1.0000002, z: 1.0000002}
+    - name: Bip001 R Toe0
+      parentName: 
+      position: {x: -0.012337385, y: 0.015877686, z: 0}
+      rotation: {x: 0.00000048057296, y: 0.0000004252552, z: -0.7071068, w: 0.7071068}
+      scale: {x: 0.9999999, y: 1.0000001, z: 0.9999999}
+    - name: Bip001 L Thigh
+      parentName: 
+      position: {x: 0.016677245, y: 0.000046105215, z: 0.01809672}
+      rotation: {x: -0.05037727, y: 0.9987303, z: 0.0000014601063, w: -0.0000001193425}
+      scale: {x: 1.0000001, y: 1.0000002, z: 1.0000001}
+    - name: Bip001 L Calf
+      parentName: 
+      position: {x: -0.04666768, y: 0.0000000040531165, z: 0.0000000040531165}
+      rotation: {x: 0.0000000014829826, y: -7.8720336e-10, z: 0.09983405, w: 0.9950041}
+      scale: {x: 0.9999998, y: 0.9999999, z: 1}
+    - name: Bip001 L Foot
+      parentName: 
+      position: {x: -0.033103637, y: -0.00000011399389, z: 0.00000001215935}
+      rotation: {x: 0.000000021298204, y: -0.00000005888005, z: -0.049979404, w: 0.99875027}
+      scale: {x: 1, y: 1.0000002, z: 1}
+    - name: Bip001 L Toe0
+      parentName: 
+      position: {x: -0.012337393, y: 0.0158777, z: 0}
+      rotation: {x: 0.00000035396766, y: 0.0000003026012, z: -0.7071068, w: 0.70710677}
+      scale: {x: 0.9999999, y: 1.0000002, z: 0.9999998}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 0.017
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

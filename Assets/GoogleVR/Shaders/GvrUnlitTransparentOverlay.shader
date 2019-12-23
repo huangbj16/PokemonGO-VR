@@ -26,7 +26,7 @@ Shader "GoogleVR/Unlit/Transparent Overlay" {
 
     LOD 100
 
-    Blend SrcAlpha OneMinusSrcAlpha, OneMinusDstAlpha One
+    Blend SrcAlpha OneMinusSrcAlpha
     AlphaTest Off
     Cull Back
     Lighting Off

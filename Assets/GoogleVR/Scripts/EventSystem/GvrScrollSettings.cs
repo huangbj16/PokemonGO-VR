@@ -16,61 +16,41 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-using System.Collections;
 using UnityEngine;
+using System.Collections;
 
-/// <summary>
-/// Used to override the global scroll settings in `GvrPointerScrollInput` for the `GameObject` that
-/// this script is attached to.
-/// </summary>
+/// Used to override the global scroll settings in _GvrPointerScrollInput_
+/// for the GameObject that this script is attached to.
 [HelpURL("https://developers.google.com/vr/unity/reference/class/GvrScrollSettings")]
 public class GvrScrollSettings : MonoBehaviour, IGvrScrollSettings
 {
-    /// <summary>Override the `Inertia` property in `GvrPointerScrollInput` for this object.</summary>
-    /// <remarks>
+    /// Override the Inertia property in _GvrPointerScrollInput_ for this object.
+    ///
     /// Inertia means that scroll events will continue for a while after the user stops
-    /// touching the touchpad. It gradually slows down according to the `decelerationRate`.
-    /// </remarks>
+    /// touching the touchpad. It gradually slows down according to the decelerationRate.
     [Tooltip("Determines if movement inertia is enabled.")]
     public bool inertiaOverride = true;
 
-    /// <summary>The deceleration rate is the speed reduction per second.</summary>
-    /// <remarks>
-    /// A value of 0.5 halves the speed each second. The default is 0.05.  The deceleration rate is
-    /// only used when `inertia` is `true`.
-    /// </remarks>
+    /// The deceleration rate is the speed reduction per second.
+    /// A value of 0.5 halves the speed each second. The default is 0.05.
+    /// The deceleration rate is only used when inertia is enabled.
     [Tooltip("The rate at which movement slows down.")]
     public float decelerationRateOverride = 0.05f;
 
-    /// <summary>
-    /// Gets a value indicating whether the overridden value for `interia` is enabled.
+    /// <summary>Inertia means that scroll events will continue for a while after the user stops
+    /// touching the touchpad. It gradually slows down according to the decelerationRate.
     /// </summary>
-    /// <remarks><para>
-    /// This value will override the Inertia property in `GvrPointerScrollInput` for this object.
-    /// </para><para>
-    /// Inertia means that scroll events will continue for a while after the user stops
-    /// touching the touchpad. It gradually slows down according to the `decelerationRate`.
-    /// </para></remarks>
-    /// <value>
-    /// Gets the overridden value for whether to use `interia` for the `GvrPointerScrollInput`.
-    /// </value>
     public bool InertiaOverride
     {
         get { return inertiaOverride; }
     }
 
-    /// <summary>Gets the deceleration rate override value.</summary>
-    /// <remarks><para>
-    /// This value will override the deceleration rate in `GvrPointerScrollInput` for this
-    /// object.
-    /// </para><para>
-    /// The deceleration rate is the speed reduction per second.
-    /// </para><para>
+    /// <summary>The deceleration rate is the speed reduction per second.
     /// A value of 0.5 halves the speed each second.
-    /// </para><para>
-    /// The deceleration rate is only used when `inertia` is `true`.
-    /// </para></remarks>
-    /// <value>Gets the deceleration rate override value for the `GvrPointerScrollInput`.</value>
+    /// </summary>
+    /// <remarks>The default is 0.05.
+    /// The deceleration rate is only used when inertia is enabled.
+    /// </remarks>
     public float DecelerationRateOverride
     {
         get { return decelerationRateOverride; }

@@ -26,14 +26,14 @@ Shader "GoogleVR/Unlit/Controller" {
   }
   SubShader {
     Tags {
-      "Queue" = "Transparent"
+      "Queue" = "Overlay+100"
       "IgnoreProjector" = "True"
       "RenderType"="Transparent"
     }
     LOD 100
 
     ZWrite On
-    Blend SrcAlpha OneMinusSrcAlpha, OneMinusDstAlpha One
+    Blend SrcAlpha OneMinusSrcAlpha
 
     Pass {
       CGPROGRAM
