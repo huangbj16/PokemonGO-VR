@@ -15,8 +15,13 @@ public class PlayerWalk : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // FIXME: modify here to allow vertical moving.
         bool canWalk = !this.GetComponent<PlayerGrab>().inHands;
         if (Input.GetButton("Fire1") && canWalk)
-            transform.position += Camera.main.transform.forward * playerSpeed * Time.deltaTime;
+        {
+            Vector3 shift = Camera.main.transform.forward;
+            Vector3 step = new Vector3(shift[0], 0.0f, shift[2]);
+            transform.position += step * playerSpeed * Time.deltaTime;
+        }
     }
 }
