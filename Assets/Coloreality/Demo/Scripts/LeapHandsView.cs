@@ -10,6 +10,7 @@ namespace Coloreality
 
 		public GameObject handLeft;
 		public GameObject handRight;
+        public GameObject superArm;
 
 		LeapSingleHandView[] handViews;
 
@@ -36,17 +37,26 @@ namespace Coloreality
                 if (hands.Count > 0)
                 {
                     Vector position = hands[0].PalmPosition;
-                    cManager.info += position.x + " " + position.y + " " + position.z;
+                    //cManager.info += position.x + " " + position.y + " " + position.z;
                 }
                 for (int i = 0; i < hands.Count; i++) {
 					int curSide = hands [i].IsLeft ? 0 : 1;
 					hasHandSide[curSide] = true;
-					handViews[curSide].UpdateHand(hands [i]);
-				}
+					handViews[curSide].UpdateHand(hands[i]);
+
+                    if (hands[i].IsRight)
+                    {
+                        //superArm Test
+                        //Quaternion armRotation = hands[i].Arm.Rotation.ToQuaternion();
+                        superArm.transform.localPosition = hands[i].Fingers[1].TipPosition.ToScaledVector3();
+                    }
+                }
+
 
 				for (int side = 0; side < 2; side++) {
-					handViews[side].gameObject.SetActive (hasHandSide [side]);
-				}
+                    handViews[side].gameObject.SetActive (hasHandSide[side]);
+                    //handViews[side].gameObject.SetActive(false);
+                }
 				lastUpdateTime = Time.time;
 			} else  if(Time.time - lastUpdateTime > cancelInterval) {
 				for (int side = 0; side < 2; side++) {

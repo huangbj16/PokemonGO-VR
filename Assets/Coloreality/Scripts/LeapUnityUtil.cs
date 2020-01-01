@@ -6,7 +6,7 @@ namespace Coloreality
 {
     public static class LeapUnityUtil {
 
-        public static Vector3 ToScaledVector3(this Vector vector, float scale = 0.001f){
+        public static Vector3 ToScaledVector3(this Vector vector, float scale = 0.002f){
             return new Vector3(vector.x, vector.z, vector.y) * scale;
         }
 

@@ -38,7 +38,16 @@ namespace Coloreality
 				showGUI = true;
 			};
 			cManager.network.OnError += (object sender, ErrorEventArgs e) => cManager.info += "\r\nError: " + e.Message;
-		}
+            int portResult;
+            if (int.TryParse(inputPort, out portResult))
+            {
+                cManager.TryConnect(inputIp, portResult);
+            }
+            else
+            {
+                cManager.info = "Port is not in right format.";
+            }
+        }
 		
 		// string info = "Please enter the server's IP and Port, then click [Connect].";
 
