@@ -8,11 +8,13 @@ namespace Coloreality
 	public class LeapHandsView : MonoBehaviour {
 		ColorealityManager cManager;
 
+        public GameObject self;
 		public GameObject handLeft;
 		public GameObject handRight;
         public GameObject superArm;
 
 		LeapSingleHandView[] handViews;
+        PalmAndBall palmAndBall;
 
 		float lastUpdateTime = 0;
 		float cancelInterval = 0.5f;
@@ -28,6 +30,8 @@ namespace Coloreality
             handViews = new LeapSingleHandView[2];
 			handViews[0] = handLeft.GetComponent<LeapSingleHandView>();
             handViews[1] = handRight.GetComponent<LeapSingleHandView>();
+            palmAndBall = self.GetComponent<PalmAndBall>();
+            superArm.SetActive(false);
 		}
 		
 		void FixedUpdate () {
@@ -46,10 +50,17 @@ namespace Coloreality
 
                     if (hands[i].IsRight)
                     {
+                        palmAndBall.refresh(hands[i]);
+                    }
+                    /*
+                    if (hands[i].IsRight)
+                    {
                         //superArm Test
                         //Quaternion armRotation = hands[i].Arm.Rotation.ToQuaternion();
                         superArm.transform.localPosition = hands[i].Fingers[1].TipPosition.ToScaledVector3();
+                        Debug.Log("pinch distance = " + hands[i].PinchDistance);
                     }
+                    */
                 }
 
 

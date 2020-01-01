@@ -37,6 +37,7 @@ public class CollisionDetection : MonoBehaviour
     }
     */
 
+    /*
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("trigger enter: " + other.name);
@@ -53,4 +54,5 @@ public class CollisionDetection : MonoBehaviour
             normalBall.transform.rotation = Quaternion.identity;
         }
     }
+    */
 }
