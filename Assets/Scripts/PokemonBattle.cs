@@ -4,24 +4,42 @@ using UnityEngine;
 
 public class PokemonBattle : MonoBehaviour
 {
+    public GameObject result;
+    private bool caught;
+    public int aliveFrame = 300;
+    private int curFrame;
+    public GameObject ball;
+    public GameObject effect;
     // Start is called before the first frame update
     void Start()
     {
-        
+        curFrame = 0;
+        caught = false;
+        Vector3 effectPos = gameObject.GetComponent<Transform>().position + new Vector3(0, 1.0f, 0);
+        Quaternion effectQuat = effect.GetComponent<Transform>().rotation;
+        effect.GetComponent<Transform>().SetPositionAndRotation(effectPos, effectQuat);
+        effect.SetActive(false);
+        result.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collide!");
-        if(Caught())
+        if(collision.gameObject.Equals(ball))
         {
-            Debug.Log("Caught!");
+            Debug.Log("Collide!");
+            if (Caught())
+            {
+                Debug.Log("Caught!");
+                result.SetActive(true);
+                effect.SetActive(true);
+                gameObject.SetActive(false);
+            }
         }
     }
 

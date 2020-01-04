@@ -16,6 +16,11 @@ public class GazeButton : MonoBehaviour
         
     }
 
+    public void onGazeEnter()
+    {
+        Debug.Log("Gaze enter");
+    }
+
     public void turnWhite() {
         GetComponent<Renderer>().material.color = Color.white;
     }
