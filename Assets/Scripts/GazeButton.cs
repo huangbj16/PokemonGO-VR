@@ -19,6 +19,12 @@ public class GazeButton : MonoBehaviour
     public void onGazeEnter()
     {
         Debug.Log("Gaze enter");
+        turnBlue();
+    }
+
+    public void onCardboardClick()
+    {
+        Debug.Log("Cardboard Click!");
     }
 
     public void turnWhite() {
