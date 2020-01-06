@@ -21,7 +21,7 @@ namespace Coloreality
 			} else {
 				inputIp = cManager.network.Ip;
 			}
-            inputIp = "59.66.130.30";
+            inputIp = "59.66.130.28";
 
             if (PlayerPrefs.HasKey("UsePort")) {
 				inputPort = PlayerPrefs.GetInt("UsePort").ToString();
