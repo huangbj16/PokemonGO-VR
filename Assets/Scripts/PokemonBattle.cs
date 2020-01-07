@@ -5,10 +5,11 @@ using UnityEngine;
 public class PokemonBattle : MonoBehaviour
 {
     public GameObject result;
+    public GameObject ball;
     private bool caught;
     public int aliveFrame = 300;
     private int curFrame;
-    public GameObject ball;
+    //public GameObject ball;
     public GameObject effect;
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,8 @@ public class PokemonBattle : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.Equals(ball))
+        Debug.Log("collision: " + collision.gameObject.name);
+        if(collision.gameObject.name.Contains("pokemonball"))
         {
             Debug.Log("Collide!");
             if (Caught())

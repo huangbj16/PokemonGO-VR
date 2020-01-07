@@ -5,7 +5,12 @@ using UnityEngine;
 public class PlayerGrab : MonoBehaviour
 {
     public GameObject hand;
-    public GameObject ball;
+
+    const string prefix = "pokemonball_";
+
+    GameObject ball = null;
+    int ballIndex = -1;
+
     public float handPower;
 
     public bool inHands = false;
@@ -20,8 +25,8 @@ public class PlayerGrab : MonoBehaviour
     void Start()
     {
         //originalBallPos = ball.transform.position;
-        ballCol = ball.GetComponent<SphereCollider>();
-        ballRb = ball.GetComponent<Rigidbody>();
+        //ballCol = ball.GetComponent<SphereCollider>();
+        //ballRb = ball.GetComponent<Rigidbody>();
         cam = GetComponentInChildren<Camera>();
     }
 
@@ -59,15 +64,24 @@ public class PlayerGrab : MonoBehaviour
         }
     }
 
-    public void setFocusOnBall()
+    public void setFocusOnBall(int focusBallIndex)
     {
-        if(!inHands)
+        if (!inHands)
+        {
             focusOnBall = true;
+            ballIndex = focusBallIndex;
+            ball = GameObject.Find(prefix + ballIndex.ToString());
+            ballCol = ball.GetComponent<SphereCollider>();
+            ballRb = ball.GetComponent<Rigidbody>();
+        }
     }
 
     public void setFocusNotOnBall()
     {
-        if(!inHands)
+        if (!inHands)
+        {
             focusOnBall = false;
+            ballIndex = -1;
+        }
     }
 }
