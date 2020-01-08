@@ -8,9 +8,6 @@ public class PokemonBattle : MonoBehaviour
 {
     public GameObject result;
     public GameObject ball;
-    private bool caught;
-    public int aliveFrame = 240;
-    private int curFrame;
     //public GameObject ball;
     public GameObject effect;
     public GameObject manager;
@@ -18,8 +15,6 @@ public class PokemonBattle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        curFrame = 0;
-        caught = false;
         Vector3 effectPos = gameObject.GetComponent<Transform>().position - new Vector3(0, 2.0f, 1.0f);
         Vector3 resultPos = gameObject.GetComponent<Transform>().position + new Vector3(0, 1.0f, -1.0f);
         Quaternion effectQuat = effect.GetComponent<Transform>().rotation;

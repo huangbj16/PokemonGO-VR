@@ -435,6 +435,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8748977419911912931, guid: f87c565c4baef3544ac45a02161c0af9,
+        type: 3}
+      propertyPath: result
+      value: 
+      objectReference: {fileID: 289662190}
+    - target: {fileID: 8748977419911912931, guid: f87c565c4baef3544ac45a02161c0af9,
+        type: 3}
+      propertyPath: effect
+      value: 
+      objectReference: {fileID: 1337772288}
+    - target: {fileID: 8748977419911912931, guid: f87c565c4baef3544ac45a02161c0af9,
+        type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 896922033}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f87c565c4baef3544ac45a02161c0af9, type: 3}
 --- !u!1 &86080052 stripped
@@ -9719,6 +9734,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2054340200033846446, guid: d6cfde4cfdc05354d81b2d3ed1c23eb2,
+        type: 3}
+      propertyPath: result
+      value: 
+      objectReference: {fileID: 289662190}
+    - target: {fileID: 2054340200033846446, guid: d6cfde4cfdc05354d81b2d3ed1c23eb2,
+        type: 3}
+      propertyPath: effect
+      value: 
+      objectReference: {fileID: 1337772288}
+    - target: {fileID: 2054340200033846446, guid: d6cfde4cfdc05354d81b2d3ed1c23eb2,
+        type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 896922033}
     - target: {fileID: 5018094720978869143, guid: d6cfde4cfdc05354d81b2d3ed1c23eb2,
         type: 3}
       propertyPath: m_Name
@@ -9803,6 +9833,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6042347311291308064, guid: 8a723dfc4643c8f46bddb34683c832ea,
+        type: 3}
+      propertyPath: result
+      value: 
+      objectReference: {fileID: 289662190}
+    - target: {fileID: 6042347311291308064, guid: 8a723dfc4643c8f46bddb34683c832ea,
+        type: 3}
+      propertyPath: effect
+      value: 
+      objectReference: {fileID: 1337772288}
+    - target: {fileID: 6042347311291308064, guid: 8a723dfc4643c8f46bddb34683c832ea,
+        type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 896922033}
     - target: {fileID: 8279149921129437419, guid: 8a723dfc4643c8f46bddb34683c832ea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9867,6 +9912,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3001868644879515113, guid: 2165d35cee9f85e4eb553ecc6a81b83b,
+        type: 3}
+      propertyPath: result
+      value: 
+      objectReference: {fileID: 289662190}
+    - target: {fileID: 3001868644879515113, guid: 2165d35cee9f85e4eb553ecc6a81b83b,
+        type: 3}
+      propertyPath: effect
+      value: 
+      objectReference: {fileID: 1337772288}
+    - target: {fileID: 3001868644879515113, guid: 2165d35cee9f85e4eb553ecc6a81b83b,
+        type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 896922033}
     - target: {fileID: 6832654627221410447, guid: 2165d35cee9f85e4eb553ecc6a81b83b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10006,5 +10066,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3591444955112242769, guid: 49aa4feb1a7d84344aaa45ef948fa68d,
+        type: 3}
+      propertyPath: result
+      value: 
+      objectReference: {fileID: 289662190}
+    - target: {fileID: 3591444955112242769, guid: 49aa4feb1a7d84344aaa45ef948fa68d,
+        type: 3}
+      propertyPath: effect
+      value: 
+      objectReference: {fileID: 1337772288}
+    - target: {fileID: 3591444955112242769, guid: 49aa4feb1a7d84344aaa45ef948fa68d,
+        type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 896922033}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49aa4feb1a7d84344aaa45ef948fa68d, type: 3}
