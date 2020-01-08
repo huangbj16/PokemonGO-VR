@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +13,8 @@ public class PokemonBattle : MonoBehaviour
     private int curFrame;
     //public GameObject ball;
     public GameObject effect;
+    public GameObject manager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,25 +27,19 @@ public class PokemonBattle : MonoBehaviour
         result.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.name.Contains("pokemonball"))
         {
-            Debug.Log("Collide!");
+            UnityEngine.Debug.Log("Collide!");
             if (Caught())
             {
-                Debug.Log("Caught!");
+                UnityEngine.Debug.Log("Caught!");
                 result.SetActive(true);
                 effect.SetActive(true);
                 gameObject.SetActive(false);
-                Thread.Sleep(1000);
-                SceneManager.LoadScene("MainScene");
+                counterAfterCollision cAC = manager.GetComponent<counterAfterCollision>();
+                cAC.startCounter();
             }
         }
     }

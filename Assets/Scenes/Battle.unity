@@ -3774,6 +3774,7 @@ GameObject:
   m_Component:
   - component: {fileID: 896922034}
   - component: {fileID: 896922035}
+  - component: {fileID: 896922036}
   m_Layer: 0
   m_Name: PokemonManager
   m_TagString: Untagged
@@ -3817,6 +3818,19 @@ MonoBehaviour:
   ball: {fileID: 1453133515}
   aliveFrame: 60
   effect: {fileID: 1337772288}
+  manager: {fileID: 896922033}
+--- !u!114 &896922036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896922033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fb36aca2d45b4d419e62c1acf7f48b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &918753375 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100126, guid: 4c0ff31d60a7d5847a2bcea134021a79,
@@ -9299,6 +9313,7 @@ MonoBehaviour:
   ball: {fileID: 1453133515}
   aliveFrame: 60
   effect: {fileID: 1337772288}
+  manager: {fileID: 0}
 --- !u!1001 &2075363885
 PrefabInstance:
   m_ObjectHideFlags: 0

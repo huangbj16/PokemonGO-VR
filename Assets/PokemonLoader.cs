@@ -9,6 +9,7 @@ public class PokemonLoader : MonoBehaviour
     public GameObject ball;
     public int aliveFrame;
     public GameObject effect;
+    public GameObject manager;
 
     // Start is called before the first frame update
     void Start()
@@ -25,5 +26,6 @@ public class PokemonLoader : MonoBehaviour
         battleParams.ball = ball;
         battleParams.aliveFrame = aliveFrame;
         battleParams.effect = effect;
+        battleParams.manager = manager;
     }
 }

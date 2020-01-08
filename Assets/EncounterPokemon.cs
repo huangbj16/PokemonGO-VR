@@ -39,7 +39,13 @@ public class EncounterPokemon : MonoBehaviour
         {
             Debug.Log("encounter: " + name+"; change scene to battle");
             PassingParameters.battlePokemonNameIndex = index;
-            SceneManager.LoadScene(nextSceneName);
+            SceneManager.LoadScene(nextSceneName, LoadSceneMode.Single);
+            /*
+            Debug.Log("active scene: "+SceneManager.GetActiveScene().name);
+            Scene nextScene = SceneManager.GetSceneByName("Battle");
+            SceneManager.SetActiveScene(nextScene);
+            Debug.Log("active scene: " + SceneManager.GetActiveScene().name);
+            */
         }
     }
 }
