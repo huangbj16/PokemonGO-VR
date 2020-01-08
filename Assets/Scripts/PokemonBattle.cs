@@ -60,9 +60,8 @@ public class PokemonBattle : MonoBehaviour
 
     private bool Caught()
     {
-        // FIXME: Always true now.
         float t = Random.value;
         float hp = hpController.GetComponent<BloodController>().pokemonHp;
-        return t > hp;
+        return t > hp * 0.9f;
     }
 }
