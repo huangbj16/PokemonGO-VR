@@ -7,6 +7,7 @@ public class MenuController : MonoBehaviour
 {
     public bool gazing = false;
     public string lastGameBtn = "";
+    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +24,21 @@ public class MenuController : MonoBehaviour
             {
                 SceneManager.LoadScene("MainScene");
             }
+            else if(lastGameBtn.Contains("Battle"))
+            {
+                player.GetComponent<PlayerGrab>().curMode = "Battle";
+            }
+            else if (lastGameBtn.Contains("Catch"))
+            {
+                player.GetComponent<PlayerGrab>().curMode = "Catch";
+            }
         }
     }
 
+    public void setGazing(bool flag)
+    {
+        gazing = flag;
+        player.GetComponent<PlayerGrab>().gazing = flag;
+    }
 
 }

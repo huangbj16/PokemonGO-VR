@@ -21,13 +21,13 @@ public class GazeButton : MonoBehaviour
     public void onGazeButtonEnter()
     {
         Debug.Log("Game" + name);
-        menuManager.GetComponent<MenuController>().gazing = true;
+        menuManager.GetComponent<MenuController>().setGazing(true);
         menuManager.GetComponent<MenuController>().lastGameBtn = name;
     }
 
     public void onGazeButtonExit()
     {
-        menuManager.GetComponent<MenuController>().gazing = false;
+        menuManager.GetComponent<MenuController>().setGazing(false);
     }
 
     public void turnWhite() {

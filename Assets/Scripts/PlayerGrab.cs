@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Diagnostics;
 
 public class PlayerGrab : MonoBehaviour
 {
     public GameObject hand;
-
+    public GameObject attack;
+    public string curMode = "Catch";
+    public bool gazing = false;
+    Stopwatch counter;
     const string prefix = "pokemonball_";
 
     GameObject ball = null;
@@ -28,6 +32,7 @@ public class PlayerGrab : MonoBehaviour
         //ballCol = ball.GetComponent<SphereCollider>();
         //ballRb = ball.GetComponent<Rigidbody>();
         cam = GetComponentInChildren<Camera>();
+        counter = new Stopwatch();
     }
 
     // Update is called once per frame
@@ -35,33 +40,59 @@ public class PlayerGrab : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            if (!inHands)
+            if(curMode == "Catch")
             {
-                if (focusOnBall)
+                resetAttack();
+                if (!inHands)
                 {
-                    Debug.Log("Grab Ball!");
-                    ball.transform.SetParent(hand.transform);
-                    ball.transform.localPosition = new Vector3(0, -0.4f, 0);
-                    inHands = true;
-                    focusOnBall = false;
-                    ballCol.isTrigger = true;
-                    ballRb.useGravity = false;
-                    ballRb.velocity = Vector3.zero;
-                    ballRb.angularVelocity = Vector3.zero;
-                    ball.transform.rotation = Quaternion.identity;
+                    if (focusOnBall)
+                    {
+                        ball.transform.SetParent(hand.transform);
+                        ball.transform.localPosition = new Vector3(0, -0.4f, 0);
+                        inHands = true;
+                        focusOnBall = false;
+                        ballCol.isTrigger = true;
+                        ballRb.useGravity = false;
+                        ballRb.velocity = Vector3.zero;
+                        ballRb.angularVelocity = Vector3.zero;
+                        ball.transform.rotation = Quaternion.identity;
+                    }
+                }
+                else
+                {
+                    ball.transform.SetParent(null);
+                    //ball.transform.localPosition = originalBallPos;
+                    inHands = false;
+                    ballCol.isTrigger = false;
+                    ballRb.useGravity = true;
+                    ballRb.velocity = cam.transform.rotation * Vector3.forward * handPower;
+                    ballRb.angularVelocity = cam.transform.rotation * Vector3.forward * handPower;
                 }
             }
-            else
+            else if(curMode == "Battle" && !gazing)
             {
-                ball.transform.SetParent(null);
-                //ball.transform.localPosition = originalBallPos;
-                inHands = false;
-                ballCol.isTrigger = false;
-                ballRb.useGravity = true;
-                ballRb.velocity = cam.transform.rotation * Vector3.forward * handPower;
-                ballRb.angularVelocity = cam.transform.rotation * Vector3.forward * handPower;
+                counter.Reset();
+                attack.SetActive(true);
+                attack.transform.SetParent(hand.transform);
+                attack.transform.localPosition = new Vector3(-1.0f, -0.4f, 0);
+                attack.transform.rotation = Quaternion.identity;
+                Rigidbody arb = attack.GetComponent<Rigidbody>();
+                arb.useGravity = true;
+                arb.velocity = cam.transform.rotation * Vector3.forward * handPower;
+                arb.angularVelocity = cam.transform.rotation * Vector3.forward * handPower;
+                counter.Start();
             }
         }
+        if(counter.ElapsedMilliseconds > 2000)
+        {
+            resetAttack();
+            counter.Reset();
+        }
+    }
+
+    private void resetAttack() 
+    {
+        attack.SetActive(false);
     }
 
     public void setFocusOnBall(int focusBallIndex)

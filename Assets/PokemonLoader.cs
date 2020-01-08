@@ -21,6 +21,7 @@ public class PokemonLoader : MonoBehaviour
             index = 4;
         }
         GameObject pokemon = Instantiate(prefabs[index]);
+        pokemon.SetActive(true);
         PokemonBattle battleParams = pokemon.GetComponent<PokemonBattle>();
         battleParams.result = result;
         battleParams.ball = ball;
