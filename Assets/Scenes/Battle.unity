@@ -3793,7 +3793,15 @@ MonoBehaviour:
         w: 0
     Fingers: []
   hasHandBall: 0
-  parts: []
+  parts:
+  - {fileID: 180541071}
+  - {fileID: 1672795452}
+  - {fileID: 442056435}
+  - {fileID: 398422359}
+  - {fileID: 1135979384}
+  - {fileID: 36899489}
+  - {fileID: 353347947}
+  - {fileID: 1299625854}
 --- !u!1 &753319462 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100154, guid: 4c0ff31d60a7d5847a2bcea134021a79,
@@ -4538,7 +4546,15 @@ MonoBehaviour:
         w: 0
     Fingers: []
   hasHandBall: 0
-  parts: []
+  parts:
+  - {fileID: 1419379216}
+  - {fileID: 1314542107}
+  - {fileID: 340944231}
+  - {fileID: 922881976}
+  - {fileID: 926317616}
+  - {fileID: 1066346830}
+  - {fileID: 1561406323}
+  - {fileID: 389986820}
 --- !u!1 &894228655 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100028, guid: 4c0ff31d60a7d5847a2bcea134021a79,
@@ -5862,10 +5878,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dd45964e9206c64f87954ab73a8a43c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handRight: {fileID: 0}
-  palm: {fileID: 0}
-  handPower: 0
-  cam: {fileID: 0}
+  handRight: {fileID: 697535888}
+  palm: {fileID: 180541070}
+  handPower: 10
+  cam: {fileID: 1278969102}
 --- !u!114 &1135650072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5878,9 +5894,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5cadbd3311f44415a797ef03a41c508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  self: {fileID: 0}
-  handLeft: {fileID: 0}
-  handRight: {fileID: 0}
+  self: {fileID: 1135650069}
+  handLeft: {fileID: 889895250}
+  handRight: {fileID: 697535888}
   superArm: {fileID: 0}
 --- !u!1 &1135979383
 GameObject:
@@ -43803,13 +43819,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2063080360}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 620931f56d8522a409e55a4c364ab9a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HandLeftObject: {fileID: 0}
-  HandRightObject: {fileID: 0}
+  HandLeftObject: {fileID: 156351210}
+  HandRightObject: {fileID: 256324155}
 --- !u!1 &2080425114 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100034, guid: 4c0ff31d60a7d5847a2bcea134021a79,
