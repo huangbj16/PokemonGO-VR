@@ -11,6 +11,7 @@ public class PokemonBattle : MonoBehaviour
     //public GameObject ball;
     public GameObject effect;
     public GameObject manager;
+    public GameObject hpController;
 
     // Start is called before the first frame update
     void Start()
@@ -50,12 +51,18 @@ public class PokemonBattle : MonoBehaviour
                 cAC.startCounter();
             }
         }
+        else if(collision.gameObject.tag.Contains("attack"))
+        {
+            UnityEngine.Debug.Log("Attack!");
+            hpController.GetComponent<BloodController>().minus_hp("pokemon", 0.15f);
+        }
     }
 
     private bool Caught()
     {
         // FIXME: Always true now.
         float t = Random.value;
-        return t < 2.0f;
+        float hp = hpController.GetComponent<BloodController>().pokemonHp;
+        return t > hp;
     }
 }
