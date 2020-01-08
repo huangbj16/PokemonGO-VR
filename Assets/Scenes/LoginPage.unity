@@ -177,7 +177,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
@@ -188,7 +188,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Login Page
+  m_Text: Welcome to the Pokemon World!
 --- !u!222 &165679327
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -739,7 +739,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Login
+  m_Text: 'Have Fun!
 
 '
 --- !u!222 &913245447
@@ -1067,4 +1067,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a69e6ec87951c114b81af2a6bee66495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Battle
+  sceneName: MainScene

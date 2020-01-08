@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PokemonBattle : MonoBehaviour
 {
@@ -31,7 +33,6 @@ public class PokemonBattle : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("collision: " + collision.gameObject.name);
         if(collision.gameObject.name.Contains("pokemonball"))
         {
             Debug.Log("Collide!");
@@ -41,6 +42,8 @@ public class PokemonBattle : MonoBehaviour
                 result.SetActive(true);
                 effect.SetActive(true);
                 gameObject.SetActive(false);
+                Thread.Sleep(1000);
+                SceneManager.LoadScene("MainScene");
             }
         }
     }
