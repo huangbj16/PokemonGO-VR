@@ -15,8 +15,8 @@ public class PokemonBattle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Vector3 effectPos = gameObject.GetComponent<Transform>().position - new Vector3(0, 2.0f, 1.0f);
-        Vector3 resultPos = gameObject.GetComponent<Transform>().position + new Vector3(0, 1.0f, -1.0f);
+        Vector3 effectPos = gameObject.GetComponent<Transform>().position + new Vector3(0, 0.0f, 0.0f);
+        Vector3 resultPos = gameObject.GetComponent<Transform>().position + new Vector3(0, 3.0f, 0.0f);
         Quaternion effectQuat = effect.GetComponent<Transform>().rotation;
         Quaternion resultQuat = result.GetComponent<Transform>().rotation;
         effect.GetComponent<Transform>().SetPositionAndRotation(effectPos, effectQuat);

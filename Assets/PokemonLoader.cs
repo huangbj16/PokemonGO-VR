@@ -24,7 +24,6 @@ public class PokemonLoader : MonoBehaviour
         PokemonBattle battleParams = pokemon.GetComponent<PokemonBattle>();
         battleParams.result = result;
         battleParams.ball = ball;
-        battleParams.aliveFrame = aliveFrame;
         battleParams.effect = effect;
         battleParams.manager = manager;
     }
